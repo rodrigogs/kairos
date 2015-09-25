@@ -1,0 +1,30 @@
+{
+  "name": "kairos",
+  "version": "0.0.1",
+  "description": "A time calculator library",
+  "homepage": "https://github.com/Sedentary/kairos",
+  "authors": [
+    "Rodrigo Gomes da Silva <rodrigo.smscom@gmail.com>"
+  ],
+  "main": [
+    "build/kairos.js"
+  ],
+  "keywords": [
+    "time",
+    "chronos",
+    "calculator",
+    "calc",
+    "clock"
+  ],
+  "license": "BSD",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "devDependencies": {
+    "mocha": "~2.2.5",
+    "assert": "~0.1.0"
+  }
+}
