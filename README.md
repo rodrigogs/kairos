@@ -10,7 +10,7 @@ var time = Kairos.plus('10:10', '05:20');
 console.log(time); // 15:30
 
 time = Kairos.multiply('01:00', 20);
-console.log(time); // 
+console.log(time); // 20:00
 
 time = new Kairos.Gnomon('01:10:20');
 console.log(time.getMilliseconds()); // 4220000
