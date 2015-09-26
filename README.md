@@ -12,6 +12,12 @@ console.log(time); // 15:30
 time = Kairos.multiply('01:00', 20);
 console.log(time); // 20:00
 
+time = Kairos.toSeconds('00:01');
+console.log(time); // 60
+
+time = Kairos.toMilliseconds('00:01');
+console.log(time); // 60000
+
 time = new Kairos.Gnomon('01:10:20');
 console.log(time.getMilliseconds()); // 4220000
 console.log(time.getSeconds()); // 4220
