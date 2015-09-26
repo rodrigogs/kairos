@@ -12,6 +12,9 @@ console.log(time); // 15:30
 time = Kairos.multiply('01:00', 20);
 console.log(time); // 20:00
 
+time = Kairos.toMinutes(time);
+console.log(time); // 72000
+
 time = Kairos.toSeconds('00:01');
 console.log(time); // 60
 
