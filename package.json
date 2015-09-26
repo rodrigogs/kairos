@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A time calculator library",
   "license": "BSD",
-  "repository": "Sedentary/kairos",
+  "repository": "kairos",
   "author": {
     "name": "Rodrigo Gomes da Silva",
     "email": "rodrigo.smscom@gmail.com",
