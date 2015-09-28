@@ -13,7 +13,7 @@
   Kairos.plus = function (augend, addend) {
     var a = new Kairos.Gnomon(augend);
     var b = new Kairos.Gnomon(addend);
-
-    return a.plus(b);
+    a.plus(b);
+    return a.getTimeExpression();
   };
 }(window));

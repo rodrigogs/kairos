@@ -1,33 +1,24 @@
 'use strict';
 
 var gulp = require('gulp');
-var bower = require('gulp-bower');
 var karma = require('karma').server;
 var pkg = require('./package.json');
 var plugins = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
 var del = require('del');
 var stylish = require('jshint-stylish');
-var mainBowerFiles = require('main-bower-files');
 
 var mainFiles = [
-  'src/kairos.js'
+  'src/kairos.js',
+  'src/gnomon/Gnomon.js'
 ];
 
-gulp.task('init', function () {
-  return bower();
-});
-
-gulp.task('build', ['clean'], function () {
-  return runSequence('bower-files', 'build-raw', 'build-min', 'build-debug', 'build-css');
-});
-
-gulp.task('bower-files', function () {
-  return gulp.src(mainBowerFiles()).pipe(gulp.dest('src/vendor'));
+gulp.task('build', function (done) {
+  return runSequence('clean', 'build-raw', 'build-min', 'build-debug', 'build-css', done);
 });
 
 gulp.task('build-css', function () {
-  return gulp.src('src/keypane.css')
+  return gulp.src('src/kairos.css')
     .pipe(plugins.csso())
     .pipe(plugins.autoprefixer('last 3 version'))
     .pipe(gulp.dest('build'));
@@ -35,7 +26,6 @@ gulp.task('build-css', function () {
 
 gulp.task('build-raw', function () {
   return gulp.src(mainFiles)
-    .pipe(resolveDependencies())
     .pipe(plugins.concat('kairos.js'))
     .pipe(banner())
     .pipe(plugins.stripDebug())
@@ -47,8 +37,7 @@ gulp.task('build-min', function () {
     .pipe(plugins.uglify({
       preserveComments: 'some'
     }))
-    .pipe(resolveDependencies())
-    .pipe(plugins.concat('keypane-min.js'))
+    .pipe(plugins.concat('kairos-min.js'))
     .pipe(banner())
     .pipe(plugins.stripDebug())
     .pipe(gulp.dest('build'));
@@ -56,14 +45,15 @@ gulp.task('build-min', function () {
 
 gulp.task('build-debug', function () {
   return gulp.src(mainFiles)
-    .pipe(resolveDependencies())
-    .pipe(plugins.concat('keypane-debug.js'))
+    .pipe(plugins.concat('kairos-debug.js'))
     .pipe(banner())
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('clean', function (cb) {
-  del(['build'], cb);
+gulp.task('clean', function (done) {
+  del(['build']).then(function () {
+    done();
+  });
 });
 
 gulp.task('docs', function () {
@@ -72,13 +62,13 @@ gulp.task('docs', function () {
 });
 
 gulp.task('format', function () {
-  return gulp.src(['src/**/*.js', '!src/vendor/**'])
+  return gulp.src(['src/**/*.js'])
     .pipe(plugins.esformatter())
     .pipe(gulp.dest('src'));
 });
 
 gulp.task('lint', function () {
-  return gulp.src(['src/**/*.js', '!src/vendor/**'])
+  return gulp.src(['src/**/*.js'])
     .pipe(plugins.jshint())
     .pipe(plugins.jshint.reporter(stylish))
     .pipe(plugins.jshint.reporter('fail'));
@@ -93,7 +83,7 @@ gulp.task('serve', function () {
 });
 
 gulp.task('watch', ['build', 'serve'], function () {
-  gulp.watch(['src/**/*', '!src/vendor/**'], ['build']);
+  gulp.watch(['src/**/*'], ['build']);
 });
 
 gulp.task('test', function (done) {
@@ -118,7 +108,7 @@ function banner() {
     ' * Kairos.js - <%= pkg.description %>',
     ' * @author <%= pkg.author.name %> <<%= pkg.author.email %>>',
     ' * @version v<%= pkg.version %>',
-    ' * @link https://github.com/Sedentary/keypane',
+    ' * @link https://github.com/kairos',
     ' * @license BSD',
     ' */',
     ''
@@ -127,13 +117,4 @@ function banner() {
   return plugins.header(stamp, {
     pkg: pkg
   });
-}
-
-function resolveDependencies() {
-  return plugins.resolveDependencies({
-    pattern: /\* @requires [\s-]*(.*\.js)/g
-  })
-    .on('error', function (err) {
-      console.log(err.message);
-    });
 }
