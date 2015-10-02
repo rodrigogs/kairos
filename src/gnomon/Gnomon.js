@@ -220,7 +220,7 @@
     }
     // Millis
     if (this.getMilliseconds() > 0) {
-      expression += ':' + ('0000' + Math.floor(this.getMilliseconds())).slice(-3);
+      expression += ':' + ('000' + Math.floor(this.getMilliseconds())).slice(-3);
     }
     return expression;
   };
