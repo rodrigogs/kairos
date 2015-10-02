@@ -30,24 +30,22 @@
       var timeStep = timeSteps[i];
 
       if (!isNaN(timeStep)) {
-
         switch (i) {
           case 0:
-            this.setHours(timeStep);
+            this.milliseconds = _parse(this, MILLIS.HOUR, timeStep);
             break;
           case 1:
-            this.setMinutes(timeStep);
+            this.milliseconds = _parse(this, MILLIS.MINUTE, timeStep);
             break;
           case 2:
-            this.setSeconds(timeStep);
+            this.milliseconds = _parse(this, MILLIS.SECOND, timeStep);
             break;
           case 3:
-            this.setMilliseconds(timeStep);
+            this.milliseconds = _parse(this, 1, timeStep);
             break;
           default:
             throw new Error('Wrong time expression');
         }
-
       }
     }
   };
@@ -80,10 +78,10 @@
 
   /**
    *
-   * @returns {Number|*}
+   * @returns {*|Number}
    */
   Kairos.Gnomon.prototype.getHours = function () {
-    return (this.milliseconds / MILLIS.HOUR);
+    return Math.floor(this.milliseconds / MILLIS.HOUR);
   };
 
   /**
@@ -96,10 +94,10 @@
 
   /**
    *
-   * @returns {Number|*}
+   * @returns {*|Number}
    */
   Kairos.Gnomon.prototype.getMinutes = function () {
-    return (this.milliseconds / MILLIS.MINUTE);
+    return Math.floor(Math.floor(this.milliseconds - (this.getHours() * MILLIS.HOUR)) / MILLIS.MINUTE);
   };
 
   /**
@@ -112,10 +110,10 @@
 
   /**
    *
-   * @returns {Number|*}
+   * @returns {*|Number}
    */
   Kairos.Gnomon.prototype.getSeconds = function () {
-    return (this.milliseconds / MILLIS.SECOND);
+    return Math.floor(Math.floor(this.milliseconds - (this.getMinutes() * MILLIS.MINUTE)) / MILLIS.SECOND);
   };
 
   /**
@@ -131,10 +129,15 @@
    * @returns {Number|*}
    */
   Kairos.Gnomon.prototype.getMilliseconds = function () {
-    return this.milliseconds
-      - (this.getHours() * MILLIS.HOUR)
-      - (this.getMinutes() * MILLIS.MINUTE)
-      - (this.getSeconds() * MILLIS.SECOND);
+    var seconds = this.toSeconds(),
+      fractions = String(seconds).split('.'),
+      result = 0;
+
+    if (fractions.length === 2) {
+      result = parseInt(fractions[1]);
+    }
+
+    return result;
   };
 
   /**
@@ -171,16 +174,53 @@
 
   /**
    *
+   * @returns {Number}
+   */
+  Kairos.Gnomon.prototype.toHours = function () {
+    return (this.milliseconds / MILLIS.HOUR);
+  };
+
+  /**
+   *
+   * @returns {Number}
+   */
+  Kairos.Gnomon.prototype.toMinutes = function () {
+    return (this.milliseconds / MILLIS.MINUTE);
+  };
+
+  /**
+   *
+   * @returns {Number}
+   */
+  Kairos.Gnomon.prototype.toSeconds = function () {
+    return (this.milliseconds / MILLIS.SECOND);
+  };
+
+  /**
+   *
+   * @returns {Number}
+   */
+  Kairos.Gnomon.prototype.toMilliseconds = function () {
+    return this.milliseconds;
+  };
+
+  /**
+   *
    * @returns {String}
    */
-  Kairos.Gnomon.prototype.getTimeExpression = function () {
-    var expression = this.getHours() + ':';
-    expression += this.getMinutes();
+  Kairos.Gnomon.prototype.toExpression = function () {
+    var expression = '';
+    // Hours
+    expression += ('00' + Math.floor(this.getHours())).slice(-2) + ':';
+    // Minutes
+    expression += ('00' + Math.floor(this.getMinutes())).slice(-2);
+    // Seconds
     if (this.getSeconds() > 0 || this.getMilliseconds() > 0) {
-      expression += ':' + this.getSeconds();
+      expression += ':' + ('00' + Math.floor(this.getSeconds())).slice(-2);
     }
+    // Millis
     if (this.getMilliseconds() > 0) {
-      expression += ':' + this.getMilliseconds();
+      expression += ':' + ('0000' + Math.floor(this.getMilliseconds())).slice(-3);
     }
     return expression;
   };
@@ -190,7 +230,7 @@
    * @param {Kairos.Gnomon} addend
    */
   Kairos.Gnomon.prototype.plus = function (addend) {
-    this.milliseconds += addend.getMilliseconds();
+    this.milliseconds += addend.toMilliseconds();
   };
 
   /**
@@ -198,6 +238,6 @@
    * @param {Kairos.Gnomon} substrahend
    */
   Kairos.Gnomon.prototype.minus = function (substrahend) {
-    this.milliseconds -= substrahend.getMilliseconds();
+    this.milliseconds -= substrahend.toMilliseconds();
   };
 }());

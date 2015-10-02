@@ -14,6 +14,6 @@
     var a = new Kairos.Gnomon(augend);
     var b = new Kairos.Gnomon(addend);
     a.plus(b);
-    return a.getTimeExpression();
+    return a.toExpression();
   };
 }(window));

@@ -8,7 +8,6 @@ module.exports = function (config) {
       'src/kairos.js',
       'bower_components/assert/assert.js',
       'bower_components/mocha/mocha.js',
-      'test/fixture/util.js',
       'test/test.js',
       {
         pattern: 'test/fixture/*',
@@ -18,9 +17,6 @@ module.exports = function (config) {
     ],
     proxies: {
       '/fixture': '/base/test/fixture'
-    },
-    preprocessors: {
-      'src/!(vendor)/**/*.js': ['coverage']
     },
     reporters: ['progress', 'coverage'],
     browsers: ['Chrome', 'Firefox', 'Safari']
