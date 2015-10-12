@@ -25,28 +25,40 @@
       throw new Error('Expression is undefined');
     }
 
-    var timeSteps = expression.split(':');
-    for (var i = 0, len = timeSteps.length; i < len; i++) {
-      var timeStep = timeSteps[i];
+    if (typeof expression === 'number') {
 
-      if (!isNaN(timeStep)) {
-        switch (i) {
-          case 0:
-            this.milliseconds = _parse(this, MILLIS.HOUR, timeStep);
-            break;
-          case 1:
-            this.milliseconds = _parse(this, MILLIS.MINUTE, timeStep);
-            break;
-          case 2:
-            this.milliseconds = _parse(this, MILLIS.SECOND, timeStep);
-            break;
-          case 3:
-            this.milliseconds = _parse(this, 1, timeStep);
-            break;
-          default:
-            throw new Error('Wrong time expression');
+      this.milliseconds = expression;
+
+    } else if (typeof expression === 'string') {
+
+      var timeSteps = expression.split(':');
+      for (var i = 0, len = timeSteps.length; i < len; i++) {
+        var timeStep = timeSteps[i];
+
+        if (!isNaN(timeStep)) {
+          switch (i) {
+            case 0:
+              this.milliseconds = _parse(this, MILLIS.HOUR, timeStep);
+              break;
+            case 1:
+              this.milliseconds = _parse(this, MILLIS.MINUTE, timeStep);
+              break;
+            case 2:
+              this.milliseconds = _parse(this, MILLIS.SECOND, timeStep);
+              break;
+            case 3:
+              this.milliseconds = _parse(this, 1, timeStep);
+              break;
+            default:
+              throw new Error('Invalid time expression');
+          }
+        } else {
+          throw new Error('Time step is not a number');
         }
       }
+
+    } else {
+      throw new Error('Invalid time expression type');
     }
   };
 

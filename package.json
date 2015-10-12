@@ -1,6 +1,6 @@
 {
   "name": "kairos",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "A time calculator library",
   "license": "BSD",
   "repository": "kairos",
@@ -9,6 +9,7 @@
     "email": "rodrigo.smscom@gmail.com",
     "web": "https://github.com/rodrigogs"
   },
+  "main": "./build/kairos.js",
   "keywords": [
     "time",
     "chronos",

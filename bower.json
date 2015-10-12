@@ -1,6 +1,6 @@
 {
   "name": "kairos",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "A time calculator library",
   "homepage": "https://github.com/kairos",
   "authors": [
@@ -24,7 +24,7 @@
     "test"
   ],
   "devDependencies": {
-    "mocha": "~2.2.5",
+    "mocha": "~2.3.3",
     "assert": "~0.1.0"
   }
 }
