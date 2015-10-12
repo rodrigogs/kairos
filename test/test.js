@@ -21,6 +21,22 @@ describe('Kairos', function () {
     //TODO
   });
 
+  it('should throw error when expression is undefined', function (done) {
+    assert.throws(function () {
+      new Kairos.Gnomon();
+    }, Error);
+
+    done();
+  });
+
+  it('should throw error when expression is invalid', function (done) {
+    assert.throws(function () {
+      new Kairos.Gnomon('00:00:00:00:00');
+    }, Error);
+
+    done();
+  });
+
   it('should return the milliseconds in the expression', function (done) {
     assert.equal(gnomon.getMilliseconds(), 123);
 
