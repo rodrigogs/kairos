@@ -3,7 +3,7 @@ node_js:
   - "4.1.1"
 
 before_script:
-  - sudo npm install -g gulp
-  - sudo npm install -g bower
+  - npm install -g gulp
+  - npm install -g bower
 
 script: bower install && gulp test
