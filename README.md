@@ -3,6 +3,9 @@
 [![Build Status](https://travis-ci.org/rodrigogs/kairos.svg?branch=master)](https://travis-ci.org/rodrigogs/kairos)
 [![Code Climate](https://codeclimate.com/github/rodrigogs/kairos/badges/gpa.svg)](https://codeclimate.com/github/rodrigogs/kairos)
 [![Test Coverage](https://codeclimate.com/github/rodrigogs/kairos/badges/coverage.svg)](https://codeclimate.com/github/rodrigogs/kairos/coverage)
+[![devDependency Status](https://david-dm.org/rodrigogs/kairos/dev-status.svg)](https://david-dm.org/rodrigogs/kairos#info=devDependencies)
+[![npm](https://img.shields.io/npm/dt/kairos.svg)](https://www.npmjs.com/package/kairos)
+[![npm version](https://badge.fury.io/js/kairos.svg)](https://badge.fury.io/js/kairos)
 
 *Kairós(καιρός) is a greek word that means "the right moment". Also, in the greek mithology Kairós is the son of the personification of time itself, Chronos.*
 
