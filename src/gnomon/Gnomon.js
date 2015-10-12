@@ -32,22 +32,24 @@
     } else if (typeof expression === 'string') {
 
       var timeSteps = expression.split(':');
+      var positive = !expression.startsWith('-');
+
       for (var i = 0, len = timeSteps.length; i < len; i++) {
         var timeStep = timeSteps[i];
 
         if (!isNaN(timeStep)) {
           switch (i) {
             case 0:
-              this.milliseconds = _parse(this, MILLIS.HOUR, timeStep);
+              this.milliseconds = _parse(this, MILLIS.HOUR, positive ? timeStep : -Math.abs(timeStep));
               break;
             case 1:
-              this.milliseconds = _parse(this, MILLIS.MINUTE, timeStep);
+              this.milliseconds = _parse(this, MILLIS.MINUTE, positive ? timeStep : -Math.abs(timeStep));
               break;
             case 2:
-              this.milliseconds = _parse(this, MILLIS.SECOND, timeStep);
+              this.milliseconds = _parse(this, MILLIS.SECOND, positive ? timeStep : -Math.abs(timeStep));
               break;
             case 3:
-              this.milliseconds = _parse(this, 1, timeStep);
+              this.milliseconds = _parse(this, 1, positive ? timeStep : -Math.abs(timeStep));
               break;
             default:
               throw new Error('Invalid time expression');
@@ -261,7 +263,7 @@
   Kairos.Gnomon.prototype.toExpression = function () {
     var expression = '';
     // Hours
-    expression += ('00' + Math.floor(this.getHours())).slice(-2) + ':';
+    expression += ('00' + Math.floor(Math.abs(this.getHours()))).slice(-2) + ':';
     // Minutes
     expression += ('00' + Math.floor(this.getMinutes())).slice(-2);
     // Seconds
@@ -271,6 +273,10 @@
     // Millis
     if (this.getMilliseconds() > 0) {
       expression += ':' + ('000' + Math.floor(this.getMilliseconds())).slice(-3);
+    }
+
+    if (this.milliseconds < 0) {
+      expression = '-' + expression;
     }
     return expression;
   };

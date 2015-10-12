@@ -1,24 +1,43 @@
-var time = Kairos.plus('10:10', '05:20');
-console.log(time); // 15:30
+var augend = document.getElementById('augend');
+var addend = document.getElementById('addend');
+var plusResult = document.getElementById('plusResult');
 
-//time = Kairos.multiply('01:00', 20);
-//console.log(time); // 20:00
-//
-//time = Kairos.toMinutes(time);
-//console.log(time); // 72000
-//
-//time = Kairos.toSeconds('00:01');
-//console.log(time); // 60
-//
-//time = Kairos.toMilliseconds('00:01');
-//console.log(time); // 60000
-//
-//time = new Kairos.Gnomon('01:10:20');
-//console.log(time.getMilliseconds()); // 4220000
-//console.log(time.getSeconds()); // 4220
-//console.log(time.getMinutes()); // 70,33333333333333
-//console.log(time.getHours()); // 1,172222222222222
-//
-//time = time.plus(new Kairos.Gnomon('01:00'));
-//console.log(time.getSeconds()); // 7820
-//console.log(time.getMilliseconds()); // 7820000
+var minuend = document.getElementById('minuend');
+var subtrahend = document.getElementById('subtrahend');
+var minusResult = document.getElementById('minusResult');
+
+var multiplier = document.getElementById('multiplier');
+var multiplicand = document.getElementById('multiplicand');
+var multiplyResult = document.getElementById('multiplyResult');
+
+var dividend = document.getElementById('dividend');
+var divisor = document.getElementById('divisor');
+var divideResult = document.getElementById('divideResult');
+
+function plus() {
+  plusResult.value = Kairos.plus(augend.value, addend.value);
+}
+
+function minus() {
+  minusResult.value = Kairos.minus(minuend.value, subtrahend.value);
+}
+
+function multiply() {
+  multiplyResult.value = Kairos.multiply(multiplier.value, multiplicand.value);
+}
+
+function divide() {
+  divideResult.value = Kairos.divide(dividend.value, divisor.value);
+}
+
+augend.addEventListener('change', plus);
+addend.addEventListener('change', plus);
+
+minuend.addEventListener('change', minus);
+subtrahend.addEventListener('change', minus);
+
+multiplier.addEventListener('change', multiply);
+multiplicand.addEventListener('change', multiply);
+
+dividend.addEventListener('change', divide);
+divisor.addEventListener('change', divide);
