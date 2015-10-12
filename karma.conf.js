@@ -6,6 +6,7 @@ module.exports = function (config) {
     files: [
       'bower_components/mocha/mocha.css',
       'src/kairos.js',
+      'src/gnomon/Gnomon.js',
       'bower_components/assert/assert.js',
       'bower_components/mocha/mocha.js',
       'test/test.js',
@@ -19,7 +20,7 @@ module.exports = function (config) {
       '/fixture': '/base/test/fixture'
     },
     reporters: ['progress', 'coverage'],
-    browsers: ['Chrome', 'Firefox', 'Safari']
+    browsers: ['Chrome', 'Firefox']
   };
 
   if (process.env.TRAVIS) {

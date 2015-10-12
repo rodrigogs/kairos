@@ -1,7 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
-var karma = require('karma').server;
+var Server = require('karma').Server;
 var pkg = require('./package.json');
 var plugins = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
@@ -14,14 +14,7 @@ var mainFiles = [
 ];
 
 gulp.task('build', function (done) {
-  return runSequence('clean', 'build-raw', 'build-min', 'build-debug', 'build-css', done);
-});
-
-gulp.task('build-css', function () {
-  return gulp.src('src/kairos.css')
-    .pipe(plugins.csso())
-    .pipe(plugins.autoprefixer('last 3 version'))
-    .pipe(gulp.dest('build'));
+  return runSequence('clean', 'build-raw', 'build-min', 'build-debug', done);
 });
 
 gulp.task('build-raw', function () {
@@ -87,16 +80,16 @@ gulp.task('watch', ['build', 'serve'], function () {
 });
 
 gulp.task('test', function (done) {
-  karma.start({
+  new Server({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
-  }, done);
+  }, done).start();
 });
 
 gulp.task('test-watch', function (done) {
-  karma.start({
+  new Server({
     configFile: __dirname + '/karma.conf.js'
-  }, done);
+  }, done).start();
 });
 
 // Private helpers
