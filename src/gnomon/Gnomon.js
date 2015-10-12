@@ -58,13 +58,12 @@
           throw new Error('Time step is not a number');
         }
       }
+      if (!positive) {
+        this.milliseconds = -Math.abs(this.milliseconds);
+      }
 
     } else {
       throw new Error('Invalid time expression type');
-    }
-
-    if (!positive) {
-      this.milliseconds = -Math.abs(this.milliseconds);
     }
   };
 

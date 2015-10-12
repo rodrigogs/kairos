@@ -1,7 +1,7 @@
 /**
  * Kairos.js - A time calculator library
  * @author Rodrigo Gomes da Silva <rodrigo.smscom@gmail.com>
- * @version v0.2.1
+ * @version v0.2.2
  * @link https://github.com/kairos
  * @license BSD
  */
@@ -168,13 +168,12 @@
           throw new Error('Time step is not a number');
         }
       }
+      if (!positive) {
+        this.milliseconds = -Math.abs(this.milliseconds);
+      }
 
     } else {
       throw new Error('Invalid time expression type');
-    }
-
-    if (!positive) {
-      this.milliseconds = -Math.abs(this.milliseconds);
     }
   };
 
