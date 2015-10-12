@@ -1,7 +1,7 @@
 /**
  * Kairos.js - A time calculator library
  * @author Rodrigo Gomes da Silva <rodrigo.smscom@gmail.com>
- * @version v0.2.0
+ * @version v0.2.1
  * @link https://github.com/kairos
  * @license BSD
  */
