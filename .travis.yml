@@ -13,6 +13,4 @@ script:
   - gulp build
   - gulp lint
   - gulp test
-
-addons:
-    code_climate
+  - codeclimate-test-reporter < coverage/lcov.info
