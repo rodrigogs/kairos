@@ -21,8 +21,8 @@ describe('Kairos', function () {
 
   it('should return and instance of Kairos.Gnomon', function (done) {
     assert.doesNotThrow(function () {
-      //new Kairos.Gnomon('01:00:00');
-      //new Kairos.Gnomon(123456);
+      new Kairos.Gnomon('01:00:00');
+      new Kairos.Gnomon(123456);
     });
     done();
   });
@@ -241,6 +241,11 @@ describe('Kairos', function () {
 
   it('should divide the time expression by 2', function (done) {
     assert.equal(Kairos.divide('01:30:35:100', 2), '00:45:17:550');
+    done();
+  });
+
+  it('should return a time fraction', function (done) {
+    assert.equal(Kairos.getFraction('01:30:35:100', 16, 5), '00:28:18:468');
     done();
   });
 

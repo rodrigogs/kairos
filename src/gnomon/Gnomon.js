@@ -17,7 +17,7 @@
   /**
    * Gnomon is the time engine for Kairos. It's name references the first solar clock ever made.
    *
-   * @param {String} expression Time expression
+   * @param {String|Number} expression Time expression
    * @constructor
    */
   Kairos.Gnomon = function (expression) {

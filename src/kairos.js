@@ -6,8 +6,8 @@
   /**
    * Sums augend time with addend time
    *
-   * @param {String} augend Augend time expression
-   * @param {String} addend Addend time expression
+   * @param {String|Number} augend Augend time expression
+   * @param {String|Number} addend Addend time expression
    */
   Kairos.plus = function (augend, addend) {
     var a = new Kairos.Gnomon(augend);
@@ -19,8 +19,8 @@
   /**
    * Subtracts minuend time with subtrahend time
    *
-   * @param {String} minuend Minuend time expression
-   * @param {String} subtrahend Subtrahend time expression
+   * @param {String|Number} minuend Minuend time expression
+   * @param {String|Number} subtrahend Subtrahend time expression
    * @returns {String}
    */
   Kairos.minus = function (minuend, subtrahend) {
@@ -33,8 +33,8 @@
   /**
    * Multiplies multiplier by the multiplicand
    *
-   * @param {String} multiplier Multiplier time expression
-   * @param {Number} multiplicand Multiplicand number
+   * @param {String|Number} multiplier Multiplier time expression
+   * @param {String|Number} multiplicand Multiplicand number
    * @returns {String}
    */
   Kairos.multiply = function (multiplier, multiplicand) {
@@ -46,7 +46,7 @@
   /**
    * Divides dividend by the divisor
    *
-   * @param {String} dividend Dividend time expression
+   * @param {String|Number} dividend Dividend time expression
    * @param {Number} divisor Dividor number
    * @returns {String}
    */
@@ -57,9 +57,23 @@
   };
 
   /**
+   *
+   * @param {String|Number} time
+   * @param denominator
+   * @param numerator
+   * @returns {String}
+   */
+  Kairos.getFraction = function (time, denominator, numerator) {
+    var gnomon = new Kairos.Gnomon(time);
+    gnomon.divide(denominator);
+    gnomon.multiply(numerator);
+    return gnomon.toExpression();
+  };
+
+  /**
    * Converts the given time expression to milliseconds
    *
-   * @param {String} expression Time expression
+   * @param {String|Number} expression Time expression
    * @returns {Number}
    */
   Kairos.toMilliseconds = function (expression) {
@@ -70,7 +84,7 @@
   /**
    * Converts the given time expression to seconds
    *
-   * @param {String} expression Time expression
+   * @param {String|Number} expression Time expression
    * @returns {Number}
    */
   Kairos.toSeconds = function (expression) {
@@ -81,7 +95,7 @@
   /**
    * Converts the given time expression to minutes
    *
-   * @param {String} expression Time expression
+   * @param {String|Number} expression Time expression
    * @returns {Number}
    */
   Kairos.toMinutes = function (expression) {
@@ -92,7 +106,7 @@
   /**
    * Converts the given time expression to hours
    *
-   * @param {String} expression Time expression
+   * @param {String|Number} expression Time expression
    * @returns {Number}
    */
   Kairos.toHours = function (expression) {
