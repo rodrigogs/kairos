@@ -1,0 +1,5 @@
+before_script:
+  - sudo npm install -g gulp
+  - sudo npm install -g bower
+
+script: bower install && gulp test
