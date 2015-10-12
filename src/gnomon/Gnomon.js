@@ -60,16 +60,16 @@
   var _parse = function (instance, millis, time) {
     switch (millis) {
       case 1:
-        instance.milliseconds -= instance.getMilliseconds();
+        instance.removeMilliseconds(instance.getMilliseconds());
         break;
       case MILLIS.SECOND:
-        instance.milliseconds -= (instance.getSeconds() * MILLIS.SECOND);
+        instance.removeSeconds(instance.getSeconds());
         break;
       case MILLIS.MINUTE:
-        instance.milliseconds -= (instance.getMinutes() * MILLIS.MINUTE);
+        instance.removeMinutes(instance.getMinutes());
         break;
       case MILLIS.HOUR:
-        instance.milliseconds -= (instance.getHours() * MILLIS.HOUR);
+        instance.removeHours(instance.getHours());
         break;
     }
     return instance.milliseconds + (millis * time);
@@ -176,6 +176,38 @@
    */
   Kairos.Gnomon.prototype.addMilliseconds = function (milliseconds) {
     this.milliseconds += milliseconds;
+  };
+
+  /**
+   *
+   * @param {Number} hours
+   */
+  Kairos.Gnomon.prototype.removeHours = function (hours) {
+    this.milliseconds -= (MILLIS.HOUR * hours);
+  };
+
+  /**
+   *
+   * @param {Number} minutes
+   */
+  Kairos.Gnomon.prototype.removeMinutes = function (minutes) {
+    this.milliseconds -= (MILLIS.MINUTE * minutes);
+  };
+
+  /**
+   *
+   * @param {Number} seconds
+   */
+  Kairos.Gnomon.prototype.removeSeconds = function (seconds) {
+    this.milliseconds -= (MILLIS.SECOND * seconds);
+  };
+
+  /**
+   *
+   * @param {Number} milliseconds
+   */
+  Kairos.Gnomon.prototype.removeMilliseconds = function (milliseconds) {
+    this.milliseconds -= milliseconds;
   };
 
   /**

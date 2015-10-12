@@ -128,6 +128,43 @@ describe('Kairos', function () {
     done();
   });
 
+  it('should remove 900 milliseconds to the expression', function (done) {
+    gnomon.removeMilliseconds(900);
+    assert.equal(gnomon.getMilliseconds(), 223);
+    assert.equal(gnomon.getSeconds(), 29);
+
+    done();
+  });
+
+  it('should remove 31 seconds to the expression', function (done) {
+    gnomon.removeSeconds(31);
+    assert.equal(gnomon.getMilliseconds(), 123);
+    assert.equal(gnomon.getSeconds(), 59);
+    assert.equal(gnomon.getMinutes(), 29);
+
+    done();
+  });
+
+  it('should remove 31 minutes to the expression', function (done) {
+    gnomon.removeMinutes(31);
+    assert.equal(gnomon.getMilliseconds(), 123);
+    assert.equal(gnomon.getSeconds(), 30);
+    assert.equal(gnomon.getMinutes(), 59);
+    assert.equal(gnomon.getHours(), 0);
+
+    done();
+  });
+
+  it('should remove 1.5 hours to the expression', function (done) {
+    gnomon.removeHours(1.5);
+    assert.equal(gnomon.getMilliseconds(), 123);
+    assert.equal(gnomon.getSeconds(), 30);
+    assert.equal(gnomon.getMinutes(), 0);
+    assert.equal(gnomon.getHours(), 0);
+
+    done();
+  });
+
   it('should set expression millisecons to 321', function (done) {
     gnomon.setMilliseconds(321);
     assert.equal(gnomon.getMilliseconds(), 321);
