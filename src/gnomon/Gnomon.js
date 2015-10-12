@@ -278,4 +278,20 @@
   Kairos.Gnomon.prototype.minus = function (subtrahend) {
     this.milliseconds -= subtrahend.toMilliseconds();
   };
+
+  /**
+   *
+   * @param {Number} multiplicand
+   */
+  Kairos.Gnomon.prototype.multiply = function (multiplicand) {
+    this.milliseconds *= multiplicand;
+  };
+
+  /**
+   *
+   * @param {Number} dividend
+   */
+  Kairos.Gnomon.prototype.divide = function (dividend) {
+    this.milliseconds /= dividend;
+  };
 }());
