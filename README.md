@@ -27,14 +27,13 @@ time = Kairos.toMilliseconds('00:01');
 console.log(time); // 60000
 
 time = new Kairos.Gnomon('01:10:20');
-console.log(time.getMilliseconds()); // 4220000
-console.log(time.getSeconds()); // 4220
-console.log(time.getMinutes()); // 70,33333333333333
-console.log(time.getHours()); // 1,172222222222222
+console.log(time.getMilliseconds()); // 0
+console.log(time.getSeconds()); // 20
+console.log(time.getMinutes()); // 10
+console.log(time.getHours()); // 1
 
 time = time.plus(new Kairos.Gnomon('01:00'));
-console.log(time.getSeconds()); // 7820
-console.log(time.getMilliseconds()); // 7820000
+console.log(time.getHours()); // 2
 ```
 
 Ans so on...
