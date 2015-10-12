@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
+var bower = require('gulp-bower');
 var Server = require('karma').Server;
 var pkg = require('./package.json');
 var plugins = require('gulp-load-plugins')();
@@ -12,6 +13,10 @@ var mainFiles = [
   'src/kairos.js',
   'src/gnomon/Gnomon.js'
 ];
+
+gulp.task('init', function () {
+  return bower();
+});
 
 gulp.task('build', function (done) {
   return runSequence('clean', 'build-raw', 'build-min', 'build-debug', done);
