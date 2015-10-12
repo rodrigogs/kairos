@@ -40,16 +40,16 @@
         if (!isNaN(timeStep)) {
           switch (i) {
             case 0:
-              this.milliseconds = _parse(this, MILLIS.HOUR, positive ? timeStep : -Math.abs(timeStep));
+              this.milliseconds = _parse(this, MILLIS.HOUR, timeStep);
               break;
             case 1:
-              this.milliseconds = _parse(this, MILLIS.MINUTE, positive ? timeStep : -Math.abs(timeStep));
+              this.milliseconds = _parse(this, MILLIS.MINUTE, timeStep);
               break;
             case 2:
-              this.milliseconds = _parse(this, MILLIS.SECOND, positive ? timeStep : -Math.abs(timeStep));
+              this.milliseconds = _parse(this, MILLIS.SECOND, timeStep);
               break;
             case 3:
-              this.milliseconds = _parse(this, 1, positive ? timeStep : -Math.abs(timeStep));
+              this.milliseconds = _parse(this, 1, timeStep);
               break;
             default:
               throw new Error('Invalid time expression');
@@ -61,6 +61,10 @@
 
     } else {
       throw new Error('Invalid time expression type');
+    }
+
+    if (!positive) {
+      this.milliseconds = -Math.abs(this.milliseconds);
     }
   };
 
@@ -86,7 +90,7 @@
         instance.removeHours(instance.getHours());
         break;
     }
-    return instance.milliseconds + (millis * time);
+    return instance.milliseconds + (time * millis);
   };
 
   /**

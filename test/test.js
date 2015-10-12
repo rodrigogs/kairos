@@ -100,6 +100,12 @@ describe('Kairos', function () {
     done();
   });
 
+  it('should return the given negative expression', function (done) {
+    gnomon = new Kairos.Gnomon('-01:30:30:123');
+    assert.equal(gnomon.toExpression(), '-01:30:30:123');
+    done();
+  });
+
   it('should add 900 milliseconds to the expression', function (done) {
     gnomon.addMilliseconds(900);
     assert.equal(gnomon.getMilliseconds(), 23);
