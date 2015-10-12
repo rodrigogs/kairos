@@ -20,6 +20,16 @@ module.exports = function (config) {
       '/fixture': '/base/test/fixture'
     },
     reporters: ['progress', 'coverage'],
+    preprocessors: {
+      'src/**/*.js': ['coverage']
+    },
+    coverageReporter: {
+      type: 'lcovonly',
+      dir: 'coverage',
+      reporters: [
+        {type: 'lcovonly', subdir: '.', file: 'lcov.info'}
+      ]
+    },
     browsers: ['Chrome', 'Firefox']
   };
 
