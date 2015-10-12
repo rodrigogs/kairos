@@ -55,4 +55,48 @@
     d.divide(divisor);
     return d.toExpression();
   };
+
+  /**
+   * Converts the given time expression to milliseconds
+   *
+   * @param {String} expression Time expression
+   * @returns {Number}
+   */
+  Kairos.toMilliseconds = function (expression) {
+    var gnomon = new Kairos.Gnomon(expression);
+    return gnomon.toMilliseconds();
+  };
+
+  /**
+   * Converts the given time expression to seconds
+   *
+   * @param {String} expression Time expression
+   * @returns {Number}
+   */
+  Kairos.toSeconds = function (expression) {
+    var gnomon = new Kairos.Gnomon(expression);
+    return gnomon.toSeconds();
+  };
+
+  /**
+   * Converts the given time expression to minutes
+   *
+   * @param {String} expression Time expression
+   * @returns {Number}
+   */
+  Kairos.toMinutes = function (expression) {
+    var gnomon = new Kairos.Gnomon(expression);
+    return gnomon.toMinutes();
+  };
+
+  /**
+   * Converts the given time expression to hours
+   *
+   * @param {String} expression Time expression
+   * @returns {Number}
+   */
+  Kairos.toHours = function (expression) {
+    var gnomon = new Kairos.Gnomon(expression);
+    return gnomon.toHours();
+  };
 }(window));

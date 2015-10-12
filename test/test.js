@@ -7,7 +7,6 @@ describe('Kairos', function () {
   var gnomon;
 
   before(function (done) {
-    //TODO
     done();
   });
 
@@ -18,7 +17,6 @@ describe('Kairos', function () {
   });
 
   afterEach(function () {
-    //TODO
   });
 
   it('should throw error when expression is undefined', function (done) {
@@ -218,4 +216,23 @@ describe('Kairos', function () {
     done();
   });
 
+  it('should return total milliseconds in the given time expression', function (done) {
+    assert.equal(Kairos.toMilliseconds('01:30:35:100'), 5435100);
+    done();
+  });
+
+  it('should return total seconds in the given time expression', function (done) {
+    assert.equal(Kairos.toSeconds('01:30:35:100'), 5435.1);
+    done();
+  });
+
+  it('should return total minutes in the given time expression', function (done) {
+    assert.equal(Kairos.toMinutes('01:30:35:100'), 90.585);
+    done();
+  });
+
+  it('should return total hours in the given time expression', function (done) {
+    assert.equal(Kairos.toHours('01:30:35:100'), 1.50975);
+    done();
+  });
 });
