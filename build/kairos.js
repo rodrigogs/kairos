@@ -1,7 +1,7 @@
 /**
  * Kairos.js - A time calculator library
  * @author Rodrigo Gomes da Silva <rodrigo.smscom@gmail.com>
- * @version v0.2.4
+ * @version v0.3.0
  * @link https://github.com/kairos
  * @license BSD
  */
@@ -16,12 +16,12 @@
   // Establish the root object, `window` (`self`) in the browser, `global`
   // on the server, or `this` in some virtual machines. We use `self`
   // instead of `window` for `WebWorker` support.
-  var root = typeof self === 'object' && self.self === self && self ||
-    typeof global === 'object' && global.global === global && global ||
+  var root = typeof self === 'object' && self.self === self && self || // jshint ignore:line
+    typeof global === 'object' && global.global === global && global || // jshint ignore:line
     this;
 
-  if (root != null) {
-    previous_Kairos = root.async;
+  if (root !== null) { // jshint ignore:line
+    previous_Kairos = root.async; // jshint ignore:line
   }
 
   /**
@@ -150,8 +150,8 @@
     module.exports = Kairos;
   }
   // AMD / RequireJS
-  else if (typeof define === 'function' && define.amd) {
-    define([], function () {
+  else if (typeof define === 'function' && define.amd) { // jshint ignore:line
+    define([], function () { // jshint ignore:line
       return Kairos;
     });
   }
