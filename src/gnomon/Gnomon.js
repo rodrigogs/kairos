@@ -1,6 +1,3 @@
-/**
- * @requires ../kairos.js
- */
 (function () {
   'use strict';
 
