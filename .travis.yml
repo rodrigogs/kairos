@@ -4,19 +4,12 @@ node_js:
 addons:
   firefox: "latest"
 before_install:
-  - export CHROME_BIN=chromium-browser
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+  # - export CHROME_BIN=chromium-browser
+  # - export DISPLAY=:99.0
+  # - sh -e /etc/init.d/xvfb start
 install:
-  # Update Chrome so tests will stop failing
-  - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-  - sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-  - sudo apt-get update > /dev/null
-  - sudo apt-get install google-chrome-stable
-  # NPM
   - npm install
   - npm install -g codeclimate-test-reporter
-  # Gulp
   - gulp init
 script:
   - gulp build
