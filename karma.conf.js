@@ -29,18 +29,18 @@ module.exports = function (config) {
         {type: 'lcovonly', subdir: '.', file: 'lcov.info'}
       ]
     },
-    browsers: ['Chrome', 'Firefox']
+    browsers: [/*'Chrome',*/ 'Firefox']
   };
 
   if (process.env.TRAVIS) {
     configuration.customLaunchers = {
-      Chrome_travis_ci: {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
-      }
+      //Chrome_travis_ci: {
+      //  base: 'Chrome',
+      //  flags: ['--no-sandbox']
+      //}
     };
 
-    configuration.browsers = ['Firefox', 'Chrome_travis_ci'];
+    //configuration.browsers = ['Firefox', 'Chrome_travis_ci'];
   }
 
   config.set(configuration);
