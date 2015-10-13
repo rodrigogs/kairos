@@ -1,7 +1,31 @@
-(function (window, undefined) {
+(function () {
   'use strict';
 
-  window.Kairos = window.Kairos || {};
+  var Kairos = {};
+
+  // global on the server, window in the browser
+  var previous_Kairos;
+
+  // Establish the root object, `window` (`self`) in the browser, `global`
+  // on the server, or `this` in some virtual machines. We use `self`
+  // instead of `window` for `WebWorker` support.
+  var root = typeof self === 'object' && self.self === self && self ||
+    typeof global === 'object' && global.global === global && global ||
+    this;
+
+  if (root != null) {
+    previous_Kairos = root.async;
+  }
+
+  /**
+   * Avoid conflict in case of another instance of Kairos is already in the scope
+   *
+   * @returns {Object}
+   */
+  Kairos.noConflict = function () {
+    root.Kairos = previous_Kairos;
+    return Kairos;
+  };
 
   /**
    * Sums augend time with addend time
@@ -113,4 +137,19 @@
     var gnomon = new Kairos.Gnomon(expression);
     return gnomon.toHours();
   };
-}(window));
+
+  // Node.js
+  if (typeof module === 'object' && module.exports) {
+    module.exports = Kairos;
+  }
+  // AMD / RequireJS
+  else if (typeof define === 'function' && define.amd) {
+    define([], function () {
+      return Kairos;
+    });
+  }
+  // included directly via <script> tag
+  else {
+    root.Kairos = Kairos;
+  }
+}());
