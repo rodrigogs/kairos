@@ -3,6 +3,10 @@
   "version": "0.2.4",
   "description": "A time calculator library",
   "homepage": "https://github.com/kairos",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:rodrigogs/kairos.git"
+  }
   "authors": [
     "Rodrigo Gomes da Silva <rodrigo.smscom@gmail.com>"
   ],
