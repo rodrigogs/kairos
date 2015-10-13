@@ -29,7 +29,7 @@ module.exports = function (config) {
         {type: 'lcovonly', subdir: '.', file: 'lcov.info'}
       ]
     },
-    browsers: [/*'Chrome',*/ 'Firefox']
+    browsers: ['Chrome', 'Firefox']
   };
 
   if (process.env.TRAVIS) {
@@ -40,7 +40,7 @@ module.exports = function (config) {
     //  }
     //};
 
-    //configuration.browsers = ['Firefox', 'Chrome_travis_ci'];
+    configuration.browsers = ['Firefox'/*, 'Chrome_travis_ci'*/];
   }
 
   config.set(configuration);
