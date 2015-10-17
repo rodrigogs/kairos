@@ -26,23 +26,39 @@ The work has just begun here, but the idea is the following:
 var time = Kairos.plus('10:10', '05:20');
 console.log(time); // 15:30
 
+time = Kairos.minus('10:00', '05:00');
+console.log(time); // 05:00
+
 time = Kairos.multiply('01:00', 20);
 console.log(time); // 20:00
 
-time = Kairos.toMinutes(time);
-console.log(time); // 72000
+time = Kairos.divide('03:00', 2);
+console.log(time); // 01:30
 
-time = Kairos.toSeconds('00:01');
-console.log(time); // 60
+var milliseconds = Kairos.toMilliseconds('00:01');
+console.log(milliseconds); // 60000
 
-time = Kairos.toMilliseconds('00:01');
-console.log(time); // 60000
+var seconds = Kairos.toSeconds('00:01');
+console.log(seconds); // 60
+
+var minutes = Kairos.toMinutes(time);
+console.log(minutes); // 90
+
+var hours = Kairos.toHours('10:30');
+console.log(hours); // 10.5
+
+var fraction = Kairos.getFraction('01:00', 2, 3);
+console.log(fraction); // 40
 
 time = new Kairos.Gnomon('01:10:20');
 console.log(time.getMilliseconds()); // 0
 console.log(time.getSeconds()); // 20
 console.log(time.getMinutes()); // 10
 console.log(time.getHours()); // 1
+console.log(time.toMilliseconds()); // 4220000
+console.log(time.toSeconds()); // 4220
+console.log(time.toMinutes()); // 70.333333333333
+console.log(time.toHours()); // 1.172222222222
 
 time = time.plus(new Kairos.Gnomon('01:00'));
 console.log(time.getHours()); // 2
