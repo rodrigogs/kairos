@@ -1,7 +1,7 @@
+var Kairos = {};
+
 (function () {
   'use strict';
-
-  var Kairos = {};
 
   // global on the server, window in the browser
   var previous_Kairos;
