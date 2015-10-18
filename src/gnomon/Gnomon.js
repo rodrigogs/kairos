@@ -35,6 +35,7 @@
         var timeStep = timeSteps[i];
 
         if (!isNaN(timeStep)) {
+          timeStep = Math.abs(timeStep);
           switch (i) {
             case 0:
               this.milliseconds = _parse(this, MILLIS.HOUR, timeStep);
@@ -109,7 +110,7 @@
    * @returns {*|Number}
    */
   Kairos.Gnomon.prototype.getHours = function () {
-    return Math.floor(this.milliseconds / MILLIS.HOUR);
+    return parseInt(this.milliseconds / MILLIS.HOUR);
   };
 
   /**
@@ -125,7 +126,7 @@
    * @returns {*|Number}
    */
   Kairos.Gnomon.prototype.getMinutes = function () {
-    return Math.floor(Math.floor(this.milliseconds - (Math.floor(this.toHours()) * MILLIS.HOUR)) / MILLIS.MINUTE);
+    return parseInt(parseInt(this.milliseconds - (parseInt(this.toHours()) * MILLIS.HOUR)) / MILLIS.MINUTE);
   };
 
   /**
@@ -141,7 +142,7 @@
    * @returns {*|Number}
    */
   Kairos.Gnomon.prototype.getSeconds = function () {
-    return Math.floor(Math.floor(this.milliseconds - (Math.floor(this.toMinutes()) * MILLIS.MINUTE)) / MILLIS.SECOND);
+    return parseInt(parseInt(this.milliseconds - (parseInt(this.toMinutes()) * MILLIS.MINUTE)) / MILLIS.SECOND);
   };
 
   /**
@@ -157,7 +158,7 @@
    * @returns {Number|*}
    */
   Kairos.Gnomon.prototype.getMilliseconds = function () {
-    return Math.floor(this.milliseconds - (Math.floor(this.toSeconds()) * MILLIS.SECOND));
+    return parseInt(this.milliseconds - (parseInt(this.toSeconds()) * MILLIS.SECOND));
   };
 
   /**
@@ -263,16 +264,16 @@
   Kairos.Gnomon.prototype.toExpression = function () {
     var expression = '';
     // Hours
-    expression += ('00' + Math.floor(Math.abs(this.getHours()))).slice(-2) + ':';
+    expression += ('00' + parseInt(Math.abs(this.getHours()))).slice(-2) + ':';
     // Minutes
-    expression += ('00' + Math.floor(this.getMinutes())).slice(-2);
+    expression += ('00' + parseInt(Math.abs(this.getMinutes()))).slice(-2);
     // Seconds
-    if (this.getSeconds() > 0 || this.getMilliseconds() > 0) {
-      expression += ':' + ('00' + Math.floor(this.getSeconds())).slice(-2);
+    if (this.getSeconds() !== 0 || this.getMilliseconds() !== 0) {
+      expression += ':' + ('00' + parseInt(Math.abs(this.getSeconds()))).slice(-2);
     }
     // Millis
-    if (this.getMilliseconds() > 0) {
-      expression += ':' + ('000' + Math.floor(this.getMilliseconds())).slice(-3);
+    if (this.getMilliseconds() !== 0) {
+      expression += ':' + ('000' + parseInt(Math.abs(this.getMilliseconds()))).slice(-3);
     }
 
     if (this.milliseconds < 0) {
