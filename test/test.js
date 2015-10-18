@@ -252,7 +252,14 @@ describe('Kairos', function () {
   });
 
   it('should return a time fraction', function (done) {
-    assert.equal(Kairos.getFraction('01:30:35:100', 16, 5), '00:28:18:468');
+    assert.equal(Kairos.getFraction('01:00', 2, 3), '00:40');
+    done();
+  });
+
+  it('should throw error when a improper fraction is given', function (done) {
+    assert.throws(function () {
+      Kairos.getFraction('01:00', 3, 2);
+    });
     done();
   });
 

@@ -84,14 +84,18 @@
   /**
    *
    * @param {String|Number} time
-   * @param denominator
-   * @param numerator
+   * @param {Number} numerator
+   * @param {Number} denominator
    * @returns {String}
    */
-  Kairos.getFraction = function (time, denominator, numerator) {
+  Kairos.getFraction = function (time, numerator, denominator) {
+    if (numerator > denominator) {
+      throw new Error('Improper fraction');
+    }
+
     var gnomon = new Kairos.Gnomon(time);
-    gnomon.divide(denominator);
     gnomon.multiply(numerator);
+    gnomon.divide(denominator);
     return gnomon.toExpression();
   };
 
