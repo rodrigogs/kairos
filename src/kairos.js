@@ -14,7 +14,7 @@
     this;
 
   if (root !== null) { // jshint ignore:line
-    previous_Kairos = root.async; // jshint ignore:line
+    previous_Kairos = root.Kairos; // jshint ignore:line
   }
 
   /**
@@ -23,6 +23,7 @@
    * @returns {Object}
    */
   Kairos.noConflict = function () {
+    console.log(previous_Kairos);
     root.Kairos = previous_Kairos;
     return Kairos;
   };

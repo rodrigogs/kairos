@@ -55,6 +55,13 @@ describe('Kairos', function () {
     done();
   });
 
+  it('should return previous instance of Kairos if it already exists', function (done) {
+    var previous = Kairos;
+    assert.equal(Kairos.noConflict(), previous);
+    Kairos = previous;
+    done();
+  });
+
   it('should return the milliseconds in the expression', function (done) {
     assert.equal(gnomon.getMilliseconds(), 123);
     done();
