@@ -19,7 +19,7 @@ describe('Kairos', function () {
   afterEach(function () {
   });
 
-  it('should return and instance of Kairos.Gnomon', function (done) {
+  it('should return an instance of Kairos.Gnomon', function (done) {
     assert.doesNotThrow(function () {
       new Kairos.Gnomon('01:00:00');
       new Kairos.Gnomon(123456);
@@ -27,10 +27,10 @@ describe('Kairos', function () {
     done();
   });
 
-  it('should throw error when expression is undefined', function (done) {
-    assert.throws(function () {
+  it('should return and instance of Kairos.Gnomon with zero value', function (done) {
+    assert.doesNotThrow(function () {
       new Kairos.Gnomon();
-    }, Error);
+    });
     done();
   });
 

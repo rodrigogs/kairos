@@ -5,10 +5,10 @@
  * @link https://github.com/kairos
  * @license BSD
  */
-var Kairos = {};
-
 (function () {
   'use strict';
+
+  var Kairos = {};
 
   // global on the server, window in the browser
   var previous_Kairos;
@@ -166,7 +166,7 @@ var Kairos = {};
   }
 }());
 
-(function () {
+(function (Kairos) {
   'use strict';
 
   /**
@@ -481,4 +481,4 @@ var Kairos = {};
   Kairos.Gnomon.prototype.divide = function (dividend) {
     this.milliseconds /= dividend;
   };
-}());
+}(Kairos));
