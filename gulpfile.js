@@ -1,7 +1,6 @@
 'use strict';
 
 var gulp = require('gulp');
-var bower = require('gulp-bower');
 var Server = require('karma').Server;
 var pkg = require('./package.json');
 var plugins = require('gulp-load-plugins')();
@@ -15,11 +14,11 @@ var mainFiles = [
 ];
 
 gulp.task('init', function () {
-  return bower();
+  return plugins.bower();
 });
 
 gulp.task('build', function (done) {
-  return runSequence('clean', 'build-raw', 'build-min', 'build-debug', done);
+  return runSequence('clean', 'build-raw', 'build-min', 'build-debug', 'build-nodejs', done);
 });
 
 gulp.task('build-raw', function () {
@@ -44,6 +43,15 @@ gulp.task('build-min', function () {
 gulp.task('build-debug', function () {
   return gulp.src(mainFiles)
     .pipe(plugins.concat('kairos-debug.js'))
+    .pipe(banner())
+    .pipe(gulp.dest('build'));
+});
+
+gulp.task('build-nodejs', function () {
+    return gulp.src('src/kairos.js')
+    .pipe(plugins.include())
+      .on('error', console.log)
+    .pipe(plugins.concat('kairos-node.js'))
     .pipe(banner())
     .pipe(gulp.dest('build'));
 });

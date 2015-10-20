@@ -1,6 +1,6 @@
 {
   "name": "kairos",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "A time calculator library",
   "license": "BSD",
   "repository": "kairos",
@@ -9,7 +9,7 @@
     "email": "rodrigo.smscom@gmail.com",
     "web": "https://github.com/rodrigogs"
   },
-  "main": "./build/kairos.js",
+  "main": "./build/kairos-node.js",
   "keywords": [
     "time",
     "chronos",
@@ -41,5 +41,8 @@
     "karma-safari-launcher": "^0.1.1",
     "mocha": "^2.2.5",
     "run-sequence": "^1.1.1"
+  },
+  "dependencies": {
+    "gulp-include": "^2.0.3"
   }
 }

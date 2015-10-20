@@ -1,14 +1,14 @@
 /**
  * Kairos.js - A time calculator library
  * @author Rodrigo Gomes da Silva <rodrigo.smscom@gmail.com>
- * @version v0.4.0
+ * @version v0.4.1
  * @link https://github.com/kairos
  * @license BSD
  */
-var Kairos = {};
-
 (function () {
   'use strict';
+  
+  var Kairos = {};
 
   // global on the server, window in the browser
   var previous_Kairos;
@@ -149,9 +149,10 @@ var Kairos = {};
     var gnomon = new Kairos.Gnomon(expression);
     return gnomon.toHours();
   };
-
+  
   // Node.js
   if (typeof module === 'object' && module.exports) {
+    //=include /gnomon/Gnomon.js
     module.exports = Kairos;
   }
   // AMD / RequireJS
