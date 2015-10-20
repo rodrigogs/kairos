@@ -1,0 +1,125 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/ubuntu/.nvm/v0.10.35/bin/node',
+1 verbose cli   '/home/ubuntu/.nvm/v0.10.35/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.35
+4 verbose publish [ '.' ]
+5 verbose cache add [ '.', null ]
+6 verbose cache add name=undefined spec="." args=[".",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: '.',
+7 verbose parsed url   path: '.',
+7 verbose parsed url   href: '.' }
+8 silly lockFile 3a52ce78- .
+9 verbose lock . /home/ubuntu/.npm/3a52ce78-.lock
+10 verbose tar pack [ '/home/ubuntu/.npm/kairos/0.3.4/package.tgz', '.' ]
+11 verbose tarball /home/ubuntu/.npm/kairos/0.3.4/package.tgz
+12 verbose folder .
+13 info prepublish kairos@0.3.4
+14 silly lockFile 1f1177db-tar tar://.
+15 verbose lock tar://. /home/ubuntu/.npm/1f1177db-tar.lock
+16 silly lockFile 3a9eb938-ntu-npm-kairos-0-3-4-package-tgz tar:///home/ubuntu/.npm/kairos/0.3.4/package.tgz
+17 verbose lock tar:///home/ubuntu/.npm/kairos/0.3.4/package.tgz /home/ubuntu/.npm/3a9eb938-ntu-npm-kairos-0-3-4-package-tgz.lock
+18 silly lockFile 1f1177db-tar tar://.
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile 3a9eb938-ntu-npm-kairos-0-3-4-package-tgz tar:///home/ubuntu/.npm/kairos/0.3.4/package.tgz
+21 silly lockFile 3a9eb938-ntu-npm-kairos-0-3-4-package-tgz tar:///home/ubuntu/.npm/kairos/0.3.4/package.tgz
+22 silly lockFile 3742c310--ubuntu-npm-kairos-0-3-4-package /home/ubuntu/.npm/kairos/0.3.4/package
+23 verbose lock /home/ubuntu/.npm/kairos/0.3.4/package /home/ubuntu/.npm/3742c310--ubuntu-npm-kairos-0-3-4-package.lock
+24 silly lockFile 3742c310--ubuntu-npm-kairos-0-3-4-package /home/ubuntu/.npm/kairos/0.3.4/package
+25 silly lockFile 3742c310--ubuntu-npm-kairos-0-3-4-package /home/ubuntu/.npm/kairos/0.3.4/package
+26 silly lockFile 3a52ce78- .
+27 silly lockFile 3a52ce78- .
+28 silly publish { name: 'kairos',
+28 silly publish   version: '0.3.4',
+28 silly publish   description: 'A time calculator library',
+28 silly publish   license: 'BSD',
+28 silly publish   repository: { type: 'git', url: 'kairos' },
+28 silly publish   author:
+28 silly publish    { name: 'Rodrigo Gomes da Silva',
+28 silly publish      email: 'rodrigo.smscom@gmail.com',
+28 silly publish      url: 'https://github.com/rodrigogs' },
+28 silly publish   main: './build/kairos.js',
+28 silly publish   keywords: [ 'time', 'chronos', 'calculator', 'calc', 'clock' ],
+28 silly publish   devDependencies:
+28 silly publish    { del: '^2.0.2',
+28 silly publish      gulp: '^3.9.0',
+28 silly publish      'gulp-autoprefixer': '^3.0.2',
+28 silly publish      'gulp-bower': '0.0.10',
+28 silly publish      'gulp-concat': '^2.6.0',
+28 silly publish      'gulp-esformatter': '^4.0.0',
+28 silly publish      'gulp-header': '^1.2.2',
+28 silly publish      'gulp-jsdoc': '^0.1.4',
+28 silly publish      'gulp-jshint': '^1.11.2',
+28 silly publish      'gulp-load-plugins': '^1.0.0-rc.1',
+28 silly publish      'gulp-strip-debug': '^1.0.2',
+28 silly publish      'gulp-uglify': '^1.2.0',
+28 silly publish      'gulp-webserver': '^0.9.1',
+28 silly publish      'jshint-stylish': '^2.0.1',
+28 silly publish      karma: '^0.13.10',
+28 silly publish      'karma-chrome-launcher': '^0.2.0',
+28 silly publish      'karma-coverage': '^0.5.2',
+28 silly publish      'karma-firefox-launcher': '^0.1.6',
+28 silly publish      'karma-ie-launcher': '^0.2.0',
+28 silly publish      'karma-mocha': '^0.2.0',
+28 silly publish      'karma-safari-launcher': '^0.1.1',
+28 silly publish      mocha: '^2.2.5',
+28 silly publish      'run-sequence': '^1.1.1' },
+28 silly publish   readme: '# Kairos\n\n[![Build Status](https://travis-ci.org/rodrigogs/kairos.svg?branch=master)](https://travis-ci.org/rodrigogs/kairos)\n[![Code Climate](https://codeclimate.com/github/rodrigogs/kairos/badges/gpa.svg)](https://codeclimate.com/github/rodrigogs/kairos)\n[![Test Coverage](https://codeclimate.com/github/rodrigogs/kairos/badges/coverage.svg)](https://codeclimate.com/github/rodrigogs/kairos/coverage)\n[![devDependency Status](https://david-dm.org/rodrigogs/kairos/dev-status.svg)](https://david-dm.org/rodrigogs/kairos#info=devDependencies)\n[![npm](https://img.shields.io/npm/dt/kairos.svg)](https://www.npmjs.com/package/kairos)\n[![npm version](https://badge.fury.io/js/kairos.svg)](https://badge.fury.io/js/kairos)\n[![Bower version](https://badge.fury.io/bo/kairos.svg)](https://badge.fury.io/bo/kairos)\n\n*Kairós(καιρός) is a greek word that means "the right moment". Also, in the greek mithology Kairós is the son of the personification of time itself, Chronos.*\n\nNow talking about the library, Kairos is being developed to be a non date-based time calculator. The aim is to use time expressions along with math expressions to have human time products, and also to have various representations of a time expression using the engine Gnomon(*references the first solar clock ever made*).\n\n## Install\n\n#### Node.js\n> npm install kairos\n\n#### Bower\n> bower install kairos\n\n## Usage\n\n#### Using Kairos\n```javascript\nvar time = Kairos.plus(\'10:10\', \'05:20\');\nconsole.log(time); // 15:30\n\ntime = Kairos.minus(\'10:00\', \'05:00\');\nconsole.log(time); // 05:00\n\ntime = Kairos.multiply(\'01:00\', 20);\nconsole.log(time); // 20:00\n\ntime = Kairos.divide(\'03:00\', 2);\nconsole.log(time); // 01:30\n\nvar milliseconds = Kairos.toMilliseconds(\'00:01\');\nconsole.log(milliseconds); // 60000\n\nvar seconds = Kairos.toSeconds(\'00:01\');\nconsole.log(seconds); // 60\n\nvar minutes = Kairos.toMinutes(time);\nconsole.log(minutes); // 90\n\nvar hours = Kairos.toHours(\'10:30\');\nconsole.log(hours); // 10.5\n\nvar fraction = Kairos.getFraction(\'01:00\', 2, 3);\nconsole.log(fraction); // 00:40\n```\n\n#### Using Gnomon\n```javascript\ntime = new Kairos.Gnomon(\'01:10:20\');\nconsole.log(time.getMilliseconds()); // 0\nconsole.log(time.getSeconds()); // 20\nconsole.log(time.getMinutes()); // 10\nconsole.log(time.getHours()); // 1\nconsole.log(time.toMilliseconds()); // 4220000\nconsole.log(time.toSeconds()); // 4220\nconsole.log(time.toMinutes()); // 70.333333333333\nconsole.log(time.toHours()); // 1.172222222222\n\ntime = time.plus(new Kairos.Gnomon(\'01:00\'));\nconsole.log(time.getHours()); // 2\n```\n\n**Help and ideas are FREAKING welcome. Feel free to open issues, fork and contribute! ;)**\n',
+28 silly publish   readmeFilename: 'README.md',
+28 silly publish   gitHead: 'a9a97e3fb4c8fb2d6edc7ba38e0ace5ecc8299cd',
+28 silly publish   _id: 'kairos@0.3.4',
+28 silly publish   scripts: {},
+28 silly publish   _shasum: 'f453e9003e1b425cbe4e9949995e6787f3e4beb8',
+28 silly publish   _from: '.' }
+29 verbose request where is /kairos
+30 verbose request registry https://registry.npmjs.org/
+31 verbose request id 678f5876db5cbcbb
+32 verbose url raw /kairos
+33 verbose url resolving [ 'https://registry.npmjs.org/', './kairos' ]
+34 verbose url resolved https://registry.npmjs.org/kairos
+35 verbose request where is https://registry.npmjs.org/kairos
+36 info trying registry request attempt 1 at 17:41:20
+37 http PUT https://registry.npmjs.org/kairos
+38 http 403 https://registry.npmjs.org/kairos
+39 verbose headers { 'content-type': 'application/json',
+39 verbose headers   'cache-control': 'max-age=60',
+39 verbose headers   'content-length': '95',
+39 verbose headers   'accept-ranges': 'bytes',
+39 verbose headers   date: 'Tue, 20 Oct 2015 17:41:22 GMT',
+39 verbose headers   via: '1.1 varnish',
+39 verbose headers   connection: 'keep-alive',
+39 verbose headers   'x-served-by': 'cache-ord1729-ORD',
+39 verbose headers   'x-cache': 'MISS',
+39 verbose headers   'x-cache-hits': '0',
+39 verbose headers   'x-timer': 'S1445362880.438449,VS0,VE1834' }
+40 error publish Failed PUT 403
+41 error Error: "You cannot publish over the previously published version 0.3.4." : kairos
+41 error     at RegClient.<anonymous> (/home/ubuntu/.nvm/v0.10.35/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:308:14)
+41 error     at Request._callback (/home/ubuntu/.nvm/v0.10.35/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:246:65)
+41 error     at Request.self.callback (/home/ubuntu/.nvm/v0.10.35/lib/node_modules/npm/node_modules/request/request.js:236:22)
+41 error     at Request.emit (events.js:98:17)
+41 error     at Request.<anonymous> (/home/ubuntu/.nvm/v0.10.35/lib/node_modules/npm/node_modules/request/request.js:1142:14)
+41 error     at Request.emit (events.js:117:20)
+41 error     at IncomingMessage.<anonymous> (/home/ubuntu/.nvm/v0.10.35/lib/node_modules/npm/node_modules/request/request.js:1096:12)
+41 error     at IncomingMessage.emit (events.js:117:20)
+41 error     at _stream_readable.js:944:16
+41 error     at process._tickCallback (node.js:442:13)
+42 error If you need help, you may report this *entire* log,
+42 error including the npm and node versions, at:
+42 error     <http://github.com/npm/npm/issues>
+43 error System Linux 3.14.13-c9
+44 error command "/home/ubuntu/.nvm/v0.10.35/bin/node" "/home/ubuntu/.nvm/v0.10.35/bin/npm" "publish"
+45 error cwd /home/ubuntu/workspace
+46 error node -v v0.10.35
+47 error npm -v 1.4.28
+48 verbose exit [ 1, true ]
