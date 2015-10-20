@@ -18,18 +18,14 @@
    * @constructor
    */
   Kairos.Gnomon = function (expression) {
-    if (!expression) {
-      throw new Error('Expression is undefined');
-    }
-
     if (typeof expression === 'number') {
 
       this.milliseconds = expression;
 
-    } else if (typeof expression === 'string') {
+    } else if (typeof expression === 'string' && expression.length > 0) {
 
       var timeSteps = expression.split(':');
-      var positive = !expression.startsWith('-');
+      var positive = !(expression.slice(0, 1)[0] === '-');
 
       for (var i = 0, len = timeSteps.length; i < len; i++) {
         var timeStep = timeSteps[i];
