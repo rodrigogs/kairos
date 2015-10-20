@@ -56,8 +56,6 @@
         this.milliseconds = -Math.abs(this.milliseconds);
       }
 
-    } else {
-      throw new Error('Invalid time expression type');
     }
   };
 

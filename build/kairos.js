@@ -193,7 +193,7 @@ var Kairos = {};
     } else if (typeof expression === 'string' && expression.length > 0) {
 
       var timeSteps = expression.split(':');
-      var positive = !(expression.slice(0, 1)[0] === '-');
+      var positive = expression.slice(0, 1)[0] !== '-';
 
       for (var i = 0, len = timeSteps.length; i < len; i++) {
         var timeStep = timeSteps[i];
@@ -224,8 +224,6 @@ var Kairos = {};
         this.milliseconds = -Math.abs(this.milliseconds);
       }
 
-    } else {
-      throw new Error('Invalid time expression type');
     }
   };
 
