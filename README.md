@@ -20,8 +20,9 @@ Now talking about the library, Kairos is being developed to be a non date-based 
 #### Bower
 > bower install kairos
 
-The work has just begun here, but the idea is the following:
+## Usage
 
+#### Using Kairos
 ```javascript
 var time = Kairos.plus('10:10', '05:20');
 console.log(time); // 15:30
@@ -48,8 +49,11 @@ var hours = Kairos.toHours('10:30');
 console.log(hours); // 10.5
 
 var fraction = Kairos.getFraction('01:00', 2, 3);
-console.log(fraction); // 40
+console.log(fraction); // 00:40
+```
 
+#### Using Gnomon
+```javascript
 time = new Kairos.Gnomon('01:10:20');
 console.log(time.getMilliseconds()); // 0
 console.log(time.getSeconds()); // 20
@@ -63,7 +67,5 @@ console.log(time.toHours()); // 1.172222222222
 time = time.plus(new Kairos.Gnomon('01:00'));
 console.log(time.getHours()); // 2
 ```
-
-Ans so on...
 
 **Help and ideas are FREAKING welcome. Feel free to open issues, fork and contribute! ;)**
