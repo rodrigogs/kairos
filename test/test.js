@@ -32,13 +32,6 @@ describe('Kairos', function () {
     done();
   });
 
-  it('should throw error when expression type is invalid', function (done) {
-    assert.throws(function () {
-      new Kairos.Gnomon(function () {});
-    }, Error);
-    done();
-  });
-
   it('should throw error when expression is invalid', function (done) {
     assert.throws(function () {
       new Kairos.Gnomon('00:00:00:00:00');
