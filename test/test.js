@@ -219,6 +219,14 @@ describe('Kairos', function () {
     assert.equal(gnomon.toExpression(), '00:45:15:061');
     done();
   });
+  
+  it('should compare first time with second time and return -1 for smaller, 0 for equals and 1 for bigger', function (done) {
+    gnomon = new Kairos.Gnomon('01:00');
+    assert.equals(gnomon.compareTo(new Kairos.Gnomon('02:00')), -1);
+    assert.equals(gnomon.compareTo(new Kairos.Gnomon('01:00')), 0);
+    assert.equals(gnomon.compareTo(new Kairos.Gnomon('00:30')), 1);
+    done();
+  });
 
   it('should sum first time expression with second time expression', function (done) {
     var time = Kairos.plus('01:00', '01:30:35:100');
@@ -253,6 +261,18 @@ describe('Kairos', function () {
     });
     done();
   });
+  
+  it('should return a time expression representing the interval between starting time and ending time', function (done) {
+    assert.equal(Kairos.getInterval('01:00', '02:00'), '01:00');
+    done();
+  });
+  
+  it('should throw error when starting time is bigger than ending time', function (done) {
+    assert.throws(function () {
+      Kairos.getInterval('02:00', '01:00');
+    });
+    done();
+  });
 
   it('should return total milliseconds in the given time expression', function (done) {
     assert.equal(Kairos.toMilliseconds('01:30:35:100'), 5435100);
@@ -271,6 +291,13 @@ describe('Kairos', function () {
 
   it('should return total hours in the given time expression', function (done) {
     assert.equal(Kairos.toHours('01:30:35:100'), 1.50975);
+    done();
+  });
+  
+  it('should compare first time with second time and return -1 for smaller, 0 for equals and 1 for bigger', function (done) {
+    assert.equals(Kairos.compareTo('01:00', '02:00'), -1);
+    assert.equals(Kairos.compareTo('01:00', '01:00'), 0);
+    assert.equals(Kairos.compareTo('02:00', '01:00'), 1);
     done();
   });
 });

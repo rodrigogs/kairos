@@ -307,4 +307,25 @@
   Kairos.Gnomon.prototype.divide = function (dividend) {
     this.milliseconds /= dividend;
   };
+  
+  /**
+   * Compares with another instance.
+   * Smaller  -1
+   * Equals   0
+   * Bigger   1
+   * 
+   * @param {Kairos.Gnomon} another
+   * @returns {Number}
+   */
+  Kairos.Gnomon.prototype.compareTo = function (another) {
+    if (this.milliseconds < another.toMilliseconds()) {
+      return -1;
+    }
+    if (this.milliseconds === another.toMilliseconds()) {
+      return 0;
+    }
+    if (this.milliseconds > another.toMilliseconds()) {
+      return 1;
+    }
+  };
 }());

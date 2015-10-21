@@ -1,7 +1,7 @@
 {
   "name": "kairos",
-  "version": "0.4.4",
-  "description": "A time calculator library",
+  "version": "0.5.0",
+  "description": "A non date-based time calculator",
   "homepage": "https://github.com/kairos",
   "repository": {
     "type": "git",

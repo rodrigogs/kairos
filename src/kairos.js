@@ -97,6 +97,24 @@
     gnomon.divide(denominator);
     return gnomon.toExpression();
   };
+  
+  /**
+   * Returns a time expression representing the time between starting time and ending time
+   * 
+   * @param {String|Number} time1 time expression representing the starting time
+   * @param {String|Number} time2 time expression representing the ending time
+   * @returns {String}
+   */
+  Kairos.getInterval = function (starting, ending) {
+    var st = new Kairos.Gnomon(starting);
+    var en = new Kairos.Gnomon(ending);
+    if (st.compareTo(en) > 0) {
+      throw new Error('Starting time must be bigger than ending time');
+    }
+    
+    en.minus(st);
+    return en.toExpression();
+  };
 
   /**
    * Converts the given time expression to milliseconds
@@ -140,6 +158,20 @@
   Kairos.toHours = function (expression) {
     var gnomon = new Kairos.Gnomon(expression);
     return gnomon.toHours();
+  };
+  
+  /**
+   * Compares first time with second time and returns -1, 0 or 1 if first value
+   * is smaller, equals or bigger than second value
+   * 
+   * @param {String|Number} time1 Time expression
+   * @param {String|Number} time2 Time expression for comparation
+   * @returns {Number}
+   */
+  Kairos.compareTo = function (time1, time2) {
+    var a = new Kairos.Gnomon(time1);
+    var b = new Kairos.Gnomon(time2);
+    return a.compareTo(b);
   };
 
   // Node.js

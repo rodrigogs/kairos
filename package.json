@@ -1,7 +1,7 @@
 {
   "name": "kairos",
-  "version": "0.4.4",
-  "description": "A time calculator library",
+  "version": "0.5.0",
+  "description": "A non date-based time calculator",
   "license": "BSD",
   "repository": "kairos",
   "author": {
@@ -25,6 +25,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-esformatter": "^4.0.0",
     "gulp-header": "^1.2.2",
+    "gulp-include": "^2.0.3",
     "gulp-jsdoc": "^0.1.4",
     "gulp-jshint": "^1.11.2",
     "gulp-load-plugins": "^1.0.0-rc.1",
@@ -41,8 +42,5 @@
     "karma-safari-launcher": "^0.1.1",
     "mocha": "^2.2.5",
     "run-sequence": "^1.1.1"
-  },
-  "dependencies": {
-    "gulp-include": "^2.0.3"
   }
 }

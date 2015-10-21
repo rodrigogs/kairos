@@ -1,13 +1,13 @@
 /**
- * Kairos.js - A time calculator library
+ * Kairos.js - A non date-based time calculator
  * @author Rodrigo Gomes da Silva <rodrigo.smscom@gmail.com>
- * @version v0.4.4
+ * @version v0.5.0
  * @link https://github.com/kairos
  * @license BSD
  */
 (function () {
   'use strict';
-  
+
   var Kairos = {};
 
   // global on the server, window in the browser
@@ -30,7 +30,6 @@
    * @returns {Object}
    */
   Kairos.noConflict = function () {
-    void 0;
     root.Kairos = previous_Kairos;
     return Kairos;
   };
@@ -105,6 +104,24 @@
     gnomon.divide(denominator);
     return gnomon.toExpression();
   };
+  
+  /**
+   * Returns a time expression representing the time between starting time and ending time
+   * 
+   * @param {String|Number} time1 time expression representing the starting time
+   * @param {String|Number} time2 time expression representing the ending time
+   * @returns {String}
+   */
+  Kairos.getInterval = function (starting, ending) {
+    var st = new Kairos.Gnomon(starting);
+    var en = new Kairos.Gnomon(ending);
+    if (st.compareTo(en) > 0) {
+      throw new Error('Starting time must be bigger than ending time');
+    }
+    
+    en.minus(st);
+    return en.toExpression();
+  };
 
   /**
    * Converts the given time expression to milliseconds
@@ -150,6 +167,20 @@
     return gnomon.toHours();
   };
   
+  /**
+   * Compares first time with second time and returns -1, 0 or 1 if first value
+   * is smaller, equals or bigger than second value
+   * 
+   * @param {String|Number} time1 Time expression
+   * @param {String|Number} time2 Time expression for comparation
+   * @returns {Number}
+   */
+  Kairos.compareTo = function (time1, time2) {
+    var a = new Kairos.Gnomon(time1);
+    var b = new Kairos.Gnomon(time2);
+    return a.compareTo(b);
+  };
+
   // Node.js
   if (typeof module === 'object' && module.exports) {
     //=include /gnomon/Gnomon.js
@@ -475,5 +506,26 @@
    */
   Kairos.Gnomon.prototype.divide = function (dividend) {
     this.milliseconds /= dividend;
+  };
+  
+  /**
+   * Compares with another instance.
+   * Smaller  -1
+   * Equals   0
+   * Bigger   1
+   * 
+   * @param {Kairos.Gnomon} another
+   * @returns {Number}
+   */
+  Kairos.Gnomon.prototype.compareTo = function (another) {
+    if (this.milliseconds < another.toMilliseconds()) {
+      return -1;
+    }
+    if (this.milliseconds === another.toMilliseconds()) {
+      return 0;
+    }
+    if (this.milliseconds > another.toMilliseconds()) {
+      return 1;
+    }
   };
 }());
