@@ -29,7 +29,15 @@ module.exports = function (config) {
         {type: 'lcovonly', subdir: '.', file: 'lcov.info'}
       ]
     },
-    browsers: ['Chrome', 'Firefox']
+    browsers: ['Chrome', 'Firefox', 'PhantomJS'],
+    plugins : [
+      'karma-jasmine',
+      'karma-mocha',
+      'karma-coverage',
+      'karma-phantomjs-launcher',
+      'karma-chrome-launcher',
+      'karma-firefox-launcher'
+      ]
   };
 
   if (process.env.TRAVIS) {
@@ -40,7 +48,13 @@ module.exports = function (config) {
     //  }
     //};
 
-    configuration.browsers = ['Firefox'/*, 'Chrome_travis_ci'*/];
+    configuration.browsers = ['Firefox', 'PhantomJS'/*, 'Chrome_travis_ci'*/];
+  }
+  
+  if (process.env.IP && process.env.PORT) {
+    configuration.hostname = process.env.IP;
+    configuration.port = process.env.PORT
+    configuration.runnerPort = 0
   }
 
   config.set(configuration);

@@ -222,9 +222,9 @@ describe('Kairos', function () {
   
   it('should compare first time with second time and return -1 for smaller, 0 for equals and 1 for bigger', function (done) {
     gnomon = new Kairos.Gnomon('01:00');
-    assert.equals(gnomon.compareTo(new Kairos.Gnomon('02:00')), -1);
-    assert.equals(gnomon.compareTo(new Kairos.Gnomon('01:00')), 0);
-    assert.equals(gnomon.compareTo(new Kairos.Gnomon('00:30')), 1);
+    assert.equal(gnomon.compareTo(new Kairos.Gnomon('02:00')), -1);
+    assert.equal(gnomon.compareTo(new Kairos.Gnomon('01:00')), 0);
+    assert.equal(gnomon.compareTo(new Kairos.Gnomon('00:30')), 1);
     done();
   });
 
@@ -295,9 +295,9 @@ describe('Kairos', function () {
   });
   
   it('should compare first time with second time and return -1 for smaller, 0 for equals and 1 for bigger', function (done) {
-    assert.equals(Kairos.compareTo('01:00', '02:00'), -1);
-    assert.equals(Kairos.compareTo('01:00', '01:00'), 0);
-    assert.equals(Kairos.compareTo('02:00', '01:00'), 1);
+    assert.equal(Kairos.compareTo('01:00', '02:00'), -1);
+    assert.equal(Kairos.compareTo('01:00', '01:00'), 0);
+    assert.equal(Kairos.compareTo('02:00', '01:00'), 1);
     done();
   });
 });
