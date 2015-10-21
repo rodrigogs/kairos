@@ -300,4 +300,42 @@ describe('Kairos', function () {
     assert.equal(Kairos.compareTo('02:00', '01:00'), 1);
     done();
   });
+  
+  it('should return the minimun value from the given values', function (done) {
+    assert.equal(Kairos.min(['01:00', '05:00', '00:30', '00:40']), '00:30');
+    
+    assert.equal(Kairos.min([
+      new Kairos.Gnomon('01:00'),
+      new Kairos.Gnomon('05:00'),
+      new Kairos.Gnomon('00:30'),
+      new Kairos.Gnomon('00:40')]), '00:30');
+      
+    assert.equal(Kairos.min('01:00', '05:00', '00:30', '00:40'), '00:30');
+    
+    assert.equal(Kairos.min(new Kairos.Gnomon('01:00'),
+      new Kairos.Gnomon('05:00'),
+      new Kairos.Gnomon('00:30'),
+      new Kairos.Gnomon('00:40')), '00:30');
+    
+    done();
+  });
+  
+  it('should return the maximum value from the given values', function (done) {
+    assert.equal(Kairos.max(['01:00', '05:00', '00:30', '00:40']), '05:00');
+    
+    assert.equal(Kairos.max([
+      new Kairos.Gnomon('01:00'),
+      new Kairos.Gnomon('05:00'),
+      new Kairos.Gnomon('00:30'),
+      new Kairos.Gnomon('00:40')]), '05:00');
+      
+    assert.equal(Kairos.max('01:00', '05:00', '00:30', '00:40'), '05:00');
+    
+    assert.equal(Kairos.max(new Kairos.Gnomon('01:00'),
+      new Kairos.Gnomon('05:00'),
+      new Kairos.Gnomon('00:30'),
+      new Kairos.Gnomon('00:40')), '05:00');
+    
+    done();
+  });
 });

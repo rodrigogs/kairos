@@ -173,6 +173,54 @@
     var b = new Kairos.Gnomon(time2);
     return a.compareTo(b);
   };
+  
+  /**
+   * Returns the minimum value from the given values
+   * 
+   * @param {String[]|Number[]|Kairos.Gnomon[]} values Array with time expressions
+   * @returns {String}
+   */
+  Kairos.min = function (values) {
+    if (!(values instanceof Array)) {
+      values = Array.prototype.slice.call(arguments);
+    }
+    
+    var min = values.reduce(function (previous, current) {
+      if (!(previous instanceof Kairos.Gnomon)) {
+        previous = new Kairos.Gnomon(previous);
+      }
+      if (!(current instanceof Kairos.Gnomon)) {
+        current = new Kairos.Gnomon(current);
+      }
+      return ( previous.toMilliseconds() < current.toMilliseconds() ? previous : current );
+    });
+    
+    return min.toExpression();
+  };
+  
+  /**
+   * Returns the maximum value from the given values
+   * 
+   * @param {String[]|Number[]|Kairos.Gnomon[]} values Array with time expressions
+   * @returns
+   */
+  Kairos.max = function (values) {
+    if (!(values instanceof Array)) {
+      values = Array.prototype.slice.call(arguments);
+    }
+    
+    var max = values.reduce(function (previous, current) {
+      if (!(previous instanceof Kairos.Gnomon)) {
+        previous = new Kairos.Gnomon(previous);
+      }
+      if (!(current instanceof Kairos.Gnomon)) {
+        current = new Kairos.Gnomon(current);
+      }
+      return ( previous.toMilliseconds() > current.toMilliseconds() ? previous : current );
+    });
+    
+    return max.toExpression();
+  };
 
   // Node.js
   if (typeof module === 'object' && module.exports) {

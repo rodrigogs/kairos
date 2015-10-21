@@ -50,6 +50,12 @@ console.log(hours); // 10.5
 
 var fraction = Kairos.getFraction('01:00', 2, 3);
 console.log(fraction); // 00:40
+
+var min = Kairos.min('01:00', '05:00', '00:30');
+console.log(min); // 00:30
+
+var max = Kairos.min('01:00', '05:00', '00:30');
+console.log(max); // 05:00
 ```
 
 #### Using Gnomon
