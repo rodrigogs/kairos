@@ -64,7 +64,7 @@ console.log(compare); // 1
 var min = Kairos.min('01:00', '05:00', '00:30');
 console.log(min); // 00:30
 
-var max = Kairos.min('01:00', '05:00', '00:30');
+var max = Kairos.max('01:00', '05:00', '00:30');
 console.log(max); // 05:00
 ```
 
