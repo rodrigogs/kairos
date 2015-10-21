@@ -50,11 +50,21 @@ console.log(hours); // 10.5
 
 var fraction = Kairos.getFraction('01:00', 2, 3);
 console.log(fraction); // 00:40
+
+var interval = Kairos.getInterval('01:00', '03:00');
+console.log(interval); // 02:00
+
+var compare = Kairos.compareTo('01:00', '03:00');
+console.log(compare); // -1
+compare = Kairos.compareTo('03:00', '03:00');
+console.log(compare); // 0
+compare = Kairos.compareTo('03:00', '01:00');
+console.log(compare); // 1
 ```
 
 #### Using Gnomon
 ```javascript
-time = new Kairos.Gnomon('01:10:20');
+var time = new Kairos.Gnomon('01:10:20');
 console.log(time.getMilliseconds()); // 0
 console.log(time.getSeconds()); // 20
 console.log(time.getMinutes()); // 10
@@ -66,6 +76,13 @@ console.log(time.toHours()); // 1.172222222222
 
 time = time.plus(new Kairos.Gnomon('01:00'));
 console.log(time.getHours()); // 2
+
+var compare = time.comparteTo(new Kairos.Gnomon('03:00'));
+console.log(compare); // -1
+compare = time.comparteTo(new Kairos.Gnomon('02:10:20'));
+console.log(compare); // 0
+compare = time.comparteTo(new Kairos.Gnomon('01:00'));
+console.log(compare); // 1
 ```
 
 **Help and ideas are FREAKING welcome. Feel free to open issues, fork and contribute! ;)**
