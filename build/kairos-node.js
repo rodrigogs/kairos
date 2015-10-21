@@ -1,7 +1,7 @@
 /**
  * Kairos.js - A non date-based time calculator
  * @author Rodrigo Gomes da Silva <rodrigo.smscom@gmail.com>
- * @version v0.6.0
+ * @version v0.6.1
  * @link https://github.com/kairos
  * @license BSD
  */
@@ -194,15 +194,15 @@
     
     var min = values.reduce(function (previous, current) {
       if (!(previous instanceof Kairos.Gnomon)) {
-        previous = new Kairos.Gnomon(previous);
+        previous = new Kairos.Gnomon(previous ? previous : 0);
       }
       if (!(current instanceof Kairos.Gnomon)) {
-        current = new Kairos.Gnomon(current);
+        current = new Kairos.Gnomon(current ? current : 0);
       }
       return ( previous.toMilliseconds() < current.toMilliseconds() ? previous : current );
     });
     
-    return min.toExpression();
+    return !!(min instanceof Kairos.Gnomon) ? min.toExpression() : new Kairos.Gnomon(min).toExpression();
   };
   
   /**
@@ -218,15 +218,15 @@
     
     var max = values.reduce(function (previous, current) {
       if (!(previous instanceof Kairos.Gnomon)) {
-        previous = new Kairos.Gnomon(previous);
+        previous = new Kairos.Gnomon(previous ? previous : 0);
       }
       if (!(current instanceof Kairos.Gnomon)) {
-        current = new Kairos.Gnomon(current);
+        current = new Kairos.Gnomon(current ? current : 0);
       }
       return ( previous.toMilliseconds() > current.toMilliseconds() ? previous : current );
     });
     
-    return max.toExpression();
+    return !!(max instanceof Kairos.Gnomon) ? max.toExpression() : new Kairos.Gnomon(max).toExpression();
   };
 
   // Node.js
