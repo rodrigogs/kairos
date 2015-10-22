@@ -48,7 +48,7 @@ module.exports = function (config) {
     //  }
     //};
 
-    configuration.browsers = ['Firefox', 'PhantomJS'/*, 'Chrome_travis_ci'*/];
+    configuration.browsers = ['Firefox'/*, 'PhantomJS', 'Chrome_travis_ci'*/];
   }
   
   if (process.env.IP && process.env.PORT) {
