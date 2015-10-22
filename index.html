@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Kairos by rodrigogs</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Kairos</h1>
+        <h2>A non date-based time calculator</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/rodrigogs/kairos/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/rodrigogs/kairos/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/rodrigogs/kairos" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="kairos" class="anchor" href="#kairos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Kairos</h1>
+
+<p><a href="https://travis-ci.org/rodrigogs/kairos"><img src="https://travis-ci.org/rodrigogs/kairos.svg?branch=master" alt="Build Status"></a>
+<a href="https://codeclimate.com/github/rodrigogs/kairos"><img src="https://codeclimate.com/github/rodrigogs/kairos/badges/gpa.svg" alt="Code Climate"></a>
+<a href="https://codeclimate.com/github/rodrigogs/kairos/coverage"><img src="https://codeclimate.com/github/rodrigogs/kairos/badges/coverage.svg" alt="Test Coverage"></a>
+<a href="https://david-dm.org/rodrigogs/kairos#info=devDependencies"><img src="https://david-dm.org/rodrigogs/kairos/dev-status.svg" alt="devDependency Status"></a>
+<a href="https://www.npmjs.com/package/kairos"><img src="https://img.shields.io/npm/dt/kairos.svg" alt="npm"></a>
+<a href="https://badge.fury.io/js/kairos"><img src="https://badge.fury.io/js/kairos.svg" alt="npm version"></a>
+<a href="https://badge.fury.io/bo/kairos"><img src="https://badge.fury.io/bo/kairos.svg" alt="Bower version"></a></p>
+
+<p><em>Kairós(καιρός) is a greek word that means "the right moment". Also, in the greek mithology Kairós is the son of the personification of time itself, Chronos.</em></p>
+
+<p>Now talking about the library, Kairos is being developed to be a non date-based time calculator. The aim is to use time expressions along with math expressions to have human time products, and also to have various representations of a time expression using the engine Gnomon(<em>references the first solar clock ever made</em>).</p>
+
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
+
+<h4>
+<a id="nodejs" class="anchor" href="#nodejs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Node.js</h4>
+
+<blockquote>
+<p>npm install kairos</p>
+</blockquote>
+
+<h4>
+<a id="bower" class="anchor" href="#bower" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bower</h4>
+
+<blockquote>
+<p>bower install kairos</p>
+</blockquote>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h4>
+<a id="using-kairos" class="anchor" href="#using-kairos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using Kairos</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> time <span class="pl-k">=</span> Kairos.plus(<span class="pl-s"><span class="pl-pds">'</span>10:10<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>05:20<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(time); <span class="pl-c">// 15:30</span>
+
+time <span class="pl-k">=</span> Kairos.minus(<span class="pl-s"><span class="pl-pds">'</span>10:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>05:00<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(time); <span class="pl-c">// 05:00</span>
+
+time <span class="pl-k">=</span> Kairos.multiply(<span class="pl-s"><span class="pl-pds">'</span>01:00<span class="pl-pds">'</span></span>, <span class="pl-c1">20</span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(time); <span class="pl-c">// 20:00</span>
+
+time <span class="pl-k">=</span> Kairos.divide(<span class="pl-s"><span class="pl-pds">'</span>03:00<span class="pl-pds">'</span></span>, <span class="pl-c1">2</span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(time); <span class="pl-c">// 01:30</span>
+
+<span class="pl-k">var</span> milliseconds <span class="pl-k">=</span> Kairos.toMilliseconds(<span class="pl-s"><span class="pl-pds">'</span>00:01<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(milliseconds); <span class="pl-c">// 60000</span>
+
+<span class="pl-k">var</span> seconds <span class="pl-k">=</span> Kairos.toSeconds(<span class="pl-s"><span class="pl-pds">'</span>00:01<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(seconds); <span class="pl-c">// 60</span>
+
+<span class="pl-k">var</span> minutes <span class="pl-k">=</span> Kairos.toMinutes(time);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(minutes); <span class="pl-c">// 90</span>
+
+<span class="pl-k">var</span> hours <span class="pl-k">=</span> Kairos.toHours(<span class="pl-s"><span class="pl-pds">'</span>10:30<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(hours); <span class="pl-c">// 10.5</span>
+
+<span class="pl-k">var</span> fraction <span class="pl-k">=</span> Kairos.getFraction(<span class="pl-s"><span class="pl-pds">'</span>01:00<span class="pl-pds">'</span></span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(fraction); <span class="pl-c">// 00:40</span>
+
+<span class="pl-k">var</span> interval <span class="pl-k">=</span> Kairos.getInterval(<span class="pl-s"><span class="pl-pds">'</span>01:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>03:00<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(interval); <span class="pl-c">// 02:00</span>
+
+<span class="pl-k">var</span> compare <span class="pl-k">=</span> Kairos.compareTo(<span class="pl-s"><span class="pl-pds">'</span>01:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>03:00<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(compare); <span class="pl-c">// -1</span>
+compare <span class="pl-k">=</span> Kairos.compareTo(<span class="pl-s"><span class="pl-pds">'</span>03:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>03:00<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(compare); <span class="pl-c">// 0</span>
+compare <span class="pl-k">=</span> Kairos.compareTo(<span class="pl-s"><span class="pl-pds">'</span>03:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>01:00<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(compare); <span class="pl-c">// 1</span>
+
+<span class="pl-k">var</span> min <span class="pl-k">=</span> Kairos.<span class="pl-c1">min</span>(<span class="pl-s"><span class="pl-pds">'</span>01:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>05:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>00:30<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(min); <span class="pl-c">// 00:30</span>
+
+<span class="pl-k">var</span> max <span class="pl-k">=</span> Kairos.<span class="pl-c1">max</span>(<span class="pl-s"><span class="pl-pds">'</span>01:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>05:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>00:30<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(max); <span class="pl-c">// 05:00</span></pre></div>
+
+<h4>
+<a id="using-gnomon" class="anchor" href="#using-gnomon" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using Gnomon</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> time <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Kairos.Gnomon</span>(<span class="pl-s"><span class="pl-pds">'</span>01:10:20<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(time.<span class="pl-c1">getMilliseconds</span>()); <span class="pl-c">// 0</span>
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(time.<span class="pl-c1">getSeconds</span>()); <span class="pl-c">// 20</span>
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(time.<span class="pl-c1">getMinutes</span>()); <span class="pl-c">// 10</span>
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(time.<span class="pl-c1">getHours</span>()); <span class="pl-c">// 1</span>
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(time.toMilliseconds()); <span class="pl-c">// 4220000</span>
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(time.toSeconds()); <span class="pl-c">// 4220</span>
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(time.toMinutes()); <span class="pl-c">// 70.333333333333</span>
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(time.toHours()); <span class="pl-c">// 1.172222222222</span>
+
+time <span class="pl-k">=</span> time.plus(<span class="pl-k">new</span> <span class="pl-en">Kairos.Gnomon</span>(<span class="pl-s"><span class="pl-pds">'</span>01:00<span class="pl-pds">'</span></span>));
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(time.<span class="pl-c1">getHours</span>()); <span class="pl-c">// 2</span>
+
+<span class="pl-k">var</span> compare <span class="pl-k">=</span> time.comparteTo(<span class="pl-k">new</span> <span class="pl-en">Kairos.Gnomon</span>(<span class="pl-s"><span class="pl-pds">'</span>03:00<span class="pl-pds">'</span></span>));
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(compare); <span class="pl-c">// -1</span>
+compare <span class="pl-k">=</span> time.comparteTo(<span class="pl-k">new</span> <span class="pl-en">Kairos.Gnomon</span>(<span class="pl-s"><span class="pl-pds">'</span>02:10:20<span class="pl-pds">'</span></span>));
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(compare); <span class="pl-c">// 0</span>
+compare <span class="pl-k">=</span> time.comparteTo(<span class="pl-k">new</span> <span class="pl-en">Kairos.Gnomon</span>(<span class="pl-s"><span class="pl-pds">'</span>01:00<span class="pl-pds">'</span></span>));
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(compare); <span class="pl-c">// 1</span></pre></div>
+
+<p><strong>Help and ideas are FREAKING welcome. Feel free to open issues, fork and contribute! ;)</strong></p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
