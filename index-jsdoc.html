@@ -92,11 +92,11 @@ console.log(fraction); // 00:40
 var interval = Kairos.getInterval(&#39;01:00&#39;, &#39;03:00&#39;);
 console.log(interval); // 02:00
 
-var compare = Kairos.compareTo(&#39;01:00&#39;, &#39;03:00&#39;);
+var compare = Kairos.compare(&#39;01:00&#39;, &#39;03:00&#39;);
 console.log(compare); // -1
-compare = Kairos.compareTo(&#39;03:00&#39;, &#39;03:00&#39;);
+compare = Kairos.compare(&#39;03:00&#39;, &#39;03:00&#39;);
 console.log(compare); // 0
-compare = Kairos.compareTo(&#39;03:00&#39;, &#39;01:00&#39;);
+compare = Kairos.compare(&#39;03:00&#39;, &#39;01:00&#39;);
 console.log(compare); // 1
 
 var min = Kairos.min(&#39;01:00&#39;, &#39;05:00&#39;, &#39;00:30&#39;);
