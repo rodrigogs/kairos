@@ -295,9 +295,9 @@ describe('Kairos', function () {
   });
   
   it('should compare first time with second time and return -1 for smaller, 0 for equals and 1 for bigger', function (done) {
-    assert.equal(Kairos.compareTo('01:00', '02:00'), -1);
-    assert.equal(Kairos.compareTo('01:00', '01:00'), 0);
-    assert.equal(Kairos.compareTo('02:00', '01:00'), 1);
+    assert.equal(Kairos.compare('01:00', '02:00'), -1);
+    assert.equal(Kairos.compare('01:00', '01:00'), 0);
+    assert.equal(Kairos.compare('02:00', '01:00'), 1);
     done();
   });
   
