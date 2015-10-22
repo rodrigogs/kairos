@@ -58,9 +58,9 @@ console.log(interval); // 02:00
 
 var compare = Kairos.compareTo('01:00', '03:00');
 console.log(compare); // -1
-compare = Kairos.compareTo('03:00', '03:00');
+compare = Kairos.compare('03:00', '03:00');
 console.log(compare); // 0
-compare = Kairos.compareTo('03:00', '01:00');
+compare = Kairos.compare('03:00', '01:00');
 console.log(compare); // 1
 
 var min = Kairos.min('01:00', '05:00', '00:30');
@@ -84,6 +84,7 @@ console.log(time.toHours()); // 1.172222222222
 
 time = time.plus(new Kairos.Gnomon('01:00'));
 console.log(time.getHours()); // 2
+console.log(time.getExpression()); // 02:10:20
 
 var compare = time.comparteTo(new Kairos.Gnomon('03:00'));
 console.log(compare); // -1
