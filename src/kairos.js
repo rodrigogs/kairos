@@ -1,3 +1,6 @@
+/**
+ * @module Kairos
+ */
 (function () {
   'use strict';
 
@@ -19,7 +22,9 @@
 
   /**
    * Avoid conflict in case of another instance of Kairos is already in the scope
-   *
+   * 
+   * @memberof module:Kairos
+   * @method noConflict
    * @returns {Object}
    */
   Kairos.noConflict = function () {
@@ -30,6 +35,8 @@
   /**
    * Sums augend time with addend time
    *
+   * @memberof module:Kairos
+   * @method plus
    * @param {String|Number} augend Augend time expression
    * @param {String|Number} addend Addend time expression
    */
@@ -42,7 +49,9 @@
 
   /**
    * Subtracts minuend time with subtrahend time
-   *
+   * 
+   * @memberof module:Kairos
+   * @method minus
    * @param {String|Number} minuend Minuend time expression
    * @param {String|Number} subtrahend Subtrahend time expression
    * @returns {String}
@@ -57,6 +66,8 @@
   /**
    * Multiplies multiplier by the multiplicand
    *
+   * @memberof module:Kairos
+   * @method multiply
    * @param {String|Number} multiplier Multiplier time expression
    * @param {String|Number} multiplicand Multiplicand number
    * @returns {String}
@@ -70,6 +81,8 @@
   /**
    * Divides dividend by the divisor
    *
+   * @memberof module:Kairos
+   * @method divide
    * @param {String|Number} dividend Dividend time expression
    * @param {Number} divisor Dividor number
    * @returns {String}
@@ -81,7 +94,10 @@
   };
 
   /**
-   *
+   * Returns a fraction of the current time
+   * 
+   * @memberof module:Kairos
+   * @method getFraction
    * @param {String|Number} time
    * @param {Number} numerator
    * @param {Number} denominator
@@ -101,6 +117,8 @@
   /**
    * Returns a time expression representing the time between starting time and ending time
    * 
+   * @memberof module:Kairos
+   * @method getInterval
    * @param {String|Number} time1 time expression representing the starting time
    * @param {String|Number} time2 time expression representing the ending time
    * @returns {String}
@@ -119,6 +137,8 @@
   /**
    * Converts the given time expression to milliseconds
    *
+   * @memberof module:Kairos
+   * @method toMilliseconds
    * @param {String|Number} expression Time expression
    * @returns {Number}
    */
@@ -130,6 +150,8 @@
   /**
    * Converts the given time expression to seconds
    *
+   * @memberof module:Kairos
+   * @method toSeconds
    * @param {String|Number} expression Time expression
    * @returns {Number}
    */
@@ -141,6 +163,8 @@
   /**
    * Converts the given time expression to minutes
    *
+   * @memberof module:Kairos
+   * @method toMinutes
    * @param {String|Number} expression Time expression
    * @returns {Number}
    */
@@ -152,6 +176,8 @@
   /**
    * Converts the given time expression to hours
    *
+   * @memberof module:Kairos
+   * @method toHours
    * @param {String|Number} expression Time expression
    * @returns {Number}
    */
@@ -164,11 +190,13 @@
    * Compares first time with second time and returns -1, 0 or 1 if first value
    * is smaller, equals or bigger than second value
    * 
+   * @memberof module:Kairos
+   * @method compare
    * @param {String|Number} time1 Time expression
    * @param {String|Number} time2 Time expression for comparation
    * @returns {Number}
    */
-  Kairos.compareTo = function (time1, time2) {
+  Kairos.compare = function (time1, time2) {
     var a = new Kairos.Gnomon(time1);
     var b = new Kairos.Gnomon(time2);
     return a.compareTo(b);
@@ -177,6 +205,8 @@
   /**
    * Returns the minimum value from the given values
    * 
+   * @memberof module:Kairos
+   * @method min
    * @param {String[]|Number[]|Kairos.Gnomon[]} values Array with time expressions
    * @returns {String}
    */
@@ -201,6 +231,8 @@
   /**
    * Returns the maximum value from the given values
    * 
+   * @memberof module:Kairos
+   * @method max
    * @param {String[]|Number[]|Kairos.Gnomon[]} values Array with time expressions
    * @returns
    */

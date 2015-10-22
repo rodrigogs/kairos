@@ -84,7 +84,9 @@ gulp.task('serve', function () {
   return gulp.src('./')
     .pipe(plugins.webserver({
       directoryListing: true,
-      open: true
+      open: true,
+      port: process.env.PORT || '8000',
+      host: process.env.IP || 'localhost'
     }));
 });
 
