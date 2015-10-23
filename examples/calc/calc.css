@@ -1,0 +1,48 @@
+.container {
+    border: solid 1px;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px;
+}
+
+.display {
+    border: solid 1px;
+    height: 30px;
+    margin-bottom: 10px;
+    background-color: #00FF00;
+}
+
+.display-values {
+    display: table-row;
+}
+
+#val1, #val2, #operator {
+    display: table-cell;
+    font-size: 20px;
+    padding-top: 4px;
+}
+
+.keyboard {
+    display: table;
+    position: relative;
+}
+
+.row {
+    display: table-row;
+}
+
+.num {
+    background-color: #B8B8B8;
+}
+
+.num, .ope {
+    display: table-cell;
+    width: 50px;
+    height: 50px;
+    font-size: 100%;
+    font-weight: bold;
+}
+
+.span {
+  width: 100px;
+}

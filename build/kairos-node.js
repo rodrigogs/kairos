@@ -241,7 +241,7 @@
    * @memberof module:Kairos
    * @method max
    * @param {String[]|Number[]|Kairos.Gnomon[]} values Array with time expressions
-   * @returns
+   * @returns {String}
    */
   Kairos.max = function (values) {
     if (!(values instanceof Array)) {

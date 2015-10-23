@@ -51,6 +51,10 @@ module.exports = function (config) {
     configuration.browsers = ['Firefox'/*, 'PhantomJS', 'Chrome_travis_ci'*/];
   }
   
+  if (process.env.C9_PROJECT) {
+    configuration.browsers = ['PhantomJS'];
+  }
+  
   if (process.env.IP && process.env.PORT) {
     configuration.hostname = process.env.IP;
     configuration.port = process.env.PORT
