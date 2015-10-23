@@ -12,7 +12,8 @@
 
 Now talking about the library, Kairos is being developed to be a non date-based time calculator. The aim is to use time expressions along with math expressions to have human time products, and also to have various representations of a time expression using the engine Gnomon(*references the first solar clock ever made*).
 
-[API Docs](http://rodrigogs.github.io/kairos/index-jsdoc.html)
+* [Docs](http://rodrigogs.github.io/kairos)
+* [API](http://rodrigogs.github.io/kairos/index-jsdoc.html)
 
 ## Install
 
@@ -24,74 +25,17 @@ Now talking about the library, Kairos is being developed to be a non date-based 
 
 ## Examples
 
-#### Using Kairos
-```javascript
-var time = Kairos.plus('10:10', '05:20');
-console.log(time); // 15:30
+* **[Basic](http://rodrigogs.github.io/kairos/examples/basic/index.html):** *Basic example*
+* **[Calculator](http://rodrigogs.github.io/kairos/examples/calc/index.html):** *A calculator made with Kairos*
 
-time = Kairos.minus('10:00', '05:00');
-console.log(time); // 05:00
+## Contributing
 
-time = Kairos.multiply('01:00', 20);
-console.log(time); // 20:00
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request
 
-time = Kairos.divide('03:00', 2);
-console.log(time); // 01:30
+## License
 
-var milliseconds = Kairos.toMilliseconds('00:01');
-console.log(milliseconds); // 60000
-
-var seconds = Kairos.toSeconds('00:01');
-console.log(seconds); // 60
-
-var minutes = Kairos.toMinutes(time);
-console.log(minutes); // 90
-
-var hours = Kairos.toHours('10:30');
-console.log(hours); // 10.5
-
-var fraction = Kairos.getFraction('01:00', 2, 3);
-console.log(fraction); // 00:40
-
-var interval = Kairos.getInterval('01:00', '03:00');
-console.log(interval); // 02:00
-
-var compare = Kairos.compareTo('01:00', '03:00');
-console.log(compare); // -1
-compare = Kairos.compare('03:00', '03:00');
-console.log(compare); // 0
-compare = Kairos.compare('03:00', '01:00');
-console.log(compare); // 1
-
-var min = Kairos.min('01:00', '05:00', '00:30');
-console.log(min); // 00:30
-
-var max = Kairos.max('01:00', '05:00', '00:30');
-console.log(max); // 05:00
-```
-
-#### Using Gnomon
-```javascript
-var time = new Kairos.Gnomon('01:10:20');
-console.log(time.getMilliseconds()); // 0
-console.log(time.getSeconds()); // 20
-console.log(time.getMinutes()); // 10
-console.log(time.getHours()); // 1
-console.log(time.toMilliseconds()); // 4220000
-console.log(time.toSeconds()); // 4220
-console.log(time.toMinutes()); // 70.333333333333
-console.log(time.toHours()); // 1.172222222222
-
-time = time.plus(new Kairos.Gnomon('01:00'));
-console.log(time.getHours()); // 2
-console.log(time.getExpression()); // 02:10:20
-
-var compare = time.comparteTo(new Kairos.Gnomon('03:00'));
-console.log(compare); // -1
-compare = time.comparteTo(new Kairos.Gnomon('02:10:20'));
-console.log(compare); // 0
-compare = time.comparteTo(new Kairos.Gnomon('01:00'));
-console.log(compare); // 1
-```
-
-**Help and ideas are FREAKING welcome. Feel free to open issues, fork and contribute! ;)**
+[Licence](https://github.com/rodrigogs/kairos/blob/master/LICENSE) © Rodrigo Gomes da Silva
