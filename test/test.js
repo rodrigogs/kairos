@@ -342,4 +342,16 @@ describe('Kairos', function () {
     
     done();
   });
+  
+  it('should parse correctly expressions whith hours < 10 and > 99', function (done) {
+    var a = new Kairos.Gnomon('60:00');
+    var b = new Kairos.Gnomon('80:00');
+    a.plus(b);
+    assert.equal(a.toExpression(), '140:00');
+    
+    a.minus(new Kairos.Gnomon('139:00'));
+    assert.equal(a.toExpression(), '01:00');
+    
+    done();
+  });
 });

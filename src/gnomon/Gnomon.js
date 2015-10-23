@@ -258,7 +258,8 @@
   Kairos.Gnomon.prototype.toExpression = function () {
     var expression = '';
     // Hours
-    expression += ('00' + parseInt(Math.abs(this.getHours()))).slice(-2) + ':';
+    var hours = parseInt(Math.abs(this.getHours()));
+    expression += ((String(hours).length > 1) ? '' : '0') + hours + ':';
     // Minutes
     expression += ('00' + parseInt(Math.abs(this.getMinutes()))).slice(-2);
     // Seconds

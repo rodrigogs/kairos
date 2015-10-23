@@ -1,7 +1,7 @@
 /**
  * Kairos.js - A non date-based time calculator
  * @author Rodrigo Gomes da Silva <rodrigo.smscom@gmail.com>
- * @version v0.7.0
+ * @version v0.7.1
  * @link https://github.com/kairos
  * @license BSD
  */
@@ -538,7 +538,8 @@
   Kairos.Gnomon.prototype.toExpression = function () {
     var expression = '';
     // Hours
-    expression += ('00' + parseInt(Math.abs(this.getHours()))).slice(-2) + ':';
+    var hours = parseInt(Math.abs(this.getHours()));
+    expression += ((String(hours).length > 1) ? '' : '0') + hours + ':';
     // Minutes
     expression += ('00' + parseInt(Math.abs(this.getMinutes()))).slice(-2);
     // Seconds
