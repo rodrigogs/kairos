@@ -2,7 +2,7 @@
     var _val1 = '',
         _val2 = '',
         _operator,
-        _doNotParse = false
+        _doNotParse = false,
         _error;
         
     var _sendNum = function () {
@@ -25,7 +25,7 @@
         operator.innerHTML = '';
         
         if (_error) {
-          val1.innerHtml = _error.message;
+          val1.innerHTML = _error.message;
           return _error = null;
         }
         if (!_operator) {
@@ -115,29 +115,53 @@
         _refreshDisplay();
       }
     };
-    
+
+    var _addNumShortCut = function (num) {
+        Mousetrap.bind(num.innerHTML, function () {
+            num.click();
+        });
+    };
+
     var _init = function () {
         var nums = document.getElementsByClassName('num');
-        for (var num in nums) {
-            num = nums[num];
+        for (var i = 0, len = nums.length; i < len; i++) {
+            var num = nums[i];
             num.onclick = _sendNum;
+            _addNumShortCut(num);
         }
         
-        document.getElementById('back').onclick = _back;
+        var back = document.getElementById('back');
+        back.onclick = _back;
+        Mousetrap.bind('backspace', _back);
+
+        var clearEntry = document.getElementById('clearEntry');
+        clearEntry.onclick = _clearEntry;
+        Mousetrap.bind('tab', _clearEntry);
         
-        document.getElementById('clearEntry').onclick = _clearEntry;
+        var clear = document.getElementById('clear');
+        clear.onclick = _clear;
+        Mousetrap.bind('esc', _clear);
+
+        var divide = document.getElementById('divide');
+        divide.onclick = _divide;
+        Mousetrap.bind('/', _divide);
         
-        document.getElementById('clear').onclick = _clear;
+        var multiply = document.getElementById('multiply');
+        multiply.onclick = _multiply;
+        Mousetrap.bind('*', _multiply);
+
+        var minus = document.getElementById('minus');
+        minus.onclick = _minus;
+        Mousetrap.bind('-', _minus);
         
-        document.getElementById('divide').onclick = _divide;
-        
-        document.getElementById('multiply').onclick = _multiply;
-        
-        document.getElementById('minus').onclick = _minus;
-        
-        document.getElementById('plus').onclick = _plus;
-        
-        document.getElementById('equals').onclick = _equals;
+        var plus = document.getElementById('plus');
+        plus.onclick = _plus;
+        Mousetrap.bind('+', _plus);
+
+        var equals = document.getElementById('equals');
+        equals.onclick = _equals;
+        Mousetrap.bind('=', _equals);
+        Mousetrap.bind('enter', _equals);
     };
     
     _init();
