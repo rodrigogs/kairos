@@ -1,21 +1,15 @@
 (function () {
-    var _maxLen = 12,
-        _val1 = '',
+    var _val1 = '',
         _val2 = '',
         _operator,
-        _doNotParse = false;
+        _doNotParse = false
+        _error;
         
     var _sendNum = function () {
         var val = this.textContent;
         if (!_operator) {
-            if (_val1.length >= _maxLen) {
-                return;
-            }
             _val1 += val;
         } else {
-            if (_val2.length >= _maxLen) {
-                return;
-            }
             _val2 += val;
         }
         _refreshDisplay();
@@ -30,6 +24,10 @@
         val2.innerHTML = '';
         operator.innerHTML = '';
         
+        if (_error) {
+          val1.innerHtml = _error.message;
+          return _error = null;
+        }
         if (!_operator) {
             val1.innerHTML = _val1;
         } else {
@@ -89,6 +87,7 @@
     };
     
     var _equals = function () {
+      try {
         var val1 = new Kairos.Gnomon(String(_val1));
         var val2 = _doNotParse ? parseInt(_val2) : new Kairos.Gnomon(_val2);
         
@@ -110,8 +109,11 @@
         _val1 = val1.toExpression();
         _val2 = '';
         _operator = null;
-        
+      } catch (err) {
+        _error = err;
+      } finally {
         _refreshDisplay();
+      }
     };
     
     var _init = function () {
