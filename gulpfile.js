@@ -1,27 +1,27 @@
 'use strict';
 
-var gulp = require('gulp');
-var Server = require('karma').Server;
-var pkg = require('./package.json');
-var plugins = require('gulp-load-plugins')();
-var runSequence = require('run-sequence');
-var del = require('del');
-var stylish = require('jshint-stylish');
+const gulp = require('gulp');
+const Server = require('karma').Server;
+const pkg = require('./package.json');
+const plugins = require('gulp-load-plugins')();
+const runSequence = require('run-sequence');
+const del = require('del');
+const stylish = require('jshint-stylish');
 
-var mainFiles = [
+const mainFiles = [
   'src/kairos.js',
   'src/gnomon/Gnomon.js'
 ];
 
-gulp.task('init', function () {
+gulp.task('init', () => {
   return plugins.bower();
 });
 
-gulp.task('build', function (done) {
+gulp.task('build', done => {
   return runSequence('clean', 'build-raw', 'build-min', 'build-debug', 'build-nodejs', done);
 });
 
-gulp.task('build-raw', function () {
+gulp.task('build-raw', () => {
   return gulp.src(mainFiles)
     .pipe(plugins.concat('kairos.js'))
     .pipe(banner())
@@ -29,7 +29,7 @@ gulp.task('build-raw', function () {
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('build-min', function () {
+gulp.task('build-min', () => {
   return gulp.src(mainFiles)
     .pipe(plugins.uglify({
       preserveComments: 'some'
@@ -40,14 +40,14 @@ gulp.task('build-min', function () {
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('build-debug', function () {
+gulp.task('build-debug', () => {
   return gulp.src(mainFiles)
     .pipe(plugins.concat('kairos-debug.js'))
     .pipe(banner())
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('build-nodejs', function () {
+gulp.task('build-nodejs', () => {
     return gulp.src('src/kairos.js')
     .pipe(plugins.include())
       .on('error', console.log)
@@ -56,31 +56,31 @@ gulp.task('build-nodejs', function () {
     .pipe(gulp.dest('build'));
 });
 
-gulp.task('clean', function (done) {
-  del(['build']).then(function () {
+gulp.task('clean', done => {
+  del(['build']).then(() => {
     done();
   });
 });
 
-gulp.task('docs', function () {
+gulp.task('docs', () => {
   return gulp.src(['src/**/*.js', 'README.md'])
     .pipe(plugins.jsdoc('docs'));
 });
 
-gulp.task('format', function () {
+gulp.task('format', () => {
   return gulp.src(['src/**/*.js'])
     .pipe(plugins.esformatter())
     .pipe(gulp.dest('src'));
 });
 
-gulp.task('lint', function () {
+gulp.task('lint', () => {
   return gulp.src(['src/**/*.js'])
     .pipe(plugins.jshint())
     .pipe(plugins.jshint.reporter(stylish))
     .pipe(plugins.jshint.reporter('fail'));
 });
 
-gulp.task('serve', function () {
+gulp.task('serve', () => {
   return gulp.src('./')
     .pipe(plugins.webserver({
       directoryListing: true,
@@ -90,18 +90,18 @@ gulp.task('serve', function () {
     }));
 });
 
-gulp.task('watch', ['build', 'serve'], function () {
+gulp.task('watch', ['build', 'serve'], () => {
   gulp.watch(['src/**/*'], ['build']);
 });
 
-gulp.task('test', function (done) {
+gulp.task('test', done => {
   new Server({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
   }, done).start();
 });
 
-gulp.task('test-watch', function (done) {
+gulp.task('test-watch', done => {
   new Server({
     configFile: __dirname + '/karma.conf.js'
   }, done).start();
@@ -110,8 +110,8 @@ gulp.task('test-watch', function (done) {
 // Private helpers
 // ===============
 
-function banner() {
-  var stamp = [
+const banner = () => {
+  let stamp = [
     '/**',
     ' * Kairos.js - <%= pkg.description %>',
     ' * @author <%= pkg.author.name %> <<%= pkg.author.email %>>',

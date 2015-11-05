@@ -9,9 +9,10 @@ module.exports = function (config) {
       'src/gnomon/Gnomon.js',
       'bower_components/assert/assert.js',
       'bower_components/mocha/mocha.js',
-      'test/test.js',
+      'test/browser/kairos.js',
+      'test/browser/gnomon.js',
       {
-        pattern: 'test/fixture/*',
+        pattern: 'test/browser/fixture/*',
         included: false,
         served: true
       }

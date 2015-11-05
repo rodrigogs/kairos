@@ -1,6 +1,7 @@
 language: node_js
 node_js:
-  - 4.2.1
+  - 4.2.2
+  - 5.0.0
 addons:
   firefox: "latest"
 before_install:
@@ -9,10 +10,10 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 install:
   - npm install
-  - npm install -g codeclimate-test-reporter
   - gulp init
 script:
   - gulp build
   - gulp lint
   - gulp test
+  - npm test
   - codeclimate-test-reporter < coverage/lcov.info
