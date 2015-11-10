@@ -28,7 +28,7 @@
     "gulp-autoprefixer": "^3.0.2",
     "gulp-bower": "0.0.10",
     "gulp-concat": "^2.6.0",
-    "gulp-esformatter": "^4.0.0",
+    "gulp-esformatter": "^5.0.0",
     "gulp-header": "^1.2.2",
     "gulp-include": "^2.0.3",
     "gulp-jsdoc": "^0.1.4",
