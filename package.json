@@ -1,6 +1,6 @@
 {
   "name": "kairos",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "A non date-based time calculator",
   "license": "BSD",
   "repository": "kairos",
@@ -18,7 +18,8 @@
     "chronos",
     "calculator",
     "calc",
-    "clock"
+    "clock",
+    "math"
   ],
   "devDependencies": {
     "assert": "^1.3.0",
@@ -50,5 +51,8 @@
     "mocha": "^2.2.5",
     "phantomjs": "^1.9.18",
     "run-sequence": "^1.1.1"
+  },
+  "engines" : {
+    "node" : ">=4.0.0"
   }
 }

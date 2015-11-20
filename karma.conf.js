@@ -6,7 +6,7 @@ module.exports = function (config) {
     files: [
       'bower_components/mocha/mocha.css',
       'src/kairos.js',
-      'src/gnomon/Gnomon.js',
+      'src/engine/Gnomon.js',
       'bower_components/assert/assert.js',
       'bower_components/mocha/mocha.js',
       'test/browser/kairos.js',

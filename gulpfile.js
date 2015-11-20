@@ -10,7 +10,7 @@ const stylish = require('jshint-stylish');
 
 const mainFiles = [
   'src/kairos.js',
-  'src/gnomon/Gnomon.js'
+  'src/engine/Gnomon.js'
 ];
 
 gulp.task('init', () => {

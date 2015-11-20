@@ -1,7 +1,7 @@
 /**
  * Kairos.js - A non date-based time calculator
  * @author Rodrigo Gomes da Silva <rodrigo.smscom@gmail.com>
- * @version v0.7.1
+ * @version v0.7.2
  * @link https://github.com/kairos
  * @license BSD
  */
@@ -303,6 +303,11 @@
       this.milliseconds = expression;
 
     } else if (typeof expression === 'string' && expression.length > 0) {
+      
+      var regex = /^[+-]?\d+(?::?\d{1,2}(?::\d{1,2}(?::\d{1,3})?)?)?$/;
+      if (!regex.test(expression)) {
+        throw new Error('Invalid time expression');
+      }
 
       var timeSteps = expression.split(':');
       var positive = expression.slice(0, 1)[0] !== '-';
@@ -310,26 +315,20 @@
       for (var i = 0, len = timeSteps.length; i < len; i++) {
         var timeStep = timeSteps[i];
 
-        if (!isNaN(timeStep)) {
-          timeStep = Math.abs(timeStep);
-          switch (i) {
-            case 0:
-              this.milliseconds = _parse(this, MILLIS.HOUR, timeStep);
-              break;
-            case 1:
-              this.milliseconds = _parse(this, MILLIS.MINUTE, timeStep);
-              break;
-            case 2:
-              this.milliseconds = _parse(this, MILLIS.SECOND, timeStep);
-              break;
-            case 3:
-              this.milliseconds = _parse(this, 1, timeStep);
-              break;
-            default:
-              throw new Error('Invalid time expression');
-          }
-        } else {
-          throw new Error('Time step is not a number');
+        timeStep = Math.abs(timeStep);
+        switch (i) {
+          case 0:
+            this.milliseconds = _parse(this, MILLIS.HOUR, timeStep);
+            break;
+          case 1:
+            this.milliseconds = _parse(this, MILLIS.MINUTE, timeStep);
+            break;
+          case 2:
+            this.milliseconds = _parse(this, MILLIS.SECOND, timeStep);
+            break;
+          case 3:
+            this.milliseconds = _parse(this, 1, timeStep);
+            break;
         }
       }
       if (!positive) {
