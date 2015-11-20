@@ -1,7 +1,7 @@
 /**
  * Kairos.js - A non date-based time calculator
  * @author Rodrigo Gomes da Silva <rodrigo.smscom@gmail.com>
- * @version v0.7.3
+ * @version v0.8.0
  * @link https://github.com/kairos
  * @license BSD
  */
@@ -40,12 +40,25 @@
   };
 
   /**
+   * Validates if the given expression is valid.
+   * 
+   * @memberof module:Kairos
+   * @method validateExpression
+   * @param {String|Number} expression Time expression
+   * @returns {Boolean}
+   */
+  Kairos.validateExpression = function (expression) {
+    return Kairos.Gnomon.validateExpression(expression);
+  };
+
+  /**
    * Sums augend time with addend time
    *
    * @memberof module:Kairos
    * @method plus
    * @param {String|Number} augend Augend time expression
    * @param {String|Number} addend Addend time expression
+   * @returns {String}
    */
   Kairos.plus = function (augend, addend) {
     var a = new Kairos.Gnomon(augend);
@@ -304,8 +317,7 @@
 
     } else if (typeof expression === 'string' && expression.length > 0) {
       
-      var regex = /^[+-]?\d+(?::?\d{1,2}(?::\d{1,2}(?::\d{1,3})?)?)?$/;
-      if (!regex.test(expression)) {
+      if (!Kairos.Gnomon.validateExpression(expression)) {
         throw new Error('Invalid time expression');
       }
 
@@ -334,7 +346,6 @@
       if (!positive) {
         this.milliseconds = -Math.abs(this.milliseconds);
       }
-
     }
   };
 
@@ -607,5 +618,17 @@
     if (this.milliseconds > another.toMilliseconds()) {
       return 1;
     }
+  };
+  
+  /**
+   * Validates if the given expression is valid.
+   * 
+   * @param {String|Number} expression Time expression
+   * @returns {Boolean}
+   * @static
+   */
+  Kairos.Gnomon.validateExpression = function (expression) {
+    var regex = /^[+-]?\d+(?::?\d{1,2}(?::\d{1,2}(?::\d{1,3})?)?)?$/;
+    return regex.test(expression);
   };
 }());

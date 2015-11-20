@@ -33,12 +33,25 @@
   };
 
   /**
+   * Validates if the given expression is valid.
+   * 
+   * @memberof module:Kairos
+   * @method validateExpression
+   * @param {String|Number} expression Time expression
+   * @returns {Boolean}
+   */
+  Kairos.validateExpression = function (expression) {
+    return Kairos.Gnomon.validateExpression(expression);
+  };
+
+  /**
    * Sums augend time with addend time
    *
    * @memberof module:Kairos
    * @method plus
    * @param {String|Number} augend Augend time expression
    * @param {String|Number} addend Addend time expression
+   * @returns {String}
    */
   Kairos.plus = function (augend, addend) {
     var a = new Kairos.Gnomon(augend);

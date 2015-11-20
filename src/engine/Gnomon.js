@@ -24,8 +24,7 @@
 
     } else if (typeof expression === 'string' && expression.length > 0) {
       
-      var regex = /^[+-]?\d+(?::?\d{1,2}(?::\d{1,2}(?::\d{1,3})?)?)?$/;
-      if (!regex.test(expression)) {
+      if (!Kairos.Gnomon.validateExpression(expression)) {
         throw new Error('Invalid time expression');
       }
 
@@ -54,7 +53,6 @@
       if (!positive) {
         this.milliseconds = -Math.abs(this.milliseconds);
       }
-
     }
   };
 
@@ -327,5 +325,17 @@
     if (this.milliseconds > another.toMilliseconds()) {
       return 1;
     }
+  };
+  
+  /**
+   * Validates if the given expression is valid.
+   * 
+   * @param {String|Number} expression Time expression
+   * @returns {Boolean}
+   * @static
+   */
+  Kairos.Gnomon.validateExpression = function (expression) {
+    var regex = /^[+-]?\d+(?::?\d{1,2}(?::\d{1,2}(?::\d{1,3})?)?)?$/;
+    return regex.test(expression);
   };
 }());
