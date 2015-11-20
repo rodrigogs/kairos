@@ -256,7 +256,7 @@
 
   // Node.js
   if (typeof module === 'object' && module.exports) {
-    //=include /gnomon/Gnomon.js
+    //=include /engine/Gnomon.js
     module.exports = Kairos;
   }
   // AMD / RequireJS
