@@ -109,12 +109,13 @@ compare <span class="pl-k">=</span> Kairos.compare(<span class="pl-s"><span clas
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(min); <span class="pl-c">// 00:30</span>
 
 <span class="pl-k">var</span> max <span class="pl-k">=</span> Kairos.<span class="pl-c1">max</span>(<span class="pl-s"><span class="pl-pds">'</span>01:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>05:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>00:30<span class="pl-pds">'</span></span>);
-<span class="pl-en">console</span>.<span class="pl-c1">log</span>(max); <span class="pl-c">// 05:00</span></pre></div>
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(max); <span class="pl-c">// 05:00</span>
 
 <span class="pl-k">var</span> isValid <span class="pl-k">=</span> Kairos.validateExpression(<span class="pl-s"><span class="pl-pds">'</span>01:000<span class="pl-pds">'</span></span>);
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(isValid); <span class="pl-c">// false</span>
 isValid <span class="pl-k">=</span> Kairos.validateExpression(<span class="pl-s"><span class="pl-pds">'</span>01:00:00:000<span class="pl-pds">'</span></span>);
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(isValid); <span class="pl-c">// true</span>
+</pre></div>
 
 <h4>
 <a id="using-gnomon" class="anchor" href="#using-gnomon" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using Gnomon</h4>
@@ -137,12 +138,13 @@ time <span class="pl-k">=</span> time.plus(<span class="pl-k">new</span> <span c
 compare <span class="pl-k">=</span> time.comparteTo(<span class="pl-k">new</span> <span class="pl-en">Kairos.Gnomon</span>(<span class="pl-s"><span class="pl-pds">'</span>02:10:20<span class="pl-pds">'</span></span>));
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(compare); <span class="pl-c">// 0</span>
 compare <span class="pl-k">=</span> time.comparteTo(<span class="pl-k">new</span> <span class="pl-en">Kairos.Gnomon</span>(<span class="pl-s"><span class="pl-pds">'</span>01:00<span class="pl-pds">'</span></span>));
-<span class="pl-en">console</span>.<span class="pl-c1">log</span>(compare); <span class="pl-c">// 1</span></pre></div>
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(compare); <span class="pl-c">// 1</span>
 
 <span class="pl-k">var</span> isValid <span class="pl-k">=</span> Kairos.Gnomon.validateExpression(<span class="pl-s"><span class="pl-pds">'</span>01:000<span class="pl-pds">'</span></span>);
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(isValid); <span class="pl-c">// false</span>
 isValid <span class="pl-k">=</span> Kairos.Gnomon.validateExpression(<span class="pl-s"><span class="pl-pds">'</span>01:00:00:000<span class="pl-pds">'</span></span>);
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(isValid); <span class="pl-c">// true</span>
+</pre></div>
 
 <p><strong>Help and ideas are FREAKING welcome. Feel free to open issues, fork and contribute! ;)</strong></p>
       </section>
