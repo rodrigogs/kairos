@@ -98,11 +98,11 @@ time <span class="pl-k">=</span> Kairos.divide(<span class="pl-s"><span class="p
 <span class="pl-k">var</span> interval <span class="pl-k">=</span> Kairos.getInterval(<span class="pl-s"><span class="pl-pds">'</span>01:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>03:00<span class="pl-pds">'</span></span>);
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(interval); <span class="pl-c">// 02:00</span>
 
-<span class="pl-k">var</span> compare <span class="pl-k">=</span> Kairos.compareTo(<span class="pl-s"><span class="pl-pds">'</span>01:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>03:00<span class="pl-pds">'</span></span>);
+<span class="pl-k">var</span> compare <span class="pl-k">=</span> Kairos.compare(<span class="pl-s"><span class="pl-pds">'</span>01:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>03:00<span class="pl-pds">'</span></span>);
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(compare); <span class="pl-c">// -1</span>
-compare <span class="pl-k">=</span> Kairos.compareTo(<span class="pl-s"><span class="pl-pds">'</span>03:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>03:00<span class="pl-pds">'</span></span>);
+compare <span class="pl-k">=</span> Kairos.compare(<span class="pl-s"><span class="pl-pds">'</span>03:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>03:00<span class="pl-pds">'</span></span>);
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(compare); <span class="pl-c">// 0</span>
-compare <span class="pl-k">=</span> Kairos.compareTo(<span class="pl-s"><span class="pl-pds">'</span>03:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>01:00<span class="pl-pds">'</span></span>);
+compare <span class="pl-k">=</span> Kairos.compare(<span class="pl-s"><span class="pl-pds">'</span>03:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>01:00<span class="pl-pds">'</span></span>);
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(compare); <span class="pl-c">// 1</span>
 
 <span class="pl-k">var</span> min <span class="pl-k">=</span> Kairos.<span class="pl-c1">min</span>(<span class="pl-s"><span class="pl-pds">'</span>01:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>05:00<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>00:30<span class="pl-pds">'</span></span>);
@@ -133,6 +133,11 @@ compare <span class="pl-k">=</span> time.comparteTo(<span class="pl-k">new</span
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(compare); <span class="pl-c">// 0</span>
 compare <span class="pl-k">=</span> time.comparteTo(<span class="pl-k">new</span> <span class="pl-en">Kairos.Gnomon</span>(<span class="pl-s"><span class="pl-pds">'</span>01:00<span class="pl-pds">'</span></span>));
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(compare); <span class="pl-c">// 1</span></pre></div>
+
+<span class="pl-k">var</span> isValid <span class="pl-k">=</span> Kairos.validateExpression(<span class="pl-s"><span class="pl-pds">'</span>01:000<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(isValid); <span class="pl-c">// false</span>
+isValid <span class="pl-k">=</span> Kairos.validateExpression(<span class="pl-s"><span class="pl-pds">'</span>01:00:00:000<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(isValid); <span class="pl-c">// true</span>
 
 <p><strong>Help and ideas are FREAKING welcome. Feel free to open issues, fork and contribute! ;)</strong></p>
       </section>
