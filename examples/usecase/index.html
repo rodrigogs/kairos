@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        
+        <title>Kairos Usecase</title>
+        
+        <script src="../../build/kairos-debug.js"></script>
+        
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="jumbotron-narrow.css">
+    </head>
+    <body>
+        <div class="container">
+          <div class="header clearfix">
+            <h3 class="text-muted">Kairo Usecase</h3>
+          </div>
+    
+          <div class="row marketing">
+            
+            <div class="col-lg-6">
+              <div class="jumbotron">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="task-name" placeholder="Task Name">
+                  <div class="input-group-addon btn-success" style="cursor: pointer;" id="taks-start">Start <i class="glyphicon glyphicon-play"></i></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-lg-6">
+              <table class="table table-striped" id="tasks-table">
+                <thead>
+                  <tr>
+                    <th>Task</th>
+                    <th>Executed for</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th>Total</th>
+                    <th colspan="2" id="total-time">00:00</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            
+          </div>
+    
+          <footer class="footer">
+            <p><a href="https://github.com/rodrigogs/kairos">Kairos Repository</a></p>
+          </footer>
+    
+        </div> <!-- /container -->
+        
+        <script src="task.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>
