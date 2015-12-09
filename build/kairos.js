@@ -1,7 +1,7 @@
 /**
  * Kairos.js - A non date-based time calculator
  * @author Rodrigo Gomes da Silva <rodrigo.smscom@gmail.com>
- * @version v0.8.0
+ * @version v0.9.0
  * @link https://github.com/kairos
  * @license BSD
  */
@@ -48,9 +48,10 @@
    * @returns {Boolean}
    */
   Kairos.validateExpression = function (expression) {
-    return Kairos.Gnomon.validateExpression(expression);
+    var regex = /^[+-]?\d+(?::?\d{1,2}(?::\d{1,2}(?::\d{1,3})?)?)?$/;
+    return regex.test(expression);
   };
-
+  
   /**
    * Sums augend time with addend time
    *
@@ -112,7 +113,7 @@
     d.divide(divisor);
     return d.toExpression();
   };
-
+  
   /**
    * Returns a fraction of the current time
    * 
@@ -273,7 +274,7 @@
     
     return !!(max instanceof Kairos.Gnomon) ? max.toExpression() : new Kairos.Gnomon(max).toExpression();
   };
-
+  
   // Node.js
   if (typeof module === 'object' && module.exports) {
     //=include /engine/Gnomon.js
@@ -289,8 +290,12 @@
   else {
     root.Kairos = Kairos;
   }
+  
+  // Polyfill
+  Math.trunc = Math.trunc || function (x) {
+    return x < 0 ? Math.ceil(x) : Math.floor(x);
+  };
 }());
-
 (function () {
   'use strict';
 
@@ -317,7 +322,7 @@
 
     } else if (typeof expression === 'string' && expression.length > 0) {
       
-      if (!Kairos.Gnomon.validateExpression(expression)) {
+      if (!Kairos.validateExpression(expression)) {
         throw new Error('Invalid time expression');
       }
 
@@ -373,7 +378,7 @@
     }
     return instance.milliseconds + (time * millis);
   };
-
+  
   /**
    * @type {Number}
    * @default 0
@@ -394,7 +399,7 @@
    * @returns {*|Number}
    */
   Kairos.Gnomon.prototype.getHours = function () {
-    return parseInt(this.milliseconds / MILLIS.HOUR);
+    return Math.trunc(this.milliseconds / MILLIS.HOUR);
   };
 
   /**
@@ -410,7 +415,7 @@
    * @returns {*|Number}
    */
   Kairos.Gnomon.prototype.getMinutes = function () {
-    return parseInt(parseInt(this.milliseconds - (parseInt(this.toHours()) * MILLIS.HOUR)) / MILLIS.MINUTE);
+    return Math.trunc(Math.trunc(this.milliseconds - (Math.trunc(this.toHours()) * MILLIS.HOUR)) / MILLIS.MINUTE);
   };
 
   /**
@@ -426,7 +431,7 @@
    * @returns {*|Number}
    */
   Kairos.Gnomon.prototype.getSeconds = function () {
-    return parseInt(parseInt(this.milliseconds - (parseInt(this.toMinutes()) * MILLIS.MINUTE)) / MILLIS.SECOND);
+    return Math.trunc(Math.trunc(this.milliseconds - (Math.trunc(this.toMinutes()) * MILLIS.MINUTE)) / MILLIS.SECOND);
   };
 
   /**
@@ -442,7 +447,7 @@
    * @returns {Number|*}
    */
   Kairos.Gnomon.prototype.getMilliseconds = function () {
-    return parseInt(this.milliseconds - (parseInt(this.toSeconds()) * MILLIS.SECOND));
+    return Math.trunc(this.milliseconds - (Math.trunc(this.toSeconds()) * MILLIS.SECOND));
   };
 
   /**
@@ -548,17 +553,17 @@
   Kairos.Gnomon.prototype.toExpression = function () {
     var expression = '';
     // Hours
-    var hours = parseInt(Math.abs(this.getHours()));
+    var hours = Math.trunc(Math.abs(this.getHours()));
     expression += ((String(hours).length > 1) ? '' : '0') + hours + ':';
     // Minutes
-    expression += ('00' + parseInt(Math.abs(this.getMinutes()))).slice(-2);
+    expression += ('00' + Math.trunc(Math.abs(this.getMinutes()))).slice(-2);
     // Seconds
     if (this.getSeconds() !== 0 || this.getMilliseconds() !== 0) {
-      expression += ':' + ('00' + parseInt(Math.abs(this.getSeconds()))).slice(-2);
+      expression += ':' + ('00' + Math.trunc(Math.abs(this.getSeconds()))).slice(-2);
     }
     // Millis
     if (this.getMilliseconds() !== 0) {
-      expression += ':' + ('000' + parseInt(Math.abs(this.getMilliseconds()))).slice(-3);
+      expression += ':' + ('000' + Math.trunc(Math.abs(this.getMilliseconds()))).slice(-3);
     }
 
     if (this.milliseconds < 0) {
@@ -620,15 +625,8 @@
     }
   };
   
-  /**
-   * Validates if the given expression is valid.
-   * 
-   * @param {String|Number} expression Time expression
-   * @returns {Boolean}
-   * @static
-   */
-  Kairos.Gnomon.validateExpression = function (expression) {
-    var regex = /^[+-]?\d+(?::?\d{1,2}(?::\d{1,2}(?::\d{1,3})?)?)?$/;
-    return regex.test(expression);
+  // Polyfill
+  Math.trunc = Math.trunc || function (x) {
+    return x < 0 ? Math.ceil(x) : Math.floor(x);
   };
 }());

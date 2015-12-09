@@ -1,6 +1,6 @@
 {
   "name": "kairos",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "A non date-based time calculator",
   "homepage": "https://github.com/kairos",
   "repository": {
@@ -29,7 +29,7 @@
     "test"
   ],
   "devDependencies": {
-    "mocha": "~2.3.3",
+    "mocha": "~2.3.4",
     "assert": "~0.1.0"
   }
 }

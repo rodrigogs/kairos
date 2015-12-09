@@ -1,8 +1,7 @@
 language: node_js
 node_js:
   - 4.2.2
-  - 5.0.0
-  - 5.1.0
+  - 5.1.1
 addons:
   firefox: "latest"
 before_install:

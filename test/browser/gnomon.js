@@ -31,8 +31,26 @@ describe('Kairos.Gnomon', function () {
 
   it('should return an instance of Kairos.Gnomon', function (done) {
     assert.doesNotThrow(function () {
-      new Kairos.Gnomon('01:00:00');
-      new Kairos.Gnomon(123456);
+      var t1 = new Kairos.Gnomon('10:20:30:123');
+      var t2 = new Kairos.Gnomon(1);
+      
+      assert.equal(t1.getMilliseconds(), 123);
+      assert.equal(t1.getSeconds(), 30);
+      assert.equal(t1.getMinutes(), 20);
+      assert.equal(t1.getHours(), 10);
+      assert.equal(t1.toMilliseconds(), 37230123);
+      assert.equal(t1.toSeconds(), 37230.123);
+      assert.equal(t1.toMinutes(), 620.50205);
+      assert.equal(t1.toHours(), 10.341700833333332);
+      
+      assert.equal(t2.getMilliseconds(), 1);
+      assert.equal(t2.getSeconds(), 0);
+      assert.equal(t2.getMinutes(), 0);
+      assert.equal(t2.getHours(), 0);
+      assert.equal(t2.toMilliseconds(), 1);
+      assert.equal(t2.toSeconds(), 0.001);
+      assert.equal(t2.toMinutes(), 0.000016666666666666667);
+      assert.equal(t2.toHours(), 2.7777777777777776e-7);
     });
     done();
   });
@@ -240,16 +258,6 @@ describe('Kairos.Gnomon', function () {
     a.minus(new Kairos.Gnomon('139:00'));
     assert.equal(a.toExpression(), '01:00');
     
-    done();
-  });
-  
-  it('should invalidade the given expression', function (done) {
-    assert.equal(Kairos.Gnomon.validateExpression('10:000'), false);
-    done();
-  });
-  
-  it('should validade the given expression', function (done) {
-    assert.equal(Kairos.Gnomon.validateExpression('10:01:00:000'), true);
     done();
   });
 });

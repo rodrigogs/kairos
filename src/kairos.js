@@ -41,9 +41,10 @@
    * @returns {Boolean}
    */
   Kairos.validateExpression = function (expression) {
-    return Kairos.Gnomon.validateExpression(expression);
+    var regex = /^[+-]?\d+(?::?\d{1,2}(?::\d{1,2}(?::\d{1,3})?)?)?$/;
+    return regex.test(expression);
   };
-
+  
   /**
    * Sums augend time with addend time
    *
@@ -105,7 +106,7 @@
     d.divide(divisor);
     return d.toExpression();
   };
-
+  
   /**
    * Returns a fraction of the current time
    * 
@@ -266,7 +267,7 @@
     
     return !!(max instanceof Kairos.Gnomon) ? max.toExpression() : new Kairos.Gnomon(max).toExpression();
   };
-
+  
   // Node.js
   if (typeof module === 'object' && module.exports) {
     //=include /engine/Gnomon.js
@@ -282,4 +283,9 @@
   else {
     root.Kairos = Kairos;
   }
+  
+  // Polyfill
+  Math.trunc = Math.trunc || function (x) {
+    return x < 0 ? Math.ceil(x) : Math.floor(x);
+  };
 }());
