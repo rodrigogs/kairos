@@ -27,6 +27,7 @@ Now talking about the library, Kairos is being developed to be a non date-based 
 
 * **[Basic](http://rodrigogs.github.io/kairos/examples/basic/index.html):** *Basic example*
 * **[Calculator](http://rodrigogs.github.io/kairos/examples/calc/index.html):** *A calculator made with Kairos*
+* **[Usecase](http://rodrigogs.github.io/kairos/examples/usecase/index.html):** *A simple application with a possible Kairos usecase*
 
 ## Contributing
 
