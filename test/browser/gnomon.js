@@ -55,7 +55,7 @@ describe('Kairos.Gnomon', function () {
     done();
   });
 
-  it('should return and instance of Kairos.Gnomon with zero value', function (done) {
+  it('should return an instance of Kairos.Gnomon with zero value', function (done) {
     assert.equal(new Kairos.Gnomon().toMilliseconds(), 0);
     done();
   });
