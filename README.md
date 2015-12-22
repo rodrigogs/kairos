@@ -8,6 +8,8 @@
 [![npm version](https://badge.fury.io/js/kairos.svg)](https://badge.fury.io/js/kairos)
 [![Bower version](https://badge.fury.io/bo/kairos.svg)](https://badge.fury.io/bo/kairos)
 
+<a href='https://pledgie.com/campaigns/30844'><img alt='Click here to lend your support to: Kairos and make a donation at pledgie.com !' src='https://pledgie.com/campaigns/30844.png?skin_name=chrome' border='0' ></a>
+
 *Kairós(καιρός) is a greek word that means "the right moment". Also, in the greek mithology Kairós is the son of the personification of time itself, Chronos.*
 
 Now talking about the library, Kairos is being developed to be a non date-based time calculator. The aim is to use time expressions along with math expressions to have human time products, and also to have various representations of a time expression using the engine Gnomon(*references the first solar clock ever made*).
