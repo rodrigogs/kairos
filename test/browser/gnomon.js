@@ -294,9 +294,9 @@ describe('Kairos.Gnomon', function () {
   });
   
   it('should execute commands in sequence and output the correct result', function (done) {
-    var t = new Kairos.Gnomon('01:00').plus('02:00').divide(2).multiply(10);
+    var t = new Kairos.Gnomon('01:00').plus('02:00').minus('01:00').divide(2).multiply(10);
     assert.ok(t instanceof Kairos.Gnomon);
-    assert.equal(t.toExpression(), '15:00');
+    assert.equal(t.toExpression(), '10:00');
     done();
   });
 });
