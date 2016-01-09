@@ -98,13 +98,13 @@ gulp.task('test', done => {
   new Server({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
-  }, done).start();
+  }).start(done);
 });
 
 gulp.task('test-watch', done => {
   new Server({
     configFile: __dirname + '/karma.conf.js'
-  }, done).start();
+  }).start(done);
 });
 
 // Private helpers
@@ -117,7 +117,7 @@ const banner = () => {
     ' * @author <%= pkg.author.name %> <<%= pkg.author.email %>>',
     ' * @version v<%= pkg.version %>',
     ' * @link https://github.com/kairos',
-    ' * @license BSD',
+    ' * @license BSD-2-Clause',
     ' */',
     ''
   ].join('\n');

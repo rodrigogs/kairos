@@ -126,118 +126,150 @@ describe('Kairos.Gnomon', function () {
   });
 
   it('should add 900 milliseconds to the expression', function (done) {
-    gnomon.addMilliseconds(900);
+    var t = gnomon.addMilliseconds(900);
     assert.equal(gnomon.getMilliseconds(), 23);
     assert.equal(gnomon.getSeconds(), 31);
+    assert.ok(t instanceof Kairos.Gnomon);
+    assert.equal(t.getMilliseconds(), 23);
     done();
   });
 
   it('should add 31 seconds to the expression', function (done) {
-    gnomon.addSeconds(31);
+    var t = gnomon.addSeconds(31);
     assert.equal(gnomon.getMilliseconds(), 123);
     assert.equal(gnomon.getSeconds(), 1);
     assert.equal(gnomon.getMinutes(), 31);
+    assert.ok(t instanceof Kairos.Gnomon);
+    assert.equal(t.getSeconds(), 1);
     done();
   });
 
   it('should add 31 minutes to the expression', function (done) {
-    gnomon.addMinutes(31);
+    var t = gnomon.addMinutes(31);
     assert.equal(gnomon.getMilliseconds(), 123);
     assert.equal(gnomon.getSeconds(), 30);
     assert.equal(gnomon.getMinutes(), 1);
     assert.equal(gnomon.getHours(), 2);
+    assert.ok(t instanceof Kairos.Gnomon);
+    assert.equal(t.getMinutes(), 1);
     done();
   });
 
   it('should add 1.5 hours to the expression', function (done) {
-    gnomon.addHours(1.5);
+    var t = gnomon.addHours(1.5);
     assert.equal(gnomon.getMilliseconds(), 123);
     assert.equal(gnomon.getSeconds(), 30);
     assert.equal(gnomon.getMinutes(), 0);
     assert.equal(gnomon.getHours(), 3);
+    assert.ok(t instanceof Kairos.Gnomon);
+    assert.equal(t.getHours(), 3);
     done();
   });
 
   it('should remove 900 milliseconds to the expression', function (done) {
-    gnomon.removeMilliseconds(900);
+    var t = gnomon.removeMilliseconds(900);
     assert.equal(gnomon.getMilliseconds(), 223);
     assert.equal(gnomon.getSeconds(), 29);
+    assert.ok(t instanceof Kairos.Gnomon);
+    assert.equal(t.getMilliseconds(), 223);
     done();
   });
 
   it('should remove 31 seconds to the expression', function (done) {
-    gnomon.removeSeconds(31);
+    var t = gnomon.removeSeconds(31);
     assert.equal(gnomon.getMilliseconds(), 123);
     assert.equal(gnomon.getSeconds(), 59);
     assert.equal(gnomon.getMinutes(), 29);
+    assert.ok(t instanceof Kairos.Gnomon);
+    assert.equal(t.getSeconds(), 59);
     done();
   });
 
   it('should remove 31 minutes to the expression', function (done) {
-    gnomon.removeMinutes(31);
+    var t = gnomon.removeMinutes(31);
     assert.equal(gnomon.getMilliseconds(), 123);
     assert.equal(gnomon.getSeconds(), 30);
     assert.equal(gnomon.getMinutes(), 59);
     assert.equal(gnomon.getHours(), 0);
+    assert.ok(t instanceof Kairos.Gnomon);
+    assert.equal(t.getMinutes(), 59);
     done();
   });
 
   it('should remove 1.5 hours to the expression', function (done) {
-    gnomon.removeHours(1.5);
+    var t = gnomon.removeHours(1.5);
     assert.equal(gnomon.getMilliseconds(), 123);
     assert.equal(gnomon.getSeconds(), 30);
     assert.equal(gnomon.getMinutes(), 0);
     assert.equal(gnomon.getHours(), 0);
+    assert.ok(t instanceof Kairos.Gnomon);
+    assert.equal(t.getHours(), 0);
     done();
   });
 
   it('should set expression millisecons to 321', function (done) {
-    gnomon.setMilliseconds(321);
+    var t = gnomon.setMilliseconds(321);
     assert.equal(gnomon.getMilliseconds(), 321);
+    assert.ok(t instanceof Kairos.Gnomon);
+    assert.equal(t.getMilliseconds(), 321);
     done();
   });
 
   it('should set expression seconds to 45', function (done) {
-    gnomon.setSeconds(45);
+    var t = gnomon.setSeconds(45);
     assert.equal(gnomon.getSeconds(), 45);
+    assert.ok(t instanceof Kairos.Gnomon);
+    assert.equal(t.getSeconds(), 45);
     done();
   });
 
   it('should set expression minutes to 45', function (done) {
-    gnomon.setMinutes(45);
+    var t = gnomon.setMinutes(45);
     assert.equal(gnomon.getMinutes(), 45);
+    assert.ok(t instanceof Kairos.Gnomon);
+    assert.equal(t.getMinutes(), 45);
     done();
   });
 
   it('should set expression hours to 5', function (done) {
-    gnomon.setHours(5);
+    var t = gnomon.setHours(5);
     assert.equal(gnomon.getHours(), 5);
+    assert.ok(t instanceof Kairos.Gnomon);
+    assert.equal(t.getHours(), 5);
     done();
   });
 
   it('should sum two time expressions', function (done) {
     var addend = new Kairos.Gnomon('01:30:30:123');
-    gnomon.plus(addend);
+    var t = gnomon.plus(addend);
     assert.equal(gnomon.toExpression(), '03:01:00:246');
+    assert.ok(t instanceof Kairos.Gnomon);
+    assert.equal(t.toExpression(), '03:01:00:246');
     done();
   });
 
   it('should subtract two time expressions', function (done) {
     var substrahend = new Kairos.Gnomon('01:30:30:123');
-    gnomon.minus(substrahend);
+    var t = gnomon.minus(substrahend);
     assert.equal(gnomon.toExpression(), '00:00');
+    assert.ok(t instanceof Kairos.Gnomon);
+    assert.equal(t.toExpression(), '00:00');
     done();
   });
 
   it('should multiply the time expression by 2', function (done) {
-    gnomon.multiply(2);
+    var t = gnomon.multiply(2);
     assert.equal(gnomon.toExpression(), '03:01:00:246');
+    assert.ok(t instanceof Kairos.Gnomon);
+    assert.equal(t.toExpression(), '03:01:00:246');
     done();
   });
 
   it('should divide the time expression by 2', function (done) {
-    gnomon.divide(2);
+    var t = gnomon.divide(2);
     assert.equal(gnomon.toExpression(), '00:45:15:061');
+    assert.ok(t instanceof Kairos.Gnomon);
+    assert.equal(t.toExpression(), '00:45:15:061');
     done();
   });
   
@@ -258,6 +290,13 @@ describe('Kairos.Gnomon', function () {
     a.minus(new Kairos.Gnomon('139:00'));
     assert.equal(a.toExpression(), '01:00');
     
+    done();
+  });
+  
+  it('should execute commands in sequence and output the correct result', function (done) {
+    var t = new Kairos.Gnomon('01:00').plus('02:00').divide(2).multiply(10);
+    assert.ok(t instanceof Kairos.Gnomon);
+    assert.equal(t.toExpression(), '15:00');
     done();
   });
 });

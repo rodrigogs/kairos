@@ -1,8 +1,8 @@
 {
   "name": "kairos",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "A non date-based time calculator",
-  "license": "BSD",
+  "license": "BSD-2-Clause",
   "repository": "kairos",
   "author": {
     "name": "Rodrigo Gomes da Silva",
@@ -52,8 +52,5 @@
     "phantom": "^0.8.4",
     "phantomjs": "^1.9.19",
     "run-sequence": "^1.1.5"
-  },
-  "engines" : {
-    "node" : ">=5.1.1"
   }
 }

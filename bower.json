@@ -1,6 +1,6 @@
 {
   "name": "kairos",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "A non date-based time calculator",
   "homepage": "https://github.com/kairos",
   "repository": {
@@ -21,7 +21,7 @@
     "clock",
     "math"
   ],
-  "license": "BSD",
+  "license": "BSD-2-Clause",
   "ignore": [
     "**/.*",
     "node_modules",
