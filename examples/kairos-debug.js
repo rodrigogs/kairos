@@ -1,9 +1,9 @@
 /**
  * Kairos.js - A non date-based time calculator
  * @author Rodrigo Gomes da Silva <rodrigo.smscom@gmail.com>
- * @version v0.9.0
+ * @version v1.0.0
  * @link https://github.com/kairos
- * @license BSD
+ * @license BSD-2-Clause
  */
 /**
  * @module Kairos
@@ -246,7 +246,7 @@
       return ( previous.toMilliseconds() < current.toMilliseconds() ? previous : current );
     });
     
-    return !!(min instanceof Kairos.Gnomon) ? min.toExpression() : new Kairos.Gnomon(min).toExpression();
+    return (min instanceof Kairos.Gnomon) ? min.toExpression() : new Kairos.Gnomon(min).toExpression();
   };
   
   /**
@@ -272,7 +272,7 @@
       return ( previous.toMilliseconds() > current.toMilliseconds() ? previous : current );
     });
     
-    return !!(max instanceof Kairos.Gnomon) ? max.toExpression() : new Kairos.Gnomon(max).toExpression();
+    return (max instanceof Kairos.Gnomon) ? max.toExpression() : new Kairos.Gnomon(max).toExpression();
   };
   
   // Node.js
@@ -389,9 +389,11 @@
   /**
    *
    * @param {Number} hours
+   * @returns {Kairos.Gnomon} self
    */
   Kairos.Gnomon.prototype.setHours = function (hours) {
     this.milliseconds = _parse(this, MILLIS.HOUR, hours);
+    return this;
   };
 
   /**
@@ -405,9 +407,11 @@
   /**
    *
    * @param {Number} minutes
+   * @returns {Kairos.Gnomon} self
    */
   Kairos.Gnomon.prototype.setMinutes = function (minutes) {
     this.milliseconds = _parse(this, MILLIS.MINUTE, minutes);
+    return this;
   };
 
   /**
@@ -421,9 +425,11 @@
   /**
    *
    * @param {Number} seconds
+   * @returns {Kairos.Gnomon} self
    */
   Kairos.Gnomon.prototype.setSeconds = function (seconds) {
     this.milliseconds = _parse(this, MILLIS.SECOND, seconds);
+    return this;
   };
 
   /**
@@ -437,9 +443,11 @@
   /**
    *
    * @param {Number} milliseconds
+   * @returns {Kairos.Gnomon} self
    */
   Kairos.Gnomon.prototype.setMilliseconds = function (milliseconds) {
     this.milliseconds = _parse(this, 1, milliseconds);
+    return this;
   };
 
   /**
@@ -453,70 +461,86 @@
   /**
    *
    * @param {Number} hours
+   * @returns {Kairos.Gnomon} self
    */
   Kairos.Gnomon.prototype.addHours = function (hours) {
     this.milliseconds += (MILLIS.HOUR * hours);
+    return this;
   };
 
   /**
    *
    * @param {Number} minutes
+   * @returns {Kairos.Gnomon} self
    */
   Kairos.Gnomon.prototype.addMinutes = function (minutes) {
     this.milliseconds += (MILLIS.MINUTE * minutes);
+    return this;
   };
 
   /**
    *
    * @param {Number} seconds
+   * @returns {Kairos.Gnomon} self
    */
   Kairos.Gnomon.prototype.addSeconds = function (seconds) {
     this.milliseconds += (MILLIS.SECOND * seconds);
+    return this;
   };
 
   /**
    *
    * @param {Number} milliseconds
+   * @returns {Kairos.Gnomon} self
    */
   Kairos.Gnomon.prototype.addMilliseconds = function (milliseconds) {
     this.milliseconds += milliseconds;
+    return this;
   };
 
   /**
    *
    * @param {Number} hours
+   * @returns {Kairos.Gnomon} self
    */
   Kairos.Gnomon.prototype.removeHours = function (hours) {
     this.milliseconds -= (MILLIS.HOUR * hours);
+    return this;
   };
 
   /**
    *
    * @param {Number} minutes
+   * @returns {Kairos.Gnomon} self
    */
   Kairos.Gnomon.prototype.removeMinutes = function (minutes) {
     this.milliseconds -= (MILLIS.MINUTE * minutes);
+    return this;
   };
 
   /**
    *
    * @param {Number} seconds
+   * @returns {Kairos.Gnomon} self
    */
   Kairos.Gnomon.prototype.removeSeconds = function (seconds) {
     this.milliseconds -= (MILLIS.SECOND * seconds);
+    return this;
   };
 
   /**
    *
    * @param {Number} milliseconds
+   * @returns {Kairos.Gnomon} self
    */
   Kairos.Gnomon.prototype.removeMilliseconds = function (milliseconds) {
     this.milliseconds -= milliseconds;
+    return this;
   };
 
   /**
    *
-   * @returns {Number}
+   * @returns {Number} hours within the time expression
    */
   Kairos.Gnomon.prototype.toHours = function () {
     return (this.milliseconds / MILLIS.HOUR);
@@ -524,7 +548,7 @@
 
   /**
    *
-   * @returns {Number}
+   * @returns {Number} minutes within the time expression
    */
   Kairos.Gnomon.prototype.toMinutes = function () {
     return (this.milliseconds / MILLIS.MINUTE);
@@ -532,7 +556,7 @@
 
   /**
    *
-   * @returns {Number}
+   * @returns {Number} seconds within the time expression
    */
   Kairos.Gnomon.prototype.toSeconds = function () {
     return (this.milliseconds / MILLIS.SECOND);
@@ -540,7 +564,7 @@
 
   /**
    *
-   * @returns {Number}
+   * @returns {Number} milliseconds within the time expression
    */
   Kairos.Gnomon.prototype.toMilliseconds = function () {
     return this.milliseconds;
@@ -574,36 +598,50 @@
 
   /**
    *
-   * @param {Kairos.Gnomon} addend
+   * @param {Number|String|Kairos.Gnomon} addend
+   * @returns {Kairos.Gnomon} self
    */
   Kairos.Gnomon.prototype.plus = function (addend) {
+    if (!(addend instanceof Kairos.Gnomon)) {
+      addend = new Kairos.Gnomon(addend);
+    }
     this.milliseconds += addend.toMilliseconds();
+    return this;
   };
 
   /**
    *
-   * @param {Kairos.Gnomon} subtrahend
+   * @param {Number|String|Kairos.Gnomon} subtrahend
+   * @returns {Kairos.Gnomon} self
    */
   Kairos.Gnomon.prototype.minus = function (subtrahend) {
+    if (!(subtrahend instanceof Kairos.Gnomon)) {
+      subtrahend = new Kairos.Gnomon(subtrahend);
+    }
     this.milliseconds -= subtrahend.toMilliseconds();
+    return this;
   };
 
   /**
    *
    * @param {Number} multiplicand
+   * @returns {Kairos.Gnomon} self
    */
   Kairos.Gnomon.prototype.multiply = function (multiplicand) {
     this.milliseconds *= multiplicand;
+    return this;
   };
 
   /**
    *
    * @param {Number} dividend
+   * @returns {Kairos.Gnomon} self
    */
   Kairos.Gnomon.prototype.divide = function (dividend) {
     this.milliseconds /= dividend;
+    return this;
   };
-  
+
   /**
    * Compares with another instance.
    * Smaller  -1
@@ -623,10 +661,5 @@
     if (this.milliseconds > another.toMilliseconds()) {
       return 1;
     }
-  };
-  
-  // Polyfill
-  Math.trunc = Math.trunc || function (x) {
-    return x < 0 ? Math.ceil(x) : Math.floor(x);
   };
 }());
