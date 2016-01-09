@@ -3,9 +3,9 @@ engines:
     enabled: true
   duplication:
     enabled: true
-  checks:
-    Similar code:
-      enabled: false
+    checks:
+      Similar code:
+        enabled: false
 exclude_paths:
 - "build/*"
 - "test/**"
