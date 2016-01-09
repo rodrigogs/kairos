@@ -239,7 +239,7 @@
       return ( previous.toMilliseconds() < current.toMilliseconds() ? previous : current );
     });
     
-    return !!(min instanceof Kairos.Gnomon) ? min.toExpression() : new Kairos.Gnomon(min).toExpression();
+    return (min instanceof Kairos.Gnomon) ? min.toExpression() : new Kairos.Gnomon(min).toExpression();
   };
   
   /**
@@ -265,7 +265,7 @@
       return ( previous.toMilliseconds() > current.toMilliseconds() ? previous : current );
     });
     
-    return !!(max instanceof Kairos.Gnomon) ? max.toExpression() : new Kairos.Gnomon(max).toExpression();
+    return (max instanceof Kairos.Gnomon) ? max.toExpression() : new Kairos.Gnomon(max).toExpression();
   };
   
   // Node.js
