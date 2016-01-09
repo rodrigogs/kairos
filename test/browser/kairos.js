@@ -151,12 +151,12 @@ describe('Kairos', function () {
     done();
   });
   
-  it('should invalidade the given expression', function (done) {
+  it('should invalidate the given expression', function (done) {
     assert.equal(Kairos.validateExpression('10:000'), false);
     done();
   });
   
-  it('should validade the given expression', function (done) {
+  it('should validate the given expression', function (done) {
     assert.equal(Kairos.validateExpression('10:01:00:000'), true);
     done();
   });
