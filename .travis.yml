@@ -9,6 +9,8 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 install:
+  - npm install npm -g
+  - npm install jshint -g
   - npm install
   - gulp init
 script:
