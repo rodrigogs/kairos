@@ -304,9 +304,7 @@
    * @returns {Kairos.Gnomon} self
    */
   Kairos.Gnomon.prototype.plus = function (addend) {
-    if (!(addend instanceof Kairos.Gnomon)) {
-      addend = new Kairos.Gnomon(addend);
-    }
+    addend = (addend instanceof Kairos.Gnomon) ? addend : new Kairos.Gnomon(addend);
     this.milliseconds += addend.toMilliseconds();
     return this;
   };
@@ -317,9 +315,7 @@
    * @returns {Kairos.Gnomon} self
    */
   Kairos.Gnomon.prototype.minus = function (subtrahend) {
-    if (!(subtrahend instanceof Kairos.Gnomon)) {
-      subtrahend = new Kairos.Gnomon(subtrahend);
-    }
+    subtrahend = (subtrahend instanceof Kairos.Gnomon) ? subtrahend : new Kairos.Gnomon(subtrahend);
     this.milliseconds -= subtrahend.toMilliseconds();
     return this;
   };
@@ -350,10 +346,12 @@
    * Equals   0
    * Bigger   1
    * 
-   * @param {Kairos.Gnomon} another
+   * @param {String|Number|Kairos.Gnomon} another Expression to compare with
    * @returns {Number}
    */
   Kairos.Gnomon.prototype.compareTo = function (another) {
+    another = (another instanceof Kairos.Gnomon) ? another : new Kairos.Gnomon(another);
+
     if (this.milliseconds < another.toMilliseconds()) {
       return -1;
     }

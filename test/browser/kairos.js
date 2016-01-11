@@ -160,4 +160,15 @@ describe('Kairos', function () {
     assert.equal(Kairos.validateExpression('10:01:00:000'), true);
     done();
   });
+  
+  it('should create an instance of Kairos.Gnomon', function (done) {
+    var a = Kairos.with();
+    var b = Kairos.with('01:00');
+    var c = Kairos.with(123);
+
+    assert.ok(a instanceof Kairos.Gnomon);
+    assert.ok(b instanceof Kairos.Gnomon);
+    assert.ok(c instanceof Kairos.Gnomon);
+    done();
+  });
 });

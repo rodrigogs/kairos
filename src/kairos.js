@@ -44,7 +44,17 @@
     var regex = /^[+-]?\d+(?::?\d{1,2}(?::\d{1,2}(?::\d{1,3})?)?)?$/;
     return regex.test(expression);
   };
-  
+
+  /**
+   * Return a Kairos.Gnomon instance.
+   * 
+   * @param {String|Number} expression Time expression
+   * @returns {Kairos.Gnomon}
+   */
+  Kairos.with = function (expression) {
+    return new Kairos.Gnomon(expression);
+  };
+
   /**
    * Sums augend time with addend time
    *
@@ -55,10 +65,7 @@
    * @returns {String}
    */
   Kairos.plus = function (augend, addend) {
-    var a = new Kairos.Gnomon(augend);
-    var b = new Kairos.Gnomon(addend);
-    a.plus(b);
-    return a.toExpression();
+    return Kairos.with(augend).plus(addend).toExpression();
   };
 
   /**
@@ -71,10 +78,7 @@
    * @returns {String}
    */
   Kairos.minus = function (minuend, subtrahend) {
-    var a = new Kairos.Gnomon(minuend);
-    var b = new Kairos.Gnomon(subtrahend);
-    a.minus(b);
-    return a.toExpression();
+    return Kairos.with(minuend).minus(subtrahend).toExpression();
   };
 
   /**
@@ -87,9 +91,7 @@
    * @returns {String}
    */
   Kairos.multiply = function (multiplier, multiplicand) {
-    var m = new Kairos.Gnomon(multiplier);
-    m.multiply(multiplicand);
-    return m.toExpression();
+    return Kairos.with(multiplier).multiply(multiplicand).toExpression();
   };
 
   /**
@@ -102,11 +104,9 @@
    * @returns {String}
    */
   Kairos.divide = function (dividend, divisor) {
-    var d = new Kairos.Gnomon(dividend);
-    d.divide(divisor);
-    return d.toExpression();
+    return Kairos.with(dividend).divide(divisor).toExpression();
   };
-  
+
   /**
    * Returns a fraction of the current time
    * 
@@ -121,13 +121,9 @@
     if (numerator > denominator) {
       throw new Error('Improper fraction');
     }
-
-    var gnomon = new Kairos.Gnomon(time);
-    gnomon.multiply(numerator);
-    gnomon.divide(denominator);
-    return gnomon.toExpression();
+    return Kairos.with(time).multiply(numerator).divide(denominator).toExpression();
   };
-  
+
   /**
    * Returns a time expression representing the time between starting time and ending time
    * 
@@ -143,9 +139,7 @@
     if (st.compareTo(en) > 0) {
       throw new Error('Starting time must be bigger than ending time');
     }
-    
-    en.minus(st);
-    return en.toExpression();
+    return en.minus(st).toExpression();
   };
 
   /**
@@ -157,8 +151,7 @@
    * @returns {Number}
    */
   Kairos.toMilliseconds = function (expression) {
-    var gnomon = new Kairos.Gnomon(expression);
-    return gnomon.toMilliseconds();
+    return Kairos.with(expression).toMilliseconds();
   };
 
   /**
@@ -170,8 +163,7 @@
    * @returns {Number}
    */
   Kairos.toSeconds = function (expression) {
-    var gnomon = new Kairos.Gnomon(expression);
-    return gnomon.toSeconds();
+    return Kairos.with(expression).toSeconds();
   };
 
   /**
@@ -183,8 +175,7 @@
    * @returns {Number}
    */
   Kairos.toMinutes = function (expression) {
-    var gnomon = new Kairos.Gnomon(expression);
-    return gnomon.toMinutes();
+    return Kairos.with(expression).toMinutes();
   };
 
   /**
@@ -196,10 +187,9 @@
    * @returns {Number}
    */
   Kairos.toHours = function (expression) {
-    var gnomon = new Kairos.Gnomon(expression);
-    return gnomon.toHours();
+    return Kairos.with(expression).toHours();
   };
-  
+
   /**
    * Compares first time with second time and returns -1, 0 or 1 if first value
    * is smaller, equals or bigger than second value
@@ -211,11 +201,9 @@
    * @returns {Number}
    */
   Kairos.compare = function (time1, time2) {
-    var a = new Kairos.Gnomon(time1);
-    var b = new Kairos.Gnomon(time2);
-    return a.compareTo(b);
+    return Kairos.with(time1).compareTo(time2);
   };
-  
+
   /**
    * Returns the minimum value from the given values
    * 
@@ -228,7 +216,7 @@
     if (!(values instanceof Array)) {
       values = Array.prototype.slice.call(arguments);
     }
-    
+
     var min = values.reduce(function (previous, current) {
       if (!(previous instanceof Kairos.Gnomon)) {
         previous = new Kairos.Gnomon(previous ? previous : 0);
@@ -241,7 +229,7 @@
     
     return (min instanceof Kairos.Gnomon) ? min.toExpression() : new Kairos.Gnomon(min).toExpression();
   };
-  
+
   /**
    * Returns the maximum value from the given values
    * 
@@ -254,7 +242,7 @@
     if (!(values instanceof Array)) {
       values = Array.prototype.slice.call(arguments);
     }
-    
+
     var max = values.reduce(function (previous, current) {
       if (!(previous instanceof Kairos.Gnomon)) {
         previous = new Kairos.Gnomon(previous ? previous : 0);
@@ -264,10 +252,10 @@
       }
       return ( previous.toMilliseconds() > current.toMilliseconds() ? previous : current );
     });
-    
+
     return (max instanceof Kairos.Gnomon) ? max.toExpression() : new Kairos.Gnomon(max).toExpression();
   };
-  
+
   // Node.js
   if (typeof module === 'object' && module.exports) {
     //=include /engine/Gnomon.js
@@ -283,7 +271,7 @@
   else {
     root.Kairos = Kairos;
   }
-  
+
   // Polyfill
   Math.trunc = Math.trunc || function (x) {
     return x < 0 ? Math.ceil(x) : Math.floor(x);
