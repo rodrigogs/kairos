@@ -1,14 +1,6 @@
 languages:
   JavaScript: true
 engines:
-  duplication:
-    enabled: true
-    config:
-      languages:
-        - javascript
-    checks:
-      Similar code:
-        enabled: false
   csslint:
     enabled: true
   eslint:
