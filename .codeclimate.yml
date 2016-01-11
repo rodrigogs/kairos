@@ -8,7 +8,7 @@ engines:
   fixme:
     enabled: true
   duplication:
-   enabled: true
+    enabled: true
     config:
       languages:
       - javascript
