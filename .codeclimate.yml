@@ -1,18 +1,6 @@
 languages:
   JavaScript: true
-engines:
-  eslint:
-    enabled: true
-  duplication:
-    enabled: true
-    config:
-      languages:
-        - JavaScript
-    checks:
-      Similar code:
-        enabled: false
 exclude_paths:
 - "build/*"
 - "test/**"
 - "examples/**"
-- "gulpfile.js"
