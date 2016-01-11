@@ -115,6 +115,9 @@ compare <span class="pl-k">=</span> Kairos.compare(<span class="pl-s"><span clas
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(isValid); <span class="pl-c">// false</span>
 isValid <span class="pl-k">=</span> Kairos.validateExpression(<span class="pl-s"><span class="pl-pds">'</span>01:00:00:000<span class="pl-pds">'</span></span>);
 <span class="pl-en">console</span>.<span class="pl-c1">log</span>(isValid); <span class="pl-c">// true</span>
+
+time <span class="pl-k">=</span><span class="pl-smi"> Kairos</span>.<span class="pl-en">with</span>(<span class="pl-s"><span class="pl-pds">'</span>01:00<span class="pl-pds">'</span></span>).<span class="pl-en">plus</span>(<span class="pl-s"><span class="pl-pds">'</span>02:00<span class="pl-pds">'</span></span>).<span class="pl-en">divide</span>(<span class="pl-c1">3</span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-smi">time</span>.<span class="pl-en">toExpression</span>())<span class="pl-c"> // 01:00</span>
 </pre></div>
 
 <h4>
