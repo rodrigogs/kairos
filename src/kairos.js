@@ -47,7 +47,9 @@
 
   /**
    * Return a Kairos.Gnomon instance.
-   * 
+   *
+   * @memberof module:Kairos
+   * @method with
    * @param {String|Number} expression Time expression
    * @returns {Kairos.Gnomon}
    */
