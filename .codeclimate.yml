@@ -1,10 +1,4 @@
 engines:
-  csslint:
-    enabled: true
-  eslint:
-    enabled: true
-  fixme:
-    enabled: true
   duplication:
     enabled: true
     config:
@@ -13,6 +7,12 @@ engines:
     checks:
       Similar code:
         enabled: false
+  csslint:
+    enabled: true
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
 exclude_paths:
 - "build/*"
 - "test/**"
