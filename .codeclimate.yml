@@ -7,7 +7,18 @@ engines:
     enabled: true
   fixme:
     enabled: true
+  duplication:
+   enabled: true
+    config:
+      languages:
+      - javascript
+    checks:
+      Similar code:
+        enabled: false
 exclude_paths:
 - "build/*"
 - "test/**"
 - "examples/**"
+ratings:
+  paths:
+  - src/**
