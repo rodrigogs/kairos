@@ -88,8 +88,8 @@
     
     var _equals = function () {
       try {
-        var val1 = new Kairos.Gnomon(String(_val1));
-        var val2 = _doNotParse ? parseInt(_val2) : new Kairos.Gnomon(_val2);
+        var val1 = new Kairos.Engine(String(_val1));
+        var val2 = _doNotParse ? parseInt(_val2) : new Kairos.Engine(_val2);
         
         switch (_operator) {
             case '/':

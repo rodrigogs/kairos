@@ -6,11 +6,13 @@ module.exports = function (config) {
     files: [
       'bower_components/mocha/mocha.css',
       'src/kairos.js',
-      'src/engine/Gnomon.js',
+      'src/Lexicon.js',
+      'src/Engine.js',
       'bower_components/assert/assert.js',
       'bower_components/mocha/mocha.js',
       'test/browser/kairos.js',
-      'test/browser/gnomon.js',
+      'test/browser/lexicon.js',
+      'test/browser/engine.js',
       {
         pattern: 'test/browser/fixture/*',
         included: false,

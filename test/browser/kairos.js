@@ -14,7 +14,7 @@ describe('Kairos', function () {
 
   // Setup =====================================================================
 
-  var gnomon;
+  var engine;
 
   before(function (done) {
     done();
@@ -23,7 +23,7 @@ describe('Kairos', function () {
   // Tests =====================================================================
 
   beforeEach(function () {
-    gnomon = new Kairos.Gnomon('01:30:30:123');
+    engine = new Kairos.Engine('01:30:30:123');
   });
 
   afterEach(function () {
@@ -38,7 +38,7 @@ describe('Kairos', function () {
 
   it('should sum first time expression with second time expression', function (done) {
     var time = Kairos.plus('01:00', '01:30:35:100');
-    assert.equal(time, '02:30:35:100');
+    assert.equal(time.toString(), '02:30:35:100');
     done();
   });
 
@@ -71,17 +71,10 @@ describe('Kairos', function () {
   });
   
   it('should return a time expression representing the interval between starting time and ending time', function (done) {
-    assert.equal(Kairos.getInterval('01:00', '02:00'), '01:00');
+    assert.equal(Kairos.getInterval('01:00', '02:00').toString(), '01:00');
     done();
   });
   
-  it('should throw error when starting time is bigger than ending time', function (done) {
-    assert.throws(function () {
-      Kairos.getInterval('02:00', '01:00');
-    });
-    done();
-  });
-
   it('should return total milliseconds in the given time expression', function (done) {
     assert.equal(Kairos.toMilliseconds('01:30:35:100'), 5435100);
     done();
@@ -113,17 +106,17 @@ describe('Kairos', function () {
     assert.equal(Kairos.min(['01:00', '05:00', '00:30', '00:40']), '00:30');
     
     assert.equal(Kairos.min([
-      new Kairos.Gnomon('01:00'),
-      new Kairos.Gnomon('05:00'),
-      new Kairos.Gnomon('00:30'),
-      new Kairos.Gnomon('00:40')]), '00:30');
+      new Kairos.Engine('01:00'),
+      new Kairos.Engine('05:00'),
+      new Kairos.Engine('00:30'),
+      new Kairos.Engine('00:40')]), '00:30');
       
     assert.equal(Kairos.min('01:00', '05:00', '00:30', '00:40'), '00:30');
     
-    assert.equal(Kairos.min(new Kairos.Gnomon('01:00'),
-      new Kairos.Gnomon('05:00'),
-      new Kairos.Gnomon('00:30'),
-      new Kairos.Gnomon('00:40')), '00:30');
+    assert.equal(Kairos.min(new Kairos.Engine('01:00'),
+      new Kairos.Engine('05:00'),
+      new Kairos.Engine('00:30'),
+      new Kairos.Engine('00:40')), '00:30');
       
     assert.equal(Kairos.min('01:00'), '01:00');
     
@@ -134,17 +127,17 @@ describe('Kairos', function () {
     assert.equal(Kairos.max(['01:00', '05:00', '00:30', '00:40']), '05:00');
     
     assert.equal(Kairos.max([
-      new Kairos.Gnomon('01:00'),
-      new Kairos.Gnomon('05:00'),
-      new Kairos.Gnomon('00:30'),
-      new Kairos.Gnomon('00:40')]), '05:00');
+      new Kairos.Engine('01:00'),
+      new Kairos.Engine('05:00'),
+      new Kairos.Engine('00:30'),
+      new Kairos.Engine('00:40')]), '05:00');
       
     assert.equal(Kairos.max('01:00', '05:00', '00:30', '00:40'), '05:00');
     
-    assert.equal(Kairos.max(new Kairos.Gnomon('01:00'),
-      new Kairos.Gnomon('05:00'),
-      new Kairos.Gnomon('00:30'),
-      new Kairos.Gnomon('00:40')), '05:00');
+    assert.equal(Kairos.max(new Kairos.Engine('01:00'),
+      new Kairos.Engine('05:00'),
+      new Kairos.Engine('00:30'),
+      new Kairos.Engine('00:40')), '05:00');
       
     assert.equal(Kairos.max('01:00'), '01:00');
     
@@ -161,14 +154,14 @@ describe('Kairos', function () {
     done();
   });
   
-  it('should create an instance of Kairos.Gnomon', function (done) {
-    var a = Kairos.with();
-    var b = Kairos.with('01:00');
-    var c = Kairos.with(123);
+  it('should create an instance of Kairos.Engine', function (done) {
+    var a = Kairos.new();
+    var b = Kairos.new('01:00');
+    var c = Kairos.new(123);
 
-    assert.ok(a instanceof Kairos.Gnomon);
-    assert.ok(b instanceof Kairos.Gnomon);
-    assert.ok(c instanceof Kairos.Gnomon);
+    assert.ok(a instanceof Kairos.Engine);
+    assert.ok(b instanceof Kairos.Engine);
+    assert.ok(c instanceof Kairos.Engine);
     done();
   });
 });
