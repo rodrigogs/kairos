@@ -13,10 +13,7 @@
   'use strict';
 
   var Kairos = {};
-  Kairos._locales = {};
 
-  // Set default locale
-  Kairos._locale = Kairos._locales.en;
   // Set default pattern
   Kairos._pattern = '#hh:mm:ss.SSS';
   // Set default regex
@@ -46,30 +43,6 @@
   Kairos.noConflict = function () {
     root.Kairos = previous_Kairos;
     return Kairos;
-  };
-
-  /**
-   * Sets Kairos locale.
-   * 
-   * @param {String|Object} locale A locale from Kairos.locales or a compatible locale object
-   * @example Kairos.setLocale('en');
-   */
-  Kairos.setLocale = function (locale) {
-    if (typeof locale === 'string') {
-      return Kairos._locale = Kairos._locales[locale];
-    }
-    if (typeof locale === 'object') {
-      return Kairos._locale = locale;
-    }
-  };
-
-  /**
-   * Gets Kairos current locale.
-   * 
-   * @returns {String} Current locale
-   */
-  Kairos.getLocale = function () {
-    return Kairos._locale;
   };
 
   /**
@@ -302,11 +275,12 @@
    */
   Kairos.min = function (values, pattern) {
     if (!(values instanceof Array)) {
+      pattern = null;
       values = Array.prototype.slice.call(arguments);
     }
 
     var min = values.reduce(function (previous, current) {
-      return Kairos.new(previous, pattern).compareTo(current, pattern) < 0 ? previous : current;
+      return Kairos.compare(previous, current, pattern) < 0 ? previous : current;
     });
 
     return Kairos.new(min, pattern);
@@ -323,6 +297,7 @@
    */
   Kairos.max = function (values, pattern) {
     if (!(values instanceof Array)) {
+      pattern = null;
       values = Array.prototype.slice.call(arguments);
     }
 
@@ -335,8 +310,6 @@
 
   // Node.js
   if (typeof module === 'object' && module.exports) {
-    //=include /locales/en.js
-    //=include /locales/pt-BR.js
     //=include /Lexicon.js
     //=include /Engine.js
     module.exports = Kairos;
@@ -355,26 +328,6 @@
   // Polyfill
   Math.trunc = Math.trunc || function (x) {
     return x < 0 ? Math.ceil(x) : Math.floor(x);
-  };
-}());
-(function () {
-  'use strict';
-
-  Kairos.locales.en = {
-    HOURS: { singular: 'hour', plural: 'hours' },
-    MINUTES: { singular: 'minute', plural: 'minutes' },
-    SECONDS: { singular: 'second', plural: 'seconds' },
-    MILLISECONDS: { singular: 'millisecond', plural: 'milliseconds' }
-  };
-}());
-(function () {
-  'use strict';
-
-  Kairos.locales['pt-BR'] = {
-    HOURS: { singular: 'hora', plural: 'horas' },
-    MINUTES: { singular: 'minuto', plural: 'minutos' },
-    SECONDS: { singular: 'segundo', plural: 'segundos' },
-    MILLISECONDS: { singular: 'milissegundo', plural: 'milissegundos' }
   };
 }());
 /**
@@ -489,10 +442,10 @@
     }
 
     var result = Kairos.new()
-        .setHours(hours ? +hours : 0)
-        .setMinutes(minutes ? +minutes : 0)
-        .setSeconds(seconds ? +seconds : 0)
-        .setMilliseconds(milliseconds ? +milliseconds : 0);
+        .addHours(hours ? +hours : 0)
+        .addMinutes(minutes ? +minutes : 0)
+        .addSeconds(seconds ? +seconds : 0)
+        .addMilliseconds(milliseconds ? +milliseconds : 0);
 
     if (!sign) {
       result.milliseconds =- result.milliseconds;
@@ -590,7 +543,8 @@
     }
 
     if (typeof expression === 'number') {
-      return this.milliseconds = expression;
+      this.milliseconds = expression;
+      return this;
     }
 
     if (typeof expression === 'string' && expression.length > 0) {
@@ -951,5 +905,4 @@
   Kairos.Engine.prototype.toString = function (pattern) {
     return Kairos.Lexicon.format(this, pattern);
   };
-
 }());

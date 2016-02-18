@@ -110,10 +110,10 @@
     }
 
     var result = Kairos.new()
-        .setHours(hours ? +hours : 0)
-        .setMinutes(minutes ? +minutes : 0)
-        .setSeconds(seconds ? +seconds : 0)
-        .setMilliseconds(milliseconds ? +milliseconds : 0);
+        .addHours(hours ? +hours : 0)
+        .addMinutes(minutes ? +minutes : 0)
+        .addSeconds(seconds ? +seconds : 0)
+        .addMilliseconds(milliseconds ? +milliseconds : 0);
 
     if (!sign) {
       result.milliseconds =- result.milliseconds;

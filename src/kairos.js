@@ -268,11 +268,12 @@
    */
   Kairos.min = function (values, pattern) {
     if (!(values instanceof Array)) {
+      pattern = null;
       values = Array.prototype.slice.call(arguments);
     }
 
     var min = values.reduce(function (previous, current) {
-      return Kairos.new(previous, pattern).compareTo(current, pattern) < 0 ? previous : current;
+      return Kairos.compare(previous, current, pattern) < 0 ? previous : current;
     });
 
     return Kairos.new(min, pattern);
@@ -289,6 +290,7 @@
    */
   Kairos.max = function (values, pattern) {
     if (!(values instanceof Array)) {
+      pattern = null;
       values = Array.prototype.slice.call(arguments);
     }
 

@@ -23,7 +23,7 @@ describe('Kairos.Engine', function () {
   // Tests =====================================================================
 
   beforeEach(function () {
-    engine = new Kairos.Engine('01:30:30:123');
+    engine = new Kairos.Engine('01:30:30.123');
   });
 
   afterEach(function () {
