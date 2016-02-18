@@ -29,7 +29,7 @@
     "test"
   ],
   "devDependencies": {
-    "mocha": "~2.3.4",
+    "mocha": "~2.4.5",
     "assert": "~0.1.0"
   }
 }
