@@ -1,7 +1,7 @@
 /**
  * @module Kairos.Lexicon
  */
-;(function () {
+(function () {
 
   'use strict';
 

@@ -1,7 +1,7 @@
 /**
  * @module Kairos
  */
-;(function () {
+(function () {
 
   'use strict';
 
