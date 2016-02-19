@@ -10,7 +10,7 @@
   // Set default pattern
   Kairos._pattern = '#hh:mm:ss.SSS';
   // Set default regex
-  Kairos._validator = /^[+-]?\d\d:\d\d:\d\d\.\d\d\d/;
+  Kairos._validator = new RegExp(/^[+-]?\d\d:\d\d:\d\d\.\d\d\d/);
 
   // global on the server, window in the browser
   var previous_Kairos;
@@ -48,11 +48,11 @@
    * S -> milliseconds
    * 
    * @param {String} pattern The pattern to parse and format time expressions
-   * @example Kairos.setPattern('hh:mm:ss.fff');
+   * @example Kairos.setPattern('#hh:mm:ss.SSS');
    */
   Kairos.setPattern = function (pattern) {
-    Kairos._pattern = pattern;
     Kairos._validator = Kairos.Lexicon.getValidator(pattern);
+    Kairos._pattern = pattern;
   };
 
   /**

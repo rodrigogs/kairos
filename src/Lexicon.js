@@ -136,10 +136,10 @@
     }
 
     var sign = instance.milliseconds >= 0,
-        hours = String(instance.getHours()),
-        minutes = String(instance.getMinutes()),
-        seconds = String(instance.getSeconds()),
-        milliseconds = String(instance.getMilliseconds());
+        hours = String(Math.abs(instance.getHours())),
+        minutes = String(Math.abs(instance.getMinutes())),
+        seconds = String(Math.abs(instance.getSeconds())),
+        milliseconds = String(Math.abs(instance.getMilliseconds()));
 
     var result = '';
     for (var i = pattern.length - 1; i >= 0; i--) {

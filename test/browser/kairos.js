@@ -13,10 +13,10 @@ if (typeof require !== 'undefined') {
 describe('Kairos', function () {
 
   // Setup =====================================================================
-  
+
   var loadDefaults = function () {
     Kairos._pattern = '#hh:mm:ss.SSS';
-    Kairos._validator = /^[+-]?\d\d:\d\d:\d\d\.\d\d\d/;
+    Kairos._validator = new RegExp(/^[+-]?\d\d:\d\d:\d\d\.\d\d\d/);
   };
 
   // Tests =====================================================================
@@ -137,6 +137,8 @@ describe('Kairos', function () {
       new Kairos.Engine('00:40', 'hh:mm')]).toString(), '+00:30:00.000');
 
     assert.equal(Kairos.min('01:00:00.000', '05:00:00.000', '00:30:00.000', '00:40:00.000').toString('hh:mm'), '00:30');
+    
+    assert.equal(Kairos.min(100, 200, 300).toString('SSS'), '100');
 
     assert.equal(Kairos.min(new Kairos.Engine('01:00:00.000'),
       new Kairos.Engine('05:00:00.000'),
@@ -158,6 +160,8 @@ describe('Kairos', function () {
       new Kairos.Engine('00:40', 'hh:mm')]).toString(), '+05:00:00.000');
 
     assert.equal(Kairos.max('01:00:00.000', '05:00:00.000', '00:30:00.000', '00:40:00.000').toString('hh:mm'), '05:00');
+    
+    assert.equal(Kairos.max(100, 200, 300).toString('SSS'), '300');
 
     assert.equal(Kairos.max(new Kairos.Engine('01:00:00.000'),
       new Kairos.Engine('05:00:00.000'),
@@ -183,6 +187,15 @@ describe('Kairos', function () {
     assert.throws(function () {
       assert.Kairos.new('+01:00:00:000');
     }, Error);
+
+    done();
+  });
+
+  it('should return an instance with absolute value', function (done) {
+    assert.equal(Kairos.absolute('-10:30:00.000').toString(), '+10:30:00.000');
+    assert.equal(Kairos.absolute('-10:30', '#hh:mm').toString(), '+10:30:00.000');
+    assert.equal(Kairos.absolute(new Kairos.Engine('-10:30:00.000')), '+10:30:00.000');
+    assert.equal(Kairos.absolute(-500).toString(), '+00:00:00.500');
 
     done();
   });

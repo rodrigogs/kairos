@@ -8,7 +8,7 @@
 /**
  * @module Kairos
  */
-;(function () {
+(function () {
 
   'use strict';
 
@@ -17,7 +17,7 @@
   // Set default pattern
   Kairos._pattern = '#hh:mm:ss.SSS';
   // Set default regex
-  Kairos._validator = /^[+-]?\d\d:\d\d:\d\d\.\d\d\d/;
+  Kairos._validator = new RegExp(/^[+-]?\d\d:\d\d:\d\d\.\d\d\d/);
 
   // global on the server, window in the browser
   var previous_Kairos;
@@ -55,11 +55,11 @@
    * S -> milliseconds
    * 
    * @param {String} pattern The pattern to parse and format time expressions
-   * @example Kairos.setPattern('hh:mm:ss.fff');
+   * @example Kairos.setPattern('#hh:mm:ss.SSS');
    */
   Kairos.setPattern = function (pattern) {
-    Kairos._pattern = pattern;
     Kairos._validator = Kairos.Lexicon.getValidator(pattern);
+    Kairos._pattern = pattern;
   };
 
   /**
@@ -333,7 +333,7 @@
 /**
  * @module Kairos.Lexicon
  */
-;(function () {
+(function () {
 
   'use strict';
 
@@ -468,10 +468,10 @@
     }
 
     var sign = instance.milliseconds >= 0,
-        hours = String(instance.getHours()),
-        minutes = String(instance.getMinutes()),
-        seconds = String(instance.getSeconds()),
-        milliseconds = String(instance.getMilliseconds());
+        hours = String(Math.abs(instance.getHours())),
+        minutes = String(Math.abs(instance.getMinutes())),
+        seconds = String(Math.abs(instance.getSeconds())),
+        milliseconds = String(Math.abs(instance.getMilliseconds()));
 
     var result = '';
     for (var i = pattern.length - 1; i >= 0; i--) {
@@ -512,7 +512,7 @@
     return result;
   };
 }());
-;(function () {
+(function () {
 
   'use strict';
 

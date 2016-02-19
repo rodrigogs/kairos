@@ -14,6 +14,11 @@ describe('Kairos.Engine', function () {
 
   // Setup =====================================================================
 
+  var loadDefaults = function () {
+    Kairos._pattern = '#hh:mm:ss.SSS';
+    Kairos._validator = new RegExp(/^[+-]?\d\d:\d\d:\d\d\.\d\d\d/);
+  };
+
   var engine;
 
   before(function (done) {
@@ -22,8 +27,11 @@ describe('Kairos.Engine', function () {
 
   // Tests =====================================================================
 
-  beforeEach(function () {
+  beforeEach(function (done) {
+    loadDefaults();
     engine = new Kairos.Engine('01:30:30.123');
+
+    done();
   });
 
   afterEach(function () {
@@ -31,7 +39,7 @@ describe('Kairos.Engine', function () {
 
   it('should return an instance of Kairos.Engine', function (done) {
     assert.doesNotThrow(function () {
-      var t1 = new Kairos.Engine('10:20:30:123');
+      var t1 = new Kairos.Engine('10:20:30.123');
       var t2 = new Kairos.Engine(1);
       
       assert.equal(t1.getMilliseconds(), 123);
@@ -51,12 +59,25 @@ describe('Kairos.Engine', function () {
       assert.equal(t2.toSeconds(), 0.001);
       assert.equal(t2.toMinutes(), 0.000016666666666666667);
       assert.equal(t2.toHours(), 2.7777777777777776e-7);
+      
+      var time = new Kairos.Engine(new Kairos.Engine());
+      assert.equal(time.getMilliseconds(), 0);
+      
+      time = new Kairos.Engine('10:00', 'hh:mm');
+      assert.equal(time.toString('hh:mm'), '10:00');
+
+      Kairos.setPattern('hhh:mm:ss');
+
+      time = new Kairos.Engine('100:00:00');
+      assert.equal(time.toString(), '100:00:00');
     });
+
     done();
   });
 
   it('should return an instance of Kairos.Engine with zero value', function (done) {
     assert.equal(new Kairos.Engine().toMilliseconds(), 0);
+
     done();
   });
 
@@ -64,13 +85,7 @@ describe('Kairos.Engine', function () {
     assert.throws(function () {
       new Kairos.Engine('00:00:00:00:00');
     }, Error);
-    done();
-  });
 
-  it('should throw error when a expression time step is not a number', function (done) {
-    assert.throws(function () {
-      new Kairos.Engine('00:00:00:a0');
-    }, Error);
     done();
   });
 
@@ -115,13 +130,13 @@ describe('Kairos.Engine', function () {
   });
 
   it('should return the given expression', function (done) {
-    assert.equal(engine.toString(), '01:30:30:123');
+    assert.equal(engine.toString(), '+01:30:30.123');
     done();
   });
 
   it('should return the given negative expression', function (done) {
-    engine = new Kairos.Engine('-01:30:30:123');
-    assert.equal(engine.toString(), '-01:30:30:123');
+    engine = new Kairos.Engine('-01:30:30.123');
+    assert.equal(engine.toString(), '-01:30:30.123');
     done();
   });
 
@@ -240,40 +255,41 @@ describe('Kairos.Engine', function () {
   });
 
   it('should sum two time expressions', function (done) {
-    var addend = new Kairos.Engine('01:30:30:123');
+    var addend = new Kairos.Engine('01:30:30.123');
     var t = engine.plus(addend);
-    assert.equal(engine.toString(), '03:01:00:246');
+    assert.equal(engine.toString(), '+03:01:00.246');
     assert.ok(t instanceof Kairos.Engine);
-    assert.equal(t.toString(), '03:01:00:246');
+    assert.equal(t.toString(), '+03:01:00.246');
     done();
   });
 
   it('should subtract two time expressions', function (done) {
-    var substrahend = new Kairos.Engine('01:30:30:123');
+    var substrahend = new Kairos.Engine('01:30:30.123');
     var t = engine.minus(substrahend);
-    assert.equal(engine.toString(), '00:00');
+    assert.equal(engine.toString('hh:mm'), '00:00');
     assert.ok(t instanceof Kairos.Engine);
-    assert.equal(t.toString(), '00:00');
+    assert.equal(t.toString('hh:mm'), '00:00');
     done();
   });
 
   it('should multiply the time expression by 2', function (done) {
     var t = engine.multiply(2);
-    assert.equal(engine.toString(), '03:01:00:246');
+    assert.equal(engine.toString(), '+03:01:00.246');
     assert.ok(t instanceof Kairos.Engine);
-    assert.equal(t.toString(), '03:01:00:246');
+    assert.equal(t.toString(), '+03:01:00.246');
     done();
   });
 
   it('should divide the time expression by 2', function (done) {
     var t = engine.divide(2);
-    assert.equal(engine.toString(), '00:45:15:061');
+    assert.equal(engine.toString(), '+00:45:15.061');
     assert.ok(t instanceof Kairos.Engine);
-    assert.equal(t.toString(), '00:45:15:061');
+    assert.equal(t.toString(), '+00:45:15.061');
     done();
   });
   
   it('should compare first time with second time and return -1 for smaller, 0 for equals and 1 for bigger', function (done) {
+    Kairos.setPattern('hh:mm');
     engine = new Kairos.Engine('01:00');
     assert.equal(engine.compareTo(new Kairos.Engine('02:00')), -1);
     assert.equal(engine.compareTo(new Kairos.Engine('01:00')), 0);
@@ -282,18 +298,20 @@ describe('Kairos.Engine', function () {
   });
   
   it('should parse correctly expressions whith hours < 10 and > 99', function (done) {
+    Kairos.setPattern('hh:mm');
     var a = new Kairos.Engine('60:00');
     var b = new Kairos.Engine('80:00');
     a.plus(b);
-    assert.equal(a.toString(), '140:00');
-    
-    a.minus(new Kairos.Engine('139:00'));
+    assert.equal(a.toString('hhh:mm'), '140:00');
+
+    a.minus(new Kairos.Engine('139:00', 'hhh:mm'));
     assert.equal(a.toString(), '01:00');
     
     done();
   });
   
   it('should execute commands in sequence and output the correct result', function (done) {
+    Kairos.setPattern('hh:mm');
     var t = new Kairos.Engine('01:00').plus('02:00').minus('01:00').divide(2).multiply(10);
     assert.ok(t instanceof Kairos.Engine);
     assert.equal(t.toString(), '10:00');
