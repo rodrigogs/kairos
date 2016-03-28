@@ -4,7 +4,7 @@
         _operator,
         _doNotParse = false,
         _error;
-        
+
     var _sendNum = function () {
         var val = this.textContent;
         if (!_operator) {
@@ -88,8 +88,8 @@
     
     var _equals = function () {
       try {
-        var val1 = new Kairos.Gnomon(String(_val1));
-        var val2 = _doNotParse ? parseInt(_val2) : new Kairos.Gnomon(_val2);
+        var val1 = new Kairos.Engine(String(_val1));
+        var val2 = _doNotParse ? parseInt(_val2) : new Kairos.Engine(_val2);
         
         switch (_operator) {
             case '/':
@@ -105,8 +105,12 @@
                 val1.plus(val2);
                 break;
         }
-        
-        _val1 = val1.toExpression();
+
+        if (val1.toMilliseconds() >= 0) {
+            _val1 = val1.toString('hh:mm:ss.SSS', true);
+        } else {
+            _val1 = val1.toString(true);
+        }
         _val2 = '';
         _operator = null;
       } catch (err) {
@@ -123,6 +127,8 @@
     };
 
     var _init = function () {
+        Kairos.setAutoParser(true);
+
         var nums = document.getElementsByClassName('num');
         for (var i = 0, len = nums.length; i < len; i++) {
             var num = nums[i];
