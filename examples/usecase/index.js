@@ -36,7 +36,7 @@
         row.appendChild(taskCol);
 
         var updateInterval = setInterval(function () {
-            executedForCol.innerHTML = task.getTimeElapsed().toExpression();
+            executedForCol.innerHTML = task.getTimeElapsed().toString();
             _updateTotal();
         }, 1000);
         row.appendChild(executedForCol);
@@ -60,12 +60,13 @@
             g.plus(_tasks[i].getTimeElapsed());
         }
 
-        _totalTime.innerHTML = g.toExpression();
+        _totalTime.innerHTML = g.toString();
     };
 
     var _init = function () {
         _initSelectors();
         _initEventHandlers();
+        Kairos.setPattern('hh:mm:ss');
     };
 
     exports.init = _init;

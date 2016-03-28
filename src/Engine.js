@@ -15,7 +15,7 @@
    * Kairos time engine.
    *
    * @param {String|Number|Kairos.Engine} expression Literal time expression, milliseconds or a Kairos.Engine instance
-   * @pattern {String} [Kairos pattern] pattern Overrides Kairos pattern
+   * @pattern {String} [pattern] Overrides Kairos pattern
    * @example new Kairos.Engine('10:30', 'hh:mm');
    * @constructor
    */
@@ -34,6 +34,9 @@
     }
 
     if (typeof expression === 'string' && expression.length > 0) {
+      if (Kairos.getAutoParser()) {
+        pattern = Kairos.Lexicon.findPattern(expression);
+      }
       return new Kairos.Lexicon.parse(expression, pattern);
     }
 
@@ -311,7 +314,7 @@
    * Sums the given addend.
    * 
    * @param {Number|String|Kairos.Engine} addend
-   * @param {String} [Kairos pattern] pattern Overrides Kairos pattern
+   * @param {String} [pattern] Overrides Kairos pattern
    * @example new Kairos.Engine('01:00').minus('00:30');
    * @returns {Kairos.Engine} Self
    */
@@ -325,7 +328,7 @@
    * Subtracts the given subtrahend.
    *
    * @param {Number|String|Kairos.Engine} subtrahend
-   * @param {String} [Kairos pattern] pattern Overrides Kairos pattern
+   * @param {String} [pattern] Overrides Kairos pattern
    * @example new Kairos.Engine('01:00').minus('00:30');
    * @returns {Kairos.Engine} Self
    */
@@ -363,7 +366,7 @@
    * Compares with another instance.
    * 
    * @param {String|Number|Kairos.Engine} another Expression to compare with
-   * @param {String} [Kairos pattern] pattern Overrides Kairos pattern
+   * @param {String} [pattern] Overrides Kairos pattern
    * @example new Kairos.Engine('01:00').compareTo('00:30');
    * @returns {Number} Smaller -1 | Equals 0 | Bigger 1
    */
@@ -385,10 +388,15 @@
    * Returns a string representation of the object.
    * 
    * @param {String} pattern Pattern to format the time expression
+   * @param {Boolean} allowOverflow If true, when hour field is bigger than the pattern definition, it will be printed anyway
    * @example new Kairos.Engine('22:10').toString('hh:mm');
    * @returns {String} String representing the instance time
    */
-  Kairos.Engine.prototype.toString = function (pattern) {
-    return Kairos.Lexicon.format(this, pattern);
+  Kairos.Engine.prototype.toString = function (pattern, allowOverflow) {
+    if (typeof pattern === 'boolean') {
+      allowOverflow = pattern;
+      pattern = null;
+    }
+    return Kairos.Lexicon.format(this, pattern, allowOverflow);
   };
 }());

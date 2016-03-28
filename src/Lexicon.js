@@ -1,5 +1,5 @@
 /**
- * @module Kairos.Lexicon
+ * @module Lexicon
  */
 (function () {
 
@@ -18,7 +18,9 @@
   /**
    * Gets a regex from a pattern.
    * 
-   * @param {String} [Kairos pattern] pattern Pattern to convert
+   * @memberof module:Lexicon
+   * @method getValidator
+   * @param {String} [pattern] Pattern to convert
    * @example Kairos.Lexicon.getValidator('#hh:mm:ss.SSS');
    * @returns {RegExp}
    */
@@ -54,9 +56,11 @@
   /**
    * Validates if given expression matches the current pattern.
    * 
+   * @memberof module:Lexicon
+   * @method validate
    * @param {String} expression Time expression to be validated
-   * @param {String} [Kairos pattern] pattern Pattern to validate
-   * @example Kairos.Lexicon.validate('10:00:00.000', 'hh:mm:ss.fff');
+   * @param {String} [pattern] Pattern to validate
+   * @example Kairos.Lexicon.validate('10:00:00.000', 'hh:mm:ss.SSS');
    * @returns {Boolean} True if expression is valid, false if expression is invalid
    */
   Kairos.Lexicon.validate = function (expression, pattern) {
@@ -66,8 +70,10 @@
   /**
    * Parses given time expression to a Kairos.Engine instance.
    * 
+   * @memberof module:Lexicon
+   * @method parse
    * @param {String} expression Time expression to be parsed
-   * @param {String} [Kairos pattern] pattern Pattern to parse
+   * @param {String} [pattern] Pattern to parse
    * @example Kairos.Lexicon.parse('01:00:03', 'hh:mm:ss');
    * @returns {Kairos.Engine} Given expression parsed to Kairos.Engine
    */
@@ -125,12 +131,15 @@
   /**
    * Returns a formated string from an Kairos.Engine instance.
    * 
+   * @memberof module:Lexicon
+   * @method format
    * @param {Kairos.Engine} instance The instance to format
-   * @param {String} [Kairos pattern] pattern Pattern to format
+   * @param {String} [pattern] Pattern to format
+   * @param {Boolean} allowOverflow If true, when hour field is bigger than the pattern definition, it will be printed anyway
    * @example Kairos.Lexicon.format(Kairos.new('10:30'), 'mm:hh');
    * @returns {String} Formated time expression
    */
-  Kairos.Lexicon.format = function (instance, pattern) {
+  Kairos.Lexicon.format = function (instance, pattern, allowOverflow) {
     if (!pattern) {
       pattern = Kairos._pattern;
     }
@@ -141,7 +150,9 @@
         seconds = String(Math.abs(instance.getSeconds())),
         milliseconds = String(Math.abs(instance.getMilliseconds()));
 
-    var result = '';
+    var result = '',
+        hasOverflow = (hours.length > (pattern.match(/h/g) || []).length);
+
     for (var i = pattern.length - 1; i >= 0; i--) {
       var cur = pattern[i];
       switch (cur) {
@@ -149,6 +160,13 @@
           result = (sign ? '+' : '-') + result;
           break;
         case TOKENS.HOURS:
+          if (hasOverflow) {
+              if (allowOverflow) {
+                result = hours + result;
+                allowOverflow = false;
+              }
+              break;
+          }
           result = (hours.slice(-1) || '0') + result;
           if (hours.length > 0) {
             hours = hours.slice(0, hours.length - 1);
@@ -178,5 +196,52 @@
     }
 
     return result;
+  };
+
+  /**
+   * Tries to extract a pattern from the given expression.
+   * 
+   * @memberof module:Lexicon
+   * @method findPattern
+   * @param {String} expression Expression to be analysed
+   * @example Kairos.Lexicon.findPattern('01:05:30');
+   * @returns {String} Extracted pattern
+   */
+  Kairos.Lexicon.findPattern = function (expression) {
+    var pattern = '',
+        currentStep = TOKENS.HOURS;
+    for (var i = 0, len = expression.length; len > i; i++) {
+      var cur = expression[i];
+
+      if (['+', '-'].indexOf(cur) !== -1) {
+        pattern += TOKENS.SIGN;
+        continue;
+      }
+
+      if (!isNaN(cur)) {
+        pattern += currentStep || cur;
+        continue;
+      }
+
+      if (isNaN(cur)) {
+        pattern += cur;
+        switch (currentStep) {
+          case TOKENS.HOURS:
+            currentStep = TOKENS.MINUTES;
+            break;
+          case TOKENS.MINUTES:
+            currentStep = TOKENS.SECONDS;
+            break;
+          case TOKENS.SECONDS:
+            currentStep = TOKENS.MILLISECONDS;
+            break;
+          default:
+            currentStep = false;
+        }
+        continue;
+      }
+    }
+
+    return pattern;
   };
 }());

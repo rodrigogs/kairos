@@ -43,7 +43,7 @@
    */
   Task.prototype.getTimeElapsed = function () {
     var diff = ((this.finishedAt || new Date()).getTime() - this.startedAt.getTime());
-    var engine = new Kairos.Engine(diff);
+    var engine = Kairos.new(diff);
     engine.removeMilliseconds(engine.getMilliseconds());
     return engine;
   };

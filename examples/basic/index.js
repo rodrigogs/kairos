@@ -14,6 +14,8 @@ var dividend = document.getElementById('dividend');
 var divisor = document.getElementById('divisor');
 var divideResult = document.getElementById('divideResult');
 
+Kairos.setPattern('hh:mm');
+
 function plus() {
   plusResult.value = Kairos.plus(augend.value, addend.value);
 }

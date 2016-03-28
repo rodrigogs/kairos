@@ -39,6 +39,23 @@ describe('Kairos', function () {
     done();
   });
 
+  it('should set auto parser to true or false', function (done) {
+    Kairos.setAutoParser(true);
+    assert.equal(Kairos.getAutoParser(), true);
+
+    var time = Kairos.new('10:00');
+    assert.equal(time.toString(), '+10:00:00.000');
+
+    Kairos.setAutoParser(false);
+    assert.equal(Kairos.getAutoParser(), false);
+
+    assert.throws(function () {
+      Kairos.new('10:00');
+    }, Error);
+
+    done();
+  });
+
   it('should validate the expression with the given pattern or the current Kairos pattern', function (done) {
     assert.equal(Kairos.validate('22:30', 'hh:mm'), true);
     assert.equal(Kairos.validate('22:30', 'hh'), true);
