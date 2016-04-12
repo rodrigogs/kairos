@@ -12,7 +12,7 @@
 
 *Kairós(καιρός) is a greek word that means "the right moment". Also, in the greek mithology Kairós is the son of the personification of time itself, Chronos.*
 
-Now talking about the library, Kairos is being developed to be a non date-based time calculator. The aim is to use time expressions along with math expressions to have human time products, and also to have various representations of a time expression using the engine Gnomon(*references the first solar clock ever made*).
+This library is being developed to be a non date-based time calculator. The aim is to use time expressions along with math expressions to have human time products, and also to have various representations of a time expression.
 
 * [Documentation](http://rodrigogs.github.io/kairos)
 * [API](http://rodrigogs.github.io/kairos/docs)
