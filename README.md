@@ -7,6 +7,7 @@
 [![npm](https://img.shields.io/npm/dt/kairos.svg)](https://www.npmjs.com/package/kairos)
 [![npm version](https://badge.fury.io/js/kairos.svg)](https://badge.fury.io/js/kairos)
 [![Bower version](https://badge.fury.io/bo/kairos.svg)](https://badge.fury.io/bo/kairos)
+[![Inline docs](http://inch-ci.org/github/rodrigogs/kairos.svg?branch=master)](http://inch-ci.org/github/rodrigogs/kairos)
 
 <a href='https://pledgie.com/campaigns/30844'><img alt='Click here to lend your support to: Kairos and make a donation at pledgie.com !' src='https://pledgie.com/campaigns/30844.png?skin_name=chrome' border='0' ></a>
 
