@@ -16,7 +16,6 @@
 This library is being developed to be a non date-based time calculator. The aim is to use time expressions along with math expressions to have human time products, and also to have various representations of a time expression.
 
 * [Documentation](http://rodrigogs.github.io/kairos)
-* [API](http://rodrigogs.github.io/kairos/docs)
 
 ## Install
 

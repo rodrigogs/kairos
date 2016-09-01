@@ -63,9 +63,9 @@ gulp.task('clean', done => {
   });
 });
 
-gulp.task('docs', () => {
-  return gulp.src(['src/**/*.js', 'README.md'])
-    .pipe(plugins.jsdoc('docs'));
+gulp.task('docs', cb => {
+  gulp.src(['README.md', './src/**/*.js'], {read: false})
+    .pipe(plugins.jsdoc3(cb));
 });
 
 gulp.task('format', () => {
@@ -111,7 +111,7 @@ gulp.task('test-watch', done => {
 // Private helpers
 // ===============
 
-const banner = () => {
+function banner() {
   let stamp = [
     '/**',
     ' * Kairos.js - <%= pkg.description %>',

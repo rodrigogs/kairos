@@ -7,15 +7,15 @@
    */
   var MILLIS = {
     SECOND: 1000,
-    MINUTE: 60 * 1000,
-    HOUR: 60 * 60 * 1000
+    MINUTE: 60000,
+    HOUR: 3600000
   };
 
   /**
    * Kairos time engine.
    *
    * @param {String|Number|Kairos.Engine} expression Literal time expression, milliseconds or a Kairos.Engine instance
-   * @pattern {String} [pattern] Overrides Kairos pattern
+   * @param {String} [pattern] Overrides Kairos pattern
    * @example new Kairos.Engine('10:30', 'hh:mm');
    * @constructor
    */
@@ -44,7 +44,6 @@
   };
 
   /**
-   * @param {Kairos.Engine} instance
    * @param {Number} millis
    * @param {Number} time
    * @returns {Number}
@@ -67,7 +66,7 @@
     }
     return this.milliseconds + (time * millis);
   };
-  
+
   /**
    * @type {Number}
    * @default 0
@@ -77,7 +76,7 @@
 
   /**
    * Sets hours fraction in the current instance.
-   * 
+   *
    * @param {Number} hours Hours to set
    * @example new Kairos.Engine('01:00').setHours(1);
    * @returns {Kairos.Engine} Self
@@ -89,7 +88,7 @@
 
   /**
    * Gets hours fraction in the current instance.
-   * 
+   *
    * @example new Kairos.Engine('01:00').getHours();
    * @returns {Number} Hours fraction from the instance
    */
@@ -99,7 +98,7 @@
 
   /**
    * Sets minutes fraction in the current instance.
-   * 
+   *
    * @param {Number} minutes Minutes to set
    * @example new Kairos.Engine('01:00').setMinutes(30);
    * @returns {Kairos.Engine} Self
@@ -111,7 +110,7 @@
 
   /**
    * Gets minutes fraction in the current instance.
-   * 
+   *
    * @example new Kairos.Engine('01:00').getMinutes();
    * @returns {Number} Minutes fraction from the instance
    */
@@ -121,7 +120,7 @@
 
   /**
    * Sets seconds fraction in the current instance.
-   * 
+   *
    * @param {Number} seconds Seconds to set
    * @example new Kairos.Engine('01:00').setSeconds(30);
    * @returns {Kairos.Engine} Self
@@ -133,7 +132,7 @@
 
   /**
    * Gets seconds fraction in the current instance.
-   * 
+   *
    * @example new Kairos.Engine('01:00').getSeconds();
    * @returns {Number} Seconds fraction from the instance
    */
@@ -143,7 +142,7 @@
 
   /**
    * Sets milliseconds fraction in the current instance.
-   * 
+   *
    * @param {Number} milliseconds Milliseconds to set
    * @example new Kairos.Engine('01:00').setMilliseconds(200);
    * @returns {Kairos.Engine} Self
@@ -155,7 +154,7 @@
 
   /**
    * Gets milliseconds fraction in the current instance.
-   * 
+   *
    * @example new Kairos.Engine('01:00').getMilliseconds();
    * @returns {Number} Milliseconds fraction from the instance
    */
@@ -177,7 +176,7 @@
 
   /**
    * Adds minutes to the current instance.
-   * 
+   *
    * @param {Number} minutes Minutes to add
    * @example new Kairos.Engine('01:00').addMinutes(30);
    * @returns {Kairos.Engine} Self
@@ -189,7 +188,7 @@
 
   /**
    * Adds seconds in the current instance.
-   * 
+   *
    * @param {Number} seconds Seconds to add
    * @example new Kairos.Engine('01:00').addSeconds(30);
    * @returns {Kairos.Engine} Self
@@ -201,7 +200,7 @@
 
   /**
    * Adds milliseconds in the current instance.
-   * 
+   *
    * @param {Number} milliseconds Milliseconds to add
    * @example new Kairos.Engine('01:00').addMilliseconds(500);
    * @returns {Kairos.Engine} Self
@@ -213,7 +212,7 @@
 
   /**
    * Removes hours from the current instance.
-   * 
+   *
    * @param {Number} hours Hours to remove
    * @example new Kairos.Engine('01:00').removeHours(1);
    * @returns {Kairos.Engine} Self
@@ -225,7 +224,7 @@
 
   /**
    * Removes minutes from the current instance.
-   * 
+   *
    * @param {Number} minutes Minutes to remove
    * @example new Kairos.Engine('01:00').removeMinutes(30);
    * @returns {Kairos.Engine} Self
@@ -237,7 +236,7 @@
 
   /**
    * Removes seconds from the current instance.
-   * 
+   *
    * @param {Number} seconds Seconds to remove
    * @example new Kairos.Engine('01:00').removeSeconds(30);
    * @returns {Kairos.Engine} Self
@@ -249,7 +248,7 @@
 
   /**
    * Removes milliseconds from the current instance.
-   * 
+   *
    * @example new Kairos.Engine('01:00').removeMilliseconds(50);
    * @param {Number} milliseconds Milliseconds to remove
    * @returns {Kairos.Engine} Self
@@ -261,7 +260,7 @@
 
   /**
    * Returns total hours within the current instance.
-   * 
+   *
    * @example new Kairos.Engine('01:00').toHours();
    * @returns {Number} Hours within the current instance
    */
@@ -271,7 +270,7 @@
 
   /**
    * Returns total minutes within the current instance.
-   * 
+   *
    * @example new Kairos.Engine('01:00').toMinutes();
    * @returns {Number} Minutes within the current instance
    */
@@ -281,7 +280,7 @@
 
   /**
    * Returns total seconds within the current instance.
-   * 
+   *
    * @example new Kairos.Engine('01:00').toSeconds();
    * @returns {Number} Seconds within the current instance
    */
@@ -291,7 +290,7 @@
 
   /**
    * Returns total milliseconds within the current instance.
-   * 
+   *
    * @example new Kairos.Engine('01:00').toMilliseconds();
    * @returns {Number} Milliseconds within the current instance
    */
@@ -301,7 +300,7 @@
 
   /**
    * Makes the current instance's value absolute.
-   * 
+   *
    * @example new Kairos.Engine('01:00').toAbsolute();
    * @returns {Kairos.Engine} Self
    */
@@ -312,7 +311,7 @@
 
   /**
    * Sums the given addend.
-   * 
+   *
    * @param {Number|String|Kairos.Engine} addend
    * @param {String} [pattern] Overrides Kairos pattern
    * @example new Kairos.Engine('01:00').minus('00:30');
@@ -340,7 +339,7 @@
 
   /**
    * Multiply by the given multiplicand.
-   * 
+   *
    * @param {Number} multiplicand Multiplicand value
    * @example new Kairos.Engine('01:00').multiply(2);
    * @returns {Kairos.Engine} Self
@@ -352,7 +351,7 @@
 
   /**
    * Divies by the given dividend.
-   * 
+   *
    * @param {Number} divisor Divisor value
    * @example new Kairos.Engine('01:00').divide(2);
    * @returns {Kairos.Engine} Self
@@ -364,7 +363,7 @@
 
   /**
    * Compares with another instance.
-   * 
+   *
    * @param {String|Number|Kairos.Engine} another Expression to compare with
    * @param {String} [pattern] Overrides Kairos pattern
    * @example new Kairos.Engine('01:00').compareTo('00:30');
@@ -386,7 +385,7 @@
 
   /**
    * Returns a string representation of the object.
-   * 
+   *
    * @param {String} pattern Pattern to format the time expression
    * @param {Boolean} allowOverflow If true, when hour field is bigger than the pattern definition, it will be printed anyway
    * @example new Kairos.Engine('22:10').toString('hh:mm');
