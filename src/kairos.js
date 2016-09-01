@@ -28,7 +28,7 @@
 
   /**
    * Avoid conflict in case of another instance of Kairos is already in the scope.
-   * 
+   *
    * @memberof module:Kairos
    * @method noConflict
    * @returns {Object} Previous Kairos object
@@ -46,7 +46,7 @@
    * m -> minutes
    * s -> seconds
    * S -> milliseconds
-   * 
+   *
    * @memberof module:Kairos
    * @method setPattern
    * @param {String} pattern The pattern to parse and format time expressions
@@ -59,7 +59,7 @@
 
   /**
    * Gets current Kairos pattern.
-   * 
+   *
    * @memberof module:Kairos
    * @method getPattern
    * @returns {String} Current Kairos pattern
@@ -70,7 +70,7 @@
 
   /**
    * Sets Kairos configuration for auto parse feature.
-   * 
+   *
    * @memberof module:Kairos
    * @method setAutoParser
    * @param {Boolean} yN True to use or false to not use auto parser
@@ -82,7 +82,7 @@
 
   /**
    * Gets current Kairos configuration for auto parse feature.
-   * 
+   *
    * @memberof module:Kairos
    * @method getAutoParser
    * @returns {Boolean} True if auto parse is being used or false if not
@@ -93,7 +93,7 @@
 
   /**
    * Validates the give expression with the current or given pattern.
-   * 
+   *
    * @memberof module:Kairos
    * @method validate
    * @param {String} expression Time expression to validate
@@ -107,10 +107,10 @@
 
   /**
    * Returns a new Kairos.Engine instance.
-   * 
+   *
    * @memberof module:Kairos
    * @method new
-   * @param {String|Number|kairos.Engine} time Time expression to create an instance
+   * @param {String|Number|Kairos.Engine} time Time expression to create an instance
    * @param {String} [pattern] Overrides Kairos pattern
    * @returns {Kairos.Engine} Kairos.Engine instance from the given time
    */
@@ -120,10 +120,10 @@
 
   /**
    * Returns an instance of Kairos.Engine with absolute time.
-   * 
+   *
    * @memberof module:Kairos
    * @method absolute
-   * @param {String|Number|kairos.Engine} time Time expression to get its absolute value
+   * @param {String|Number|Kairos.Engine} time Time expression to get its absolute value
    * @param {String} [pattern] Overrides Kairos pattern
    * @returns {Kairos.Engine} Kairos.Engine instance with absolute value
    */
@@ -136,8 +136,8 @@
    *
    * @memberof module:Kairos
    * @method plus
-   * @param {String|Number|kairos.Engine} augend Augend time expression
-   * @param {String|Number|kairos.Engine} addend Addend time expression
+   * @param {String|Number|Kairos.Engine} augend Augend time expression
+   * @param {String|Number|Kairos.Engine} addend Addend time expression
    * @param {String} [pattern] Overrides Kairos pattern
    * @returns {Kairos.Engine} Kairos.Engine instance with the sum result
    */
@@ -147,11 +147,11 @@
 
   /**
    * Subtracts minuend time with subtrahend time.
-   * 
+   *
    * @memberof module:Kairos
    * @method minus
-   * @param {String|Number|kairos.Engine} minuend Minuend time expression
-   * @param {String|Number|kairos.Engine} subtrahend Literal time expression, milliseconds or a Kairos.Engine instance
+   * @param {String|Number|Kairos.Engine} minuend Minuend time expression
+   * @param {String|Number|Kairos.Engine} subtrahend Literal time expression, milliseconds or a Kairos.Engine instance
    * @param {String} [pattern] Overrides Kairos pattern
    * @returns {Kairos.Engine} Kairos.Engine instance with subtract result
    */
@@ -164,7 +164,7 @@
    *
    * @memberof module:Kairos
    * @method multiply
-   * @param {String|Number|kairos.Engine} multiplier Multiplier time expression
+   * @param {String|Number|Kairos.Engine} multiplier Multiplier time expression
    * @param {Number} multiplicand Multiplicand value
    * @param {String} [pattern] Overrides Kairos pattern
    * @returns {Kairos.Engine} Kairos.Engine instance with multiplication result
@@ -178,7 +178,7 @@
    *
    * @memberof module:Kairos
    * @method divide
-   * @param {String|Number|kairos.Engine} dividend Dividend time expression
+   * @param {String|Number|Kairos.Engine} dividend Dividend time expression
    * @param {Number} divisor Divisor value
    * @param {String} [pattern] Overrides Kairos pattern
    * @returns {Kairos.Engine} Kairos.Engine instance with division result
@@ -189,7 +189,7 @@
 
   /**
    * Returns a fraction of the current time.
-   * 
+   *
    * @memberof module:Kairos
    * @method getFraction
    * @param {String|Number|Kairos.Engine} time Time expression to extract a fraction
@@ -207,7 +207,7 @@
 
   /**
    * Returns a time expression representing the time between starting time and ending time.
-   * 
+   *
    * @memberof module:Kairos
    * @method getInterval
    * @param {String|Number|Kairos.Engine} time1 Literal time expression, milliseconds or a Kairos.Engine instance
@@ -274,7 +274,7 @@
   /**
    * Compares first time with second time and returns -1, 0 or 1 if first value
    * is smaller, equals or bigger than second value.
-   * 
+   *
    * @memberof module:Kairos
    * @method compare
    * @param {String|Number} comparand Time to compare with
@@ -288,7 +288,7 @@
 
   /**
    * Returns the minimum value from the given values.
-   * 
+   *
    * @memberof module:Kairos
    * @method min
    * @param {String[]|Number[]|Kairos.Engine[]} values Array with time expressions
@@ -310,7 +310,7 @@
 
   /**
    * Returns the maximum value from the given values.
-   * 
+   *
    * @memberof module:Kairos
    * @method max
    * @param {String[]|Number[]|Kairos.Engine[]} values Array with time expressions

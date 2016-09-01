@@ -17,7 +17,7 @@
 
   /**
    * Gets a regex from a pattern.
-   * 
+   *
    * @memberof module:Lexicon
    * @method getValidator
    * @param {String} [pattern] Pattern to convert
@@ -55,7 +55,7 @@
 
   /**
    * Validates if given expression matches the current pattern.
-   * 
+   *
    * @memberof module:Lexicon
    * @method validate
    * @param {String} expression Time expression to be validated
@@ -69,7 +69,7 @@
 
   /**
    * Parses given time expression to a Kairos.Engine instance.
-   * 
+   *
    * @memberof module:Lexicon
    * @method parse
    * @param {String} expression Time expression to be parsed
@@ -130,7 +130,7 @@
 
   /**
    * Returns a formated string from an Kairos.Engine instance.
-   * 
+   *
    * @memberof module:Lexicon
    * @method format
    * @param {Kairos.Engine} instance The instance to format
@@ -200,7 +200,7 @@
 
   /**
    * Tries to extract a pattern from the given expression.
-   * 
+   *
    * @memberof module:Lexicon
    * @method findPattern
    * @param {String} expression Expression to be analysed
@@ -238,7 +238,6 @@
           default:
             currentStep = false;
         }
-        continue;
       }
     }
 
