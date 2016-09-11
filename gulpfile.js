@@ -8,6 +8,8 @@ const runSequence = require('run-sequence');
 const del = require('del');
 const stylish = require('jshint-stylish');
 
+const jsdocConfig = require('./jsdoc-config.json');
+
 const mainFiles = [
   'src/kairos.js',
   'src/Lexicon.js',
@@ -65,7 +67,7 @@ gulp.task('clean', done => {
 
 gulp.task('docs', cb => {
   gulp.src(['README.md', './src/**/*.js'], {read: false})
-    .pipe(plugins.jsdoc3(cb));
+    .pipe(plugins.jsdoc3(jsdocConfig, cb));
 });
 
 gulp.task('format', () => {

@@ -1,0 +1,17 @@
+{
+  "opts": {
+    "destination": "./docs/gen"
+  },
+  "templates": {
+    "systemName": "Kairos",
+    "footer": "<span style=\"text-align: center; width: 100%; display: block;\"><a href=\"https://github.com/rodrigogs/kairos\">Github Repository</a></span>",
+    "copyright": "Kairos Copyright (c) 2015-2016 Rodrigo Gomes da Silva. All rights reserved.",
+    "includeDate": "false",
+    "navType": "vertical",
+    "theme": "cerulean",
+    "linenums": "false",
+    "collapseSymbols": "true",
+    "outputSourceFiles": "false",
+    "search": "true"
+  }
+}

@@ -4,6 +4,7 @@
 
   /**
    * @type {{SECOND: number, MINUTE: number, HOUR: number}}
+   * @ignore
    */
   var MILLIS = {
     SECOND: 1000,
@@ -17,6 +18,8 @@
    * @param {String|Number|Kairos.Engine} expression Literal time expression, milliseconds or a Kairos.Engine instance
    * @param {String} [pattern] Overrides Kairos pattern
    * @example new Kairos.Engine('10:30', 'hh:mm');
+   * @example new Kairos.Engine(1000);
+   * @example new kairos.Engine(previousInstance);
    * @constructor
    */
   Kairos.Engine = function (expression, pattern) {
@@ -78,7 +81,7 @@
    * Sets hours fraction in the current instance.
    *
    * @param {Number} hours Hours to set
-   * @example new Kairos.Engine('01:00').setHours(1);
+   * @example new Kairos.Engine('02:00').setHours(1);
    * @returns {Kairos.Engine} Self
    */
   Kairos.Engine.prototype.setHours = function (hours) {

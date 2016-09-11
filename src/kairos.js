@@ -41,11 +41,13 @@
   /**
    * Sets Kairos time expression pattern.
    * Pattern structure is the following:
-   * # -> sign
-   * h -> hours
-   * m -> minutes
-   * s -> seconds
-   * S -> milliseconds
+   * <ul>
+   *  <li># -> sign</li>
+   *  <li>h -> hours</li>
+   *  <li>m -> minutes</li>
+   *  <li>s -> seconds</li>
+   *  <li>S -> milliseconds</li>
+   * </ul>
    *
    * @memberof module:Kairos
    * @method setPattern
@@ -96,7 +98,7 @@
    *
    * @memberof module:Kairos
    * @method validate
-   * @param {String} expression Time expression to validate
+   * @param {String} expression Time expression, milliseconds or a Kairos.Engine instance to validate
    * @param {String} pattern Pattern to test the expression
    * @example Kairos.validate('10:30', 'hh:mm');
    * @returns {Boolean} True if valid, false if invalid
@@ -110,8 +112,9 @@
    *
    * @memberof module:Kairos
    * @method new
-   * @param {String|Number|Kairos.Engine} time Time expression to create an instance
+   * @param {String|Number|Kairos.Engine} time Time expression, milliseconds or a Kairos.Engine instance to create an instance
    * @param {String} [pattern] Overrides Kairos pattern
+   * @example Kairos.new('01:00', 'hh:mm');
    * @returns {Kairos.Engine} Kairos.Engine instance from the given time
    */
   Kairos.new = function (time, pattern) {
@@ -123,8 +126,9 @@
    *
    * @memberof module:Kairos
    * @method absolute
-   * @param {String|Number|Kairos.Engine} time Time expression to get its absolute value
+   * @param {String|Number|Kairos.Engine} time Time expression, milliseconds or a Kairos.Engine instance to get its absolute value
    * @param {String} [pattern] Overrides Kairos pattern
+   * @example Kairos.absolute('-01:00', '#hh:mm');
    * @returns {Kairos.Engine} Kairos.Engine instance with absolute value
    */
   Kairos.absolute = function (time, pattern) {
@@ -136,9 +140,12 @@
    *
    * @memberof module:Kairos
    * @method plus
-   * @param {String|Number|Kairos.Engine} augend Augend time expression
-   * @param {String|Number|Kairos.Engine} addend Addend time expression
+   * @param {String|Number|Kairos.Engine} augend Augend time expression, milliseconds or a Kairos.Engine instance
+   * @param {String|Number|Kairos.Engine} addend Addend time expression, milliseconds or a Kairos.Engine instance
    * @param {String} [pattern] Overrides Kairos pattern
+   * @example Kairos.plus(currentInstance, '01:00');
+   * @example Kairos.plus('01:00', '01:00', 'hh:mm');
+   * @example Kairos.plus('01:00', 1000);
    * @returns {Kairos.Engine} Kairos.Engine instance with the sum result
    */
   Kairos.plus = function (augend, addend, pattern) {
@@ -153,6 +160,9 @@
    * @param {String|Number|Kairos.Engine} minuend Minuend time expression
    * @param {String|Number|Kairos.Engine} subtrahend Literal time expression, milliseconds or a Kairos.Engine instance
    * @param {String} [pattern] Overrides Kairos pattern
+   * @example Kairos.minus(currentInstance, '01:00');
+   * @example Kairos.minus('02:00', '01:00', 'hh:mm');
+   * @example Kairos.minus('01:00', 1000);
    * @returns {Kairos.Engine} Kairos.Engine instance with subtract result
    */
   Kairos.minus = function (minuend, subtrahend, pattern) {
@@ -164,9 +174,12 @@
    *
    * @memberof module:Kairos
    * @method multiply
-   * @param {String|Number|Kairos.Engine} multiplier Multiplier time expression
+   * @param {String|Number|Kairos.Engine} multiplier Multiplier time expression, milliseconds or a Kairos.Engine instance
    * @param {Number} multiplicand Multiplicand value
    * @param {String} [pattern] Overrides Kairos pattern
+   * @example Kairos.multiply(currentInstance, 2);
+   * @example Kairos.multiply('02:00', 10, 'hh:mm');
+   * @example Kairos.multiply(300000, 5);
    * @returns {Kairos.Engine} Kairos.Engine instance with multiplication result
    */
   Kairos.multiply = function (multiplier, multiplicand, pattern) {
@@ -178,9 +191,12 @@
    *
    * @memberof module:Kairos
    * @method divide
-   * @param {String|Number|Kairos.Engine} dividend Dividend time expression
+   * @param {String|Number|Kairos.Engine} dividend Dividend time expression, milliseconds or a Kairos.Engine instance
    * @param {Number} divisor Divisor value
    * @param {String} [pattern] Overrides Kairos pattern
+   * @example Kairos.divide(currentInstance, 2);
+   * @example Kairos.divide('02:00', 10, 'hh:mm');
+   * @example Kairos.divide(300000, 5);
    * @returns {Kairos.Engine} Kairos.Engine instance with division result
    */
   Kairos.divide = function (dividend, divisor, pattern) {
@@ -192,10 +208,13 @@
    *
    * @memberof module:Kairos
    * @method getFraction
-   * @param {String|Number|Kairos.Engine} time Time expression to extract a fraction
+   * @param {String|Number|Kairos.Engine} time Time expression, milliseconds or a Kairos.Engine instance to extract a fraction
    * @param {Number} numerator Numerator value
    * @param {Number} denominator Denominator value
    * @param {String} [pattern] Overrides Kairos pattern
+   * @example Kairos.getFraction(currentInstance, 2, 3);
+   * @example Kairos.getFraction('02:00', 2, 3 'hh:mm');
+   * @example Kairos.getFraction(300000, 3, 4);
    * @returns {Kairos.Engine} Kairos.Engine instance with the fraction extracted
    */
   Kairos.getFraction = function (time, numerator, denominator, pattern) {
@@ -213,6 +232,9 @@
    * @param {String|Number|Kairos.Engine} time1 Literal time expression, milliseconds or a Kairos.Engine instance
    * @param {String|Number|Kairos.Engine} time2 Literal time expression, milliseconds or a Kairos.Engine instance
    * @param {String} [pattern] Overrides Kairos pattern
+   * @example Kairos.getInterval(instance, anotherInstance);
+   * @example Kairos.getInterval('02:00', '03:00', 'hh:mm');
+   * @example Kairos.getInterval(300000, 800000);
    * @returns {Kairos.Engine} Kairos.Engine instance with the interval between time1 and time2
    */
   Kairos.getInterval = function (time1, time2, pattern) {
@@ -226,6 +248,9 @@
    * @method toMilliseconds
    * @param {String|Number} time Literal time expression, milliseconds or a Kairos.Engine instance
    * @param {String} [pattern] Overrides Kairos pattern
+   * @example Kairos.toMilliseconds(instance);
+   * @example Kairos.toMilliseconds('02:00', 'hh:mm');
+   * @example Kairos.toMilliseconds(300000);
    * @returns {Number} Total milliseconds in the time expression
    */
   Kairos.toMilliseconds = function (time, pattern) {
@@ -239,6 +264,9 @@
    * @method toSeconds
    * @param {String|Number} time Literal time expression, milliseconds or a Kairos.Engine instance
    * @param {String} [pattern] Overrides Kairos pattern
+   * @example Kairos.toSeconds(instance);
+   * @example Kairos.toSeconds('02:00', 'hh:mm');
+   * @example Kairos.toSeconds(300000);
    * @returns {Number} Total seconds in the time expression
    */
   Kairos.toSeconds = function (time, pattern) {
@@ -252,6 +280,9 @@
    * @method toMinutes
    * @param {String|Number} time Literal time expression, milliseconds or a Kairos.Engine instance
    * @param {String} [pattern] Overrides Kairos pattern
+   * @example Kairos.toMinutes(instance);
+   * @example Kairos.toMinutes('02:00', 'hh:mm');
+   * @example Kairos.toMinutes(300000);
    * @returns {Number} Total minutes in the time expression
    */
   Kairos.toMinutes = function (time, pattern) {
@@ -265,6 +296,9 @@
    * @method toHours
    * @param {String|Number} time Literal time expression, milliseconds or a Kairos.Engine instance
    * @param {String} [pattern] Overrides Kairos pattern
+   * @example Kairos.toHours(instance);
+   * @example Kairos.toHours('02:00', 'hh:mm');
+   * @example Kairos.toHours(300000);
    * @returns {Number} Total hours in the time expression
    */
   Kairos.toHours = function (time, pattern) {
@@ -277,9 +311,12 @@
    *
    * @memberof module:Kairos
    * @method compare
-   * @param {String|Number} comparand Time to compare with
-   * @param {String|Number} comparator Time to be compared with
+   * @param {String|Number} comparand Literal time expression, milliseconds or a Kairos.Engine instance to compare with
+   * @param {String|Number} comparator Literal time expression, milliseconds or a Kairos.Engine instance to be compared with
    * @param {String} [pattern] Overrides Kairos pattern
+   * @example Kairos.compare(instance, anotherInstance);
+   * @example Kairos.compare('02:00', '03:00', 'hh:mm');
+   * @example Kairos.compare(300000, 10000);
    * @returns {Number} Smaller -1 | Equals 0 | Bigger 1
    */
   Kairos.compare = function (comparand, comparator, pattern) {
@@ -293,6 +330,9 @@
    * @method min
    * @param {String[]|Number[]|Kairos.Engine[]} values Array with time expressions
    * @param {String} [pattern] Overrides Kairos pattern
+   * @example Kairos.min(a, b, c, d);
+   * @example Kairos.min(['02:00', '03:00', '01:00', '10:00'], 'hh:mm');
+   * @example Kairos.min(300000, 10000);
    * @returns {Kairos.Engine} Kairos.Engine instance with the lowest value found in the list
    */
   Kairos.min = function (values, pattern) {
@@ -315,6 +355,9 @@
    * @method max
    * @param {String[]|Number[]|Kairos.Engine[]} values Array with time expressions
    * @param {String} [pattern] Overrides Kairos pattern
+   * @example Kairos.max(a, b, c, d);
+   * @example Kairos.max(['02:00', '03:00', '01:00', '10:00'], 'hh:mm');
+   * @example Kairos.max(300000, 10000);
    * @returns {String} Kairos.Engine instance with the greatest value found in the list
    */
   Kairos.max = function (values, pattern) {
