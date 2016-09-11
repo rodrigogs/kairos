@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Class: Engine</title>
+	<title>Kairos Class: Engine</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -20,7 +20,7 @@
 <div class="navbar navbar-default navbar-fixed-top ">
 <div class="container">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Documentation</a>
+		<a class="navbar-brand" href="index.html">Kairos</a>
 		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
@@ -45,16 +45,18 @@
 			</li>
 			
 		</ul>
-		<div class="col-sm-3 col-md-3">
-            <form class="navbar-form" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
+        
 	</div>
 
 </div>
@@ -97,7 +99,7 @@
 
     
     <div class="description">
-        <p>Kairos time engine.</p>
+        Kairos time engine.
     </div>
     
 
@@ -165,7 +167,7 @@
 
             
 
-            <td class="description last"><p>Literal time expression, milliseconds or a Kairos.Engine instance</p></td>
+            <td class="description last">Literal time expression, milliseconds or a Kairos.Engine instance</td>
         </tr>
 
     
@@ -199,7 +201,7 @@
 
             
 
-            <td class="description last"><p>Overrides Kairos pattern</p></td>
+            <td class="description last">Overrides Kairos pattern</td>
         </tr>
 
     
@@ -261,9 +263,13 @@
     
 
     
-        <h5>Example</h5>
+        <h5>Examples</h5>
         
     <pre class="sunlight-highlight-javascript">new Kairos.Engine(&#x27;10:30&#x27;, &#x27;hh:mm&#x27;);</pre>
+
+    <pre class="sunlight-highlight-javascript">new Kairos.Engine(1000);</pre>
+
+    <pre class="sunlight-highlight-javascript">new kairos.Engine(previousInstance);</pre>
 
 
     
@@ -289,7 +295,7 @@
             
 <hr>
 <dt class="name" id="milliseconds">
-    <h4><span class="type-signature">&lt;protected> </span>milliseconds<span class="type-signature"> :Number</span></h4>
+    <h4 id="milliseconds"><span class="type-signature">&lt;protected> </span>milliseconds<span class="type-signature"> :Number</span></h4>
 
     
 </dt>
@@ -377,7 +383,7 @@
 
     
     <div class="description">
-        <p>Adds hours to the current instance.</p>
+        Adds hours to the current instance.
     </div>
     
 
@@ -429,7 +435,7 @@
 
             
 
-            <td class="description last"><p>Hours to add</p></td>
+            <td class="description last">Hours to add</td>
         </tr>
 
     
@@ -493,7 +499,7 @@
     
             
 <div class="param-desc">
-    <p>Self</p>
+    Self
 </div>
 
 
@@ -535,7 +541,7 @@
 
     
     <div class="description">
-        <p>Adds milliseconds in the current instance.</p>
+        Adds milliseconds in the current instance.
     </div>
     
 
@@ -587,7 +593,7 @@
 
             
 
-            <td class="description last"><p>Milliseconds to add</p></td>
+            <td class="description last">Milliseconds to add</td>
         </tr>
 
     
@@ -651,7 +657,7 @@
     
             
 <div class="param-desc">
-    <p>Self</p>
+    Self
 </div>
 
 
@@ -693,7 +699,7 @@
 
     
     <div class="description">
-        <p>Adds minutes to the current instance.</p>
+        Adds minutes to the current instance.
     </div>
     
 
@@ -745,7 +751,7 @@
 
             
 
-            <td class="description last"><p>Minutes to add</p></td>
+            <td class="description last">Minutes to add</td>
         </tr>
 
     
@@ -809,7 +815,7 @@
     
             
 <div class="param-desc">
-    <p>Self</p>
+    Self
 </div>
 
 
@@ -851,7 +857,7 @@
 
     
     <div class="description">
-        <p>Adds seconds in the current instance.</p>
+        Adds seconds in the current instance.
     </div>
     
 
@@ -903,7 +909,7 @@
 
             
 
-            <td class="description last"><p>Seconds to add</p></td>
+            <td class="description last">Seconds to add</td>
         </tr>
 
     
@@ -967,7 +973,7 @@
     
             
 <div class="param-desc">
-    <p>Self</p>
+    Self
 </div>
 
 
@@ -1009,7 +1015,7 @@
 
     
     <div class="description">
-        <p>Compares with another instance.</p>
+        Compares with another instance.
     </div>
     
 
@@ -1077,7 +1083,7 @@
 
             
 
-            <td class="description last"><p>Expression to compare with</p></td>
+            <td class="description last">Expression to compare with</td>
         </tr>
 
     
@@ -1111,7 +1117,7 @@
 
             
 
-            <td class="description last"><p>Overrides Kairos pattern</p></td>
+            <td class="description last">Overrides Kairos pattern</td>
         </tr>
 
     
@@ -1175,7 +1181,7 @@
     
             
 <div class="param-desc">
-    <p>Smaller -1 | Equals 0 | Bigger 1</p>
+    Smaller -1 | Equals 0 | Bigger 1
 </div>
 
 
@@ -1217,7 +1223,7 @@
 
     
     <div class="description">
-        <p>Divies by the given dividend.</p>
+        Divies by the given dividend.
     </div>
     
 
@@ -1269,7 +1275,7 @@
 
             
 
-            <td class="description last"><p>Divisor value</p></td>
+            <td class="description last">Divisor value</td>
         </tr>
 
     
@@ -1333,7 +1339,7 @@
     
             
 <div class="param-desc">
-    <p>Self</p>
+    Self
 </div>
 
 
@@ -1375,7 +1381,7 @@
 
     
     <div class="description">
-        <p>Gets hours fraction in the current instance.</p>
+        Gets hours fraction in the current instance.
     </div>
     
 
@@ -1441,7 +1447,7 @@
     
             
 <div class="param-desc">
-    <p>Hours fraction from the instance</p>
+    Hours fraction from the instance
 </div>
 
 
@@ -1483,7 +1489,7 @@
 
     
     <div class="description">
-        <p>Gets milliseconds fraction in the current instance.</p>
+        Gets milliseconds fraction in the current instance.
     </div>
     
 
@@ -1549,7 +1555,7 @@
     
             
 <div class="param-desc">
-    <p>Milliseconds fraction from the instance</p>
+    Milliseconds fraction from the instance
 </div>
 
 
@@ -1591,7 +1597,7 @@
 
     
     <div class="description">
-        <p>Gets minutes fraction in the current instance.</p>
+        Gets minutes fraction in the current instance.
     </div>
     
 
@@ -1657,7 +1663,7 @@
     
             
 <div class="param-desc">
-    <p>Minutes fraction from the instance</p>
+    Minutes fraction from the instance
 </div>
 
 
@@ -1699,7 +1705,7 @@
 
     
     <div class="description">
-        <p>Gets seconds fraction in the current instance.</p>
+        Gets seconds fraction in the current instance.
     </div>
     
 
@@ -1765,7 +1771,7 @@
     
             
 <div class="param-desc">
-    <p>Seconds fraction from the instance</p>
+    Seconds fraction from the instance
 </div>
 
 
@@ -1807,7 +1813,7 @@
 
     
     <div class="description">
-        <p>Subtracts the given subtrahend.</p>
+        Subtracts the given subtrahend.
     </div>
     
 
@@ -1909,7 +1915,7 @@
 
             
 
-            <td class="description last"><p>Overrides Kairos pattern</p></td>
+            <td class="description last">Overrides Kairos pattern</td>
         </tr>
 
     
@@ -1973,7 +1979,7 @@
     
             
 <div class="param-desc">
-    <p>Self</p>
+    Self
 </div>
 
 
@@ -2015,7 +2021,7 @@
 
     
     <div class="description">
-        <p>Multiply by the given multiplicand.</p>
+        Multiply by the given multiplicand.
     </div>
     
 
@@ -2067,7 +2073,7 @@
 
             
 
-            <td class="description last"><p>Multiplicand value</p></td>
+            <td class="description last">Multiplicand value</td>
         </tr>
 
     
@@ -2131,7 +2137,7 @@
     
             
 <div class="param-desc">
-    <p>Self</p>
+    Self
 </div>
 
 
@@ -2173,7 +2179,7 @@
 
     
     <div class="description">
-        <p>Sums the given addend.</p>
+        Sums the given addend.
     </div>
     
 
@@ -2275,7 +2281,7 @@
 
             
 
-            <td class="description last"><p>Overrides Kairos pattern</p></td>
+            <td class="description last">Overrides Kairos pattern</td>
         </tr>
 
     
@@ -2339,7 +2345,7 @@
     
             
 <div class="param-desc">
-    <p>Self</p>
+    Self
 </div>
 
 
@@ -2381,7 +2387,7 @@
 
     
     <div class="description">
-        <p>Removes hours from the current instance.</p>
+        Removes hours from the current instance.
     </div>
     
 
@@ -2433,7 +2439,7 @@
 
             
 
-            <td class="description last"><p>Hours to remove</p></td>
+            <td class="description last">Hours to remove</td>
         </tr>
 
     
@@ -2497,7 +2503,7 @@
     
             
 <div class="param-desc">
-    <p>Self</p>
+    Self
 </div>
 
 
@@ -2539,7 +2545,7 @@
 
     
     <div class="description">
-        <p>Removes milliseconds from the current instance.</p>
+        Removes milliseconds from the current instance.
     </div>
     
 
@@ -2591,7 +2597,7 @@
 
             
 
-            <td class="description last"><p>Milliseconds to remove</p></td>
+            <td class="description last">Milliseconds to remove</td>
         </tr>
 
     
@@ -2655,7 +2661,7 @@
     
             
 <div class="param-desc">
-    <p>Self</p>
+    Self
 </div>
 
 
@@ -2697,7 +2703,7 @@
 
     
     <div class="description">
-        <p>Removes minutes from the current instance.</p>
+        Removes minutes from the current instance.
     </div>
     
 
@@ -2749,7 +2755,7 @@
 
             
 
-            <td class="description last"><p>Minutes to remove</p></td>
+            <td class="description last">Minutes to remove</td>
         </tr>
 
     
@@ -2813,7 +2819,7 @@
     
             
 <div class="param-desc">
-    <p>Self</p>
+    Self
 </div>
 
 
@@ -2855,7 +2861,7 @@
 
     
     <div class="description">
-        <p>Removes seconds from the current instance.</p>
+        Removes seconds from the current instance.
     </div>
     
 
@@ -2907,7 +2913,7 @@
 
             
 
-            <td class="description last"><p>Seconds to remove</p></td>
+            <td class="description last">Seconds to remove</td>
         </tr>
 
     
@@ -2971,7 +2977,7 @@
     
             
 <div class="param-desc">
-    <p>Self</p>
+    Self
 </div>
 
 
@@ -3013,7 +3019,7 @@
 
     
     <div class="description">
-        <p>Sets hours fraction in the current instance.</p>
+        Sets hours fraction in the current instance.
     </div>
     
 
@@ -3065,7 +3071,7 @@
 
             
 
-            <td class="description last"><p>Hours to set</p></td>
+            <td class="description last">Hours to set</td>
         </tr>
 
     
@@ -3129,7 +3135,7 @@
     
             
 <div class="param-desc">
-    <p>Self</p>
+    Self
 </div>
 
 
@@ -3153,7 +3159,7 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">new Kairos.Engine(&#x27;01:00&#x27;).setHours(1);</pre>
+    <pre class="sunlight-highlight-javascript">new Kairos.Engine(&#x27;02:00&#x27;).setHours(1);</pre>
 
 
     
@@ -3171,7 +3177,7 @@
 
     
     <div class="description">
-        <p>Sets milliseconds fraction in the current instance.</p>
+        Sets milliseconds fraction in the current instance.
     </div>
     
 
@@ -3223,7 +3229,7 @@
 
             
 
-            <td class="description last"><p>Milliseconds to set</p></td>
+            <td class="description last">Milliseconds to set</td>
         </tr>
 
     
@@ -3287,7 +3293,7 @@
     
             
 <div class="param-desc">
-    <p>Self</p>
+    Self
 </div>
 
 
@@ -3329,7 +3335,7 @@
 
     
     <div class="description">
-        <p>Sets minutes fraction in the current instance.</p>
+        Sets minutes fraction in the current instance.
     </div>
     
 
@@ -3381,7 +3387,7 @@
 
             
 
-            <td class="description last"><p>Minutes to set</p></td>
+            <td class="description last">Minutes to set</td>
         </tr>
 
     
@@ -3445,7 +3451,7 @@
     
             
 <div class="param-desc">
-    <p>Self</p>
+    Self
 </div>
 
 
@@ -3487,7 +3493,7 @@
 
     
     <div class="description">
-        <p>Sets seconds fraction in the current instance.</p>
+        Sets seconds fraction in the current instance.
     </div>
     
 
@@ -3539,7 +3545,7 @@
 
             
 
-            <td class="description last"><p>Seconds to set</p></td>
+            <td class="description last">Seconds to set</td>
         </tr>
 
     
@@ -3603,7 +3609,7 @@
     
             
 <div class="param-desc">
-    <p>Self</p>
+    Self
 </div>
 
 
@@ -3645,7 +3651,7 @@
 
     
     <div class="description">
-        <p>Makes the current instance's value absolute.</p>
+        Makes the current instance's value absolute.
     </div>
     
 
@@ -3711,7 +3717,7 @@
     
             
 <div class="param-desc">
-    <p>Self</p>
+    Self
 </div>
 
 
@@ -3753,7 +3759,7 @@
 
     
     <div class="description">
-        <p>Returns total hours within the current instance.</p>
+        Returns total hours within the current instance.
     </div>
     
 
@@ -3819,7 +3825,7 @@
     
             
 <div class="param-desc">
-    <p>Hours within the current instance</p>
+    Hours within the current instance
 </div>
 
 
@@ -3861,7 +3867,7 @@
 
     
     <div class="description">
-        <p>Returns total milliseconds within the current instance.</p>
+        Returns total milliseconds within the current instance.
     </div>
     
 
@@ -3927,7 +3933,7 @@
     
             
 <div class="param-desc">
-    <p>Milliseconds within the current instance</p>
+    Milliseconds within the current instance
 </div>
 
 
@@ -3969,7 +3975,7 @@
 
     
     <div class="description">
-        <p>Returns total minutes within the current instance.</p>
+        Returns total minutes within the current instance.
     </div>
     
 
@@ -4035,7 +4041,7 @@
     
             
 <div class="param-desc">
-    <p>Minutes within the current instance</p>
+    Minutes within the current instance
 </div>
 
 
@@ -4077,7 +4083,7 @@
 
     
     <div class="description">
-        <p>Returns total seconds within the current instance.</p>
+        Returns total seconds within the current instance.
     </div>
     
 
@@ -4143,7 +4149,7 @@
     
             
 <div class="param-desc">
-    <p>Seconds within the current instance</p>
+    Seconds within the current instance
 </div>
 
 
@@ -4185,7 +4191,7 @@
 
     
     <div class="description">
-        <p>Returns a string representation of the object.</p>
+        Returns a string representation of the object.
     </div>
     
 
@@ -4237,7 +4243,7 @@
 
             
 
-            <td class="description last"><p>Pattern to format the time expression</p></td>
+            <td class="description last">Pattern to format the time expression</td>
         </tr>
 
     
@@ -4261,7 +4267,7 @@
 
             
 
-            <td class="description last"><p>If true, when hour field is bigger than the pattern definition, it will be printed anyway</p></td>
+            <td class="description last">If true, when hour field is bigger than the pattern definition, it will be printed anyway</td>
         </tr>
 
     
@@ -4325,7 +4331,7 @@
     
             
 <div class="param-desc">
-    <p>String representing the instance time</p>
+    String representing the instance time
 </div>
 
 
@@ -4382,28 +4388,36 @@
 </div>
 </div>
 
-<div class="modal fade" id="searchResults">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Search results</h4>
-      </div>
-      <div class="modal-body"></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div>
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
 
 <footer>
 
+	<span style="text-align: center; width: 100%; display: block;"><a href="https://github.com/rodrigogs/kairos">Github Repository</a></span>
+
+
+	<span class="copyright">
+	Kairos Copyright (c) 2015-2016 Rodrigo Gomes da Silva. All rights reserved.
+	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.1</a>
 	
-		on September 1st 2016, 4:11:40 pm
+		on 2016-09-11T13:48:10-03:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
@@ -4411,7 +4425,9 @@
 
 <script src="scripts/docstrap.lib.js"></script>
 <script src="scripts/toc.js"></script>
-<script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
 
 <script>
 $( function () {
@@ -4421,7 +4437,7 @@ $( function () {
 		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
 	} );
 
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
 		var $this = $( this );
 
 		var example = $this.find( "code" );
@@ -4447,7 +4463,7 @@ $( function () {
 	} );
 
 	Sunlight.highlightAll( {
-		lineNumbers : true,
+		lineNumbers : false,
 		showMenu : true,
 		enableDoclinks : true
 	} );
@@ -4457,8 +4473,7 @@ $( function () {
 	} );
 	$( "#toc" ).toc( {
 		anchorName  : function ( i, heading, prefix ) {
-			var id = $( heading ).attr( "id" );
-			return id && id.replace(/\~/g, '-inner-').replace(/\./g, '-static-') || ( prefix + i );
+			return $( heading ).attr( "id" ) || ( prefix + i );
 		},
 		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
 		showAndHide : false,
@@ -4480,15 +4495,52 @@ $( function () {
 
 <!--Navigation and Symbol Display-->
 
+<script>
+	$( function () {
+		$( '#main' ).localScroll( {
+			offset : { top : 60 } //offset by the height of your header (give or take a few px, see what works for you)
+		} );
+		$( "dt.name" ).each( function () {
+			var $this = $( this ).find("h4");
+			var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
+			var dt = $(this);
+			var children = dt.next( "dd" );
+
+			dt.prepend( icon ).css( {cursor : "pointer"} );
+			dt.addClass( "member-collapsed" ).addClass( "member" );
+
+
+			children.hide();
+
+			dt.children().on( "click", function () {
+				children = dt.next( "dd" );
+				children.slideToggle( "fast", function () {
+
+					if ( children.is( ":visible" ) ) {
+						icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
+						dt.addClass( "member-open" ).animate( "member-collapsed" );
+					} else {
+						icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
+						dt.addClass( "member-collapsed" ).removeClass( "member-open" );
+					}
+				} );
+			} );
+
+		} );
+	} );
+</script>
+
 
 <!--Google Analytics-->
 
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		SearcherDisplay.init();
-	});
-</script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
 
 </body>
 </html>
