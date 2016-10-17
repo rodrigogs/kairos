@@ -367,7 +367,7 @@
     }
 
     var max = values.reduce(function (previous, current) {
-      return Kairos.new(previous, pattern).compareTo(current, pattern) > 0 ? previous : current;
+      return Kairos.compare(previous, current, pattern) > 0 ? previous : current;
     });
 
     return Kairos.new(max, pattern);
