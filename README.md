@@ -9,8 +9,6 @@
 [![Bower version](https://badge.fury.io/bo/kairos.svg)](https://badge.fury.io/bo/kairos)
 [![Inline docs](http://inch-ci.org/github/rodrigogs/kairos.svg?branch=master)](http://inch-ci.org/github/rodrigogs/kairos)
 
-<a href='https://pledgie.com/campaigns/30844'><img alt='Click here to lend your support to: Kairos and make a donation at pledgie.com !' src='https://pledgie.com/campaigns/30844.png?skin_name=chrome' border='0' ></a>
-
 *Kairós(καιρός) is a greek word that means "the right moment". Also, in the greek mithology Kairós is the son of the personification of time itself, Chronos.*
 
 This library is being developed to be a non date-based time calculator. The aim is to use time expressions along with math expressions to have human time products, and also to have various representations of a time expression.
