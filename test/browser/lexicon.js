@@ -11,7 +11,7 @@ if (typeof require !== 'undefined') {
 }
 
 describe('Kairos.Lexicon', function () {
-  
+
   // Setup =====================================================================
 
   var loadDefaults = function () {
@@ -76,13 +76,16 @@ describe('Kairos.Lexicon', function () {
     time = Kairos.Lexicon.format(Kairos.new('100:00:00.000'), null, true);
     assert.equal(time, '+100:00:00.000');
 
+    var escaping = Kairos.Lexicon.format(Kairos.new('15:01:00.000'), 'h\\h:m\\m');
+    assert.equal(escaping, '1h:0m');
+
     done();
   });
 
   it('should find the pattern for the given expression', function (done) {
     var time = Kairos.Lexicon.findPattern('+10:00:00.000');
     assert.equal(time, '#hh:mm:ss.SSS');
-    
+
     done();
   });
 });

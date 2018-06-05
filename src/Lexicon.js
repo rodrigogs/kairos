@@ -6,11 +6,11 @@
   'use strict';
 
   /**
-   * @type {{HOURS: string, MINUTES: string, SECONDS: string, MILLISECONDS: string}}
+   * @type {{SIGN: string, HOURS: string, MINUTES: string, SECONDS: string, MILLISECONDS: string, ESCAPE: string}}
    */
   var TOKENS = {
     SIGN: '#', HOURS: 'h', MINUTES: 'm',
-    SECONDS: 's', MILLISECONDS: 'S'
+    SECONDS: 's', MILLISECONDS: 'S', ESCAPE: '\\'
   };
 
   Kairos.Lexicon = {};
@@ -131,6 +131,8 @@
   /**
    * Returns a formated string from an Kairos.Engine instance.
    *
+   * You can escape any character by using \ before it.
+   *
    * @memberof module:Lexicon
    * @method format
    * @param {Kairos.Engine} instance The instance to format
@@ -155,17 +157,29 @@
 
     for (var i = pattern.length - 1; i >= 0; i--) {
       var cur = pattern[i];
+      var hasLeadingEscape = pattern[i - 1] === TOKENS.ESCAPE;
+
+      if (hasLeadingEscape) {
+        result = cur + result;
+        i--;
+      }
+
       switch (cur) {
         case TOKENS.SIGN:
-          result = (sign ? '+' : '-') + result;
+          if (!hasLeadingEscape) result = (sign ? '+' : '-') + result;
           break;
         case TOKENS.HOURS:
+          if (hasLeadingEscape && hours.length > 0) {
+            hours = hours.slice(0, hours.length - 1);
+            break;
+          }
+
           if (hasOverflow) {
-              if (allowOverflow) {
-                result = hours + result;
-                allowOverflow = false;
-              }
-              break;
+            if (allowOverflow) {
+              result = hours + result;
+              allowOverflow = false;
+            }
+            break;
           }
           result = (hours.slice(-1) || '0') + result;
           if (hours.length > 0) {
@@ -173,25 +187,40 @@
           }
           break;
         case TOKENS.MINUTES:
+          if (hasLeadingEscape && minutes.length > 0) {
+            minutes = minutes.slice(0, minutes.length - 1);
+            break;
+          }
+
           result = (minutes.slice(-1) || '0') + result;
           if (minutes.length > 0) {
             minutes = minutes.slice(0, minutes.length - 1);
           }
           break;
         case TOKENS.SECONDS:
+          if (hasLeadingEscape && seconds.length > 0) {
+            seconds = seconds.slice(0, seconds.length - 1);
+            break;
+          }
+
           result = (seconds.slice(-1) || '0') + result;
           if (seconds.length > 0) {
             seconds = seconds.slice(0, seconds.length - 1);
           }
           break;
         case TOKENS.MILLISECONDS:
+          if (hasLeadingEscape && milliseconds.length > 0) {
+            milliseconds = milliseconds.slice(0, milliseconds.length - 1);
+            break;
+          }
+
           result = (milliseconds.slice(-1) || '0') + result;
           if (milliseconds.length > 0) {
             milliseconds = milliseconds.slice(0, milliseconds.length - 1);
           }
           break;
         default:
-          result = cur + result;
+          if (!hasLeadingEscape) result = cur + result;
       }
     }
 
