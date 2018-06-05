@@ -166,7 +166,9 @@
 
       switch (cur) {
         case TOKENS.SIGN:
-          if (!hasLeadingEscape) result = (sign ? '+' : '-') + result;
+          if (!hasLeadingEscape) {
+            result = (sign ? '+' : '-') + result;
+          }
           break;
         case TOKENS.HOURS:
           if (hasLeadingEscape && hours.length > 0) {
@@ -220,7 +222,9 @@
           }
           break;
         default:
-          if (!hasLeadingEscape) result = cur + result;
+          if (!hasLeadingEscape) {
+            result = cur + result;
+          }
       }
     }
 
