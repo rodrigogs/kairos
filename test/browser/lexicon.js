@@ -77,7 +77,13 @@ describe('Kairos.Lexicon', function () {
     assert.equal(time, '+100:00:00.000');
 
     var escaping = Kairos.Lexicon.format(Kairos.new('15:01:00.000'), 'h\\h:m\\m');
-    assert.equal(escaping, '1h:0m');
+    assert.equal(escaping, '5h:1m');
+
+    var escapingWithOverflow = Kairos.Lexicon.format(Kairos.new('15:01:00.000'), 'h\\h:m\\m', true);
+    assert.equal(escapingWithOverflow, '15h:1m');
+
+    var escapingFromMillis = Kairos.Lexicon.format(Kairos.new(5850000), 'hh\\hmm');
+    assert.equal(escapingFromMillis, '01h37');
 
     done();
   });

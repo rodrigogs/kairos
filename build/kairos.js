@@ -1,7 +1,7 @@
 /**
  * Kairos.js - A non date-based time calculator
  * @author Rodrigo Gomes da Silva <rodrigo.smscom@gmail.com>
- * @version v2.1.0
+ * @version v2.1.1
  * @link https://github.com/kairos
  * @license BSD-2-Clause
  */
@@ -552,13 +552,15 @@
     }
 
     var sign = instance.milliseconds >= 0,
-        hours = String(Math.abs(instance.getHours())),
-        minutes = String(Math.abs(instance.getMinutes())),
-        seconds = String(Math.abs(instance.getSeconds())),
-        milliseconds = String(Math.abs(instance.getMilliseconds()));
+      hours = String(Math.abs(instance.getHours())),
+      minutes = String(Math.abs(instance.getMinutes())),
+      seconds = String(Math.abs(instance.getSeconds())),
+      milliseconds = String(Math.abs(instance.getMilliseconds()));
 
-    var result = '',
-        hasOverflow = (hours.length > (pattern.match(/h/g) || []).length);
+    var result = '';
+    var escapedHourTokens = (pattern.match(/\\h/g) || []).length;
+    var hourTokens = ((pattern.match(/h/g) || []).length - escapedHourTokens);
+    var usedHourTokens = 0;
 
     for (var i = pattern.length - 1; i >= 0; i--) {
       var cur = pattern[i];
@@ -567,65 +569,52 @@
       if (hasLeadingEscape) {
         result = cur + result;
         i--;
+        continue;
       }
 
       switch (cur) {
         case TOKENS.SIGN:
-          if (!hasLeadingEscape) result = (sign ? '+' : '-') + result;
+          result = (sign ? '+' : '-') + result;
           break;
         case TOKENS.HOURS:
-          if (hasLeadingEscape && hours.length > 0) {
-            hours = hours.slice(0, hours.length - 1);
+          usedHourTokens++;
+
+          var isLastHourToken = usedHourTokens === hourTokens;
+          var isOverflowing = isLastHourToken && hours.length > 1;
+
+          if (isOverflowing && allowOverflow) {
+            result = hours + result;
+            allowOverflow = false;
             break;
           }
 
-          if (hasOverflow) {
-            if (allowOverflow) {
-              result = hours + result;
-              allowOverflow = false;
-            }
-            break;
-          }
           result = (hours.slice(-1) || '0') + result;
           if (hours.length > 0) {
             hours = hours.slice(0, hours.length - 1);
           }
           break;
         case TOKENS.MINUTES:
-          if (hasLeadingEscape && minutes.length > 0) {
-            minutes = minutes.slice(0, minutes.length - 1);
-            break;
-          }
-
           result = (minutes.slice(-1) || '0') + result;
           if (minutes.length > 0) {
             minutes = minutes.slice(0, minutes.length - 1);
           }
           break;
         case TOKENS.SECONDS:
-          if (hasLeadingEscape && seconds.length > 0) {
-            seconds = seconds.slice(0, seconds.length - 1);
-            break;
-          }
-
           result = (seconds.slice(-1) || '0') + result;
           if (seconds.length > 0) {
             seconds = seconds.slice(0, seconds.length - 1);
           }
           break;
         case TOKENS.MILLISECONDS:
-          if (hasLeadingEscape && milliseconds.length > 0) {
-            milliseconds = milliseconds.slice(0, milliseconds.length - 1);
-            break;
-          }
-
           result = (milliseconds.slice(-1) || '0') + result;
           if (milliseconds.length > 0) {
             milliseconds = milliseconds.slice(0, milliseconds.length - 1);
           }
           break;
         default:
-          if (!hasLeadingEscape) result = cur + result;
+          if (!hasLeadingEscape) {
+            result = cur + result;
+          }
       }
     }
 
