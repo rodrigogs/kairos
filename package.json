@@ -1,6 +1,6 @@
 {
   "name": "kairos",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "A non date-based time calculator",
   "license": "BSD-2-Clause",
   "repository": "kairos",
@@ -12,7 +12,10 @@
   "main": "./build/kairos-node.js",
   "scripts": {
     "test": "node test/node/test.js",
-    "coverage": "istanbul cover gulp test -- -R spec"
+    "coverage": "istanbul cover gulp test -- -R spec",
+    "gulp:init": "gulp init",
+    "gulp:build": "gulp build",
+    "gulp:test": "gulp test"
   },
   "keywords": [
     "time",

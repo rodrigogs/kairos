@@ -1,7 +1,7 @@
 /**
  * Kairos.js - A non date-based time calculator
  * @author Rodrigo Gomes da Silva <rodrigo.smscom@gmail.com>
- * @version v2.1.1
+ * @version v2.1.2
  * @link https://github.com/kairos
  * @license BSD-2-Clause
  */

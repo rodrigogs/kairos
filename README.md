@@ -8,6 +8,7 @@
 [![npm version](https://badge.fury.io/js/kairos.svg)](https://badge.fury.io/js/kairos)
 [![Bower version](https://badge.fury.io/bo/kairos.svg)](https://badge.fury.io/bo/kairos)
 [![Inline docs](http://inch-ci.org/github/rodrigogs/kairos.svg?branch=master)](http://inch-ci.org/github/rodrigogs/kairos)
+[![install size](https://packagephobia.now.sh/badge?p=kairos)](https://packagephobia.now.sh/result?p=kairos)
 
 *Kairós(καιρός) is a greek word that means "the right moment". Also, in the greek mithology Kairós is the son of the personification of time itself, Chronos.*
 
